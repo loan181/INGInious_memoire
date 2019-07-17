@@ -1,0 +1,72 @@
+accessible: true
+author: ''
+categories: []
+context: |-
+    Choisi l'*iris* qui sera deviné par l'algortihme des *K plus proches voisins* pour **K = 1** dans le cas çi-dessous.
+
+    Chaque cas est représenté par une image, leur légende est la suivante :
+
+    =========================================  ==============  ===============
+    *Iris*                                     Description      Icone/Marqueur
+    =========================================  ==============  ===============
+    *iris* inconnue (à classifier/déterminer)  Losange gris    .. image:: $common/img/dark_diamond.svg
+    *iris-setosa*                              Cercle bleu     .. image:: $common/img/blue_circle.svg
+    *iris-versicolor*                          Triangle rouge  .. image:: $common/img/red_triangle.svg
+    *iris-virginica*                           Carré vert      .. image:: $common/img/green_square.svg
+    =========================================  ==============  ===============
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: Tutoriel 1
+network_grading: false
+problems:
+    tuto1:
+        options:
+            visual:
+                position: left
+            grid:
+                length: 3
+                colour: '#ccc'
+                snap: true
+                spacing: 20
+            zoom:
+                controls: true
+                startScale: 1.0
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                minScale: 0.3
+                wheel: false
+            media: /plugins/blockly/static/blockly/media/
+            scrollbars: true
+            maxBlocks: '1'
+            css: true
+            toolboxPosition: start
+            oneBasedIndex: true
+            speed: '60'
+        workspace: <xml></xml>
+        blocks_files:
+        - ../$common/flowersNameBlocks.js
+        header: ''
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml">
+              <variables></variables>
+              <block type="flower_iris_setosa"></block>
+              <block type="flower_iris_versicolor"></block>
+              <block type="flower_iris_virginica"></block>
+            </xml>
+        files:
+        - ../$common/visual.js
+        - visual.js
+        name: ''
+        type: blockly
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

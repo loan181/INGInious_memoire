@@ -1,0 +1,16 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="#ffffff" id="canvas_background" height="202" width="202" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <line opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_6" y2="200.822551" x2="99.999998" y1="-1" x1="99.999998" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="200.822551" x2="149.499986" y1="-1" x1="149.499986" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_8" y2="200.822551" x2="50" y1="-1" x1="50" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line transform="rotate(90 99.99999999999999,153.66201782226565) " opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_10" y2="254.324027" x2="100" y1="53" x1="100" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line transform="rotate(90 100,100.41129302978517) " opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_12" y2="201.322565" x2="100" y1="-0.499986" x1="100" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+  <line transform="rotate(90 100.00000000000001,50.00000000000001) " opacity="0.1" stroke-linecap="null" stroke-linejoin="null" id="svg_13" y2="150" x2="100" y1="-50" x1="100" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000000" fill="none"/>
+ </g>
+</svg>
