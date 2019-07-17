@@ -20,3 +20,9 @@ Blockly.Python['counter_inc'] = function(block) {
   var code = `incrementCounter(${value_name})\n` ;
   return code;
 };
+
+Blockly.JavaScript['counter_inc'] = function(block) {
+  var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `incrementCounter(${value_name})\n` ;
+  return code;
+};
