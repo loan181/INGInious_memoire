@@ -1,0 +1,12 @@
+backend: local
+backup_directory: .
+local-config: {}
+mongo_opt:
+    database: INGInious
+    host: localhost
+plugins:
+  - plugin_module: "inginious-problems-blockly"
+superadmins:
+- superadmin
+tasks_directory: .
+use_minified_js: true
