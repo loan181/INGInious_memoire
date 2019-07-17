@@ -25,38 +25,43 @@ groups: false
 input_random: '0'
 limits:
     output: '2'
-    memory: '100'
     time: '30'
+    memory: '100'
 name: Compteur 1
 network_grading: false
 problems:
     tuto1:
         options:
+            toolboxPosition: start
             visual:
                 position: left
-            grid:
-                length: 3
-                colour: '#ccc'
-                snap: true
-                spacing: 20
+            css: true
             zoom:
                 controls: true
-                startScale: 1.0
-                maxScale: 3.0
-                scaleSpeed: 1.2
                 minScale: 0.3
+                maxScale: 3.0
+                startScale: 1.0
+                scaleSpeed: 1.2
                 wheel: false
-            media: /plugins/blockly/static/blockly/media/
+            grid:
+                snap: true
+                spacing: 20
+                length: 3
+                colour: '#ccc'
             scrollbars: true
-            maxBlocks: '2'
-            css: true
-            toolboxPosition: start
-            oneBasedIndex: true
             speed: '60'
-        workspace: <xml></xml>
+            oneBasedIndex: true
+            maxBlocks: '2'
+            media: /plugins/blockly/static/blockly/media/
         blocks_files:
         - ../$common/blocklyBlock/counterBlockInc.js
-        header: ''
+        type: blockly
+        files:
+        - ../$common/visual.js
+        - visual.js
+        - ../$common/animations.js
+        name: ''
+        workspace: <xml></xml>
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml">
               <variables></variables>
@@ -68,11 +73,7 @@ problems:
                 </value>
               </block>
             </xml>
-        files:
-        - ../$common/visual.js
-        - visual.js
-        name: ''
-        type: blockly
+        header: ''
 stored_submissions: 0
 submission_limit:
     amount: -1
