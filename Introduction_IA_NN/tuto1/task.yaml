@@ -1,0 +1,51 @@
+accessible: true
+author: ''
+categories: []
+context: ''
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: 1. Tutoriel 1
+network_grading: false
+problems:
+    tuto1:
+        options:
+            zoom:
+                minScale: 0.3
+                maxScale: 3.0
+                controls: true
+                startScale: 1.0
+                scaleSpeed: 1.2
+                wheel: false
+            visual:
+                position: left
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
+            scrollbars: true
+            css: true
+            grid:
+                snap: true
+                length: 3
+                colour: '#ccc'
+                spacing: 20
+            speed: '60'
+            toolboxPosition: start
+            oneBasedIndex: true
+        workspace: <xml></xml>
+        type: blockly
+        header: ''
+        files:
+        - ../$common/raphael.min.js
+        name: ''
+        toolbox: <xml></xml>
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
