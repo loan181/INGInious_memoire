@@ -5,6 +5,24 @@ let grid = [
   [0,0,0],
   [0,0,0]
 ];
+let layersMat = [
+    [
+        [6, 6, 0],
+        [-4, 8, -1],
+        [6, 7, 9],
+        [8, -4, -3],
+        [-5, -5, -1],
+        [8, -4, 7],
+        [6, 4, 1],
+        [-4, 9, -1],
+        [7, 7, 8]
+    ]
+    ,[
+        [-5, 5],
+        [7, -7],
+        [-4, 4]
+    ]
+];
 let nnNeurons = [];
 
 function create3x3InteractiveGrid(grid) {
@@ -31,7 +49,7 @@ function create3x3InteractiveGrid(grid) {
                         this.attr("fill", "white");
                     }
 
-                    grid[i][j] = this.attr("fill") === "black" ? 1:0;
+                    grid[j][i] = this.attr("fill") === "black" ? 1:0;
                 });
         }
     }
@@ -71,24 +89,7 @@ function createNeuralNetwork(nnNeurons) {
             saveXYPos[i].push([x, y]);
         }
     }
-    let layersMat = [
-        [
-            [6, 6, 0],
-            [-4, 8, -1],
-            [6, 7, 9],
-            [8, -4, -3],
-            [-5, -5, -1],
-            [8, -4, 7],
-            [6, 4, 1],
-            [-4, 9, -1],
-            [7, 7, 8]
-        ]
-        ,[
-            [-5, 5],
-            [7, -7],
-            [-4, 4]
-        ]
-    ];
+
     let layersAbsoluteMaximum = 9; // TODO : calculer dynamiquement
 
     for (let i = 0; i < saveXYPos.length-1; i++) {
@@ -118,19 +119,40 @@ function createNeuralNetwork(nnNeurons) {
     return paper
 }
 
-function classify(grid, nnNeurons) {
-    for (let i = 0; i < grid.length; i++) {
-        for (let j = 0; j < grid[i].length; j++) {
-            let neuronIndex = i+j*grid.length;
-            let correspondingNeuron = nnNeurons[0][neuronIndex];
-            let value = grid[i][j];
-            if (value === 1) { // black pixel
-                correspondingNeuron.attr("fill", "black");
-            } else { // white pixel
-                correspondingNeuron.attr("fill", "white");
-            }
+function matrixDot (A, B) {
+    var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
+
+    return result.map((row, i) => {
+        return row.map((val, j) => {
+            return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
+        })
+    })
+}
+
+function sigmoide(x) {
+    return 1/(1+Math.exp(-x));
+}
+
+function classify(grid, nnNeurons, layersMat) {
+    // Set the value of the first layer
+    let gridFlatten = grid.flat();
+    for (let i = 0; i < gridFlatten.length; i++) {
+        let correspondingNeuron = nnNeurons[0][i];
+        let value = gridFlatten[i];
+        if (value === 1) { // black pixel
+            correspondingNeuron.attr("fill", "black");
+        } else { // white pixel
+            correspondingNeuron.attr("fill", "white");
         }
     }
+    // Set the value of the second layer
+    let secondLayerNeuronValues = matrixDot([gridFlatten], layersMat[0]);
+    for (let i = 0; i < secondLayerNeuronValues[0].length; i++) {
+        secondLayerNeuronValues[0][i] = sigmoide(secondLayerNeuronValues[0][i]);
+    }
+    // TODO  mettre la couleur sur les neurones de la seconde couche et faire la 3ème
+
+
 }
 
 $("#blocklySvgZone").hide();
