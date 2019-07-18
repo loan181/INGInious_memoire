@@ -7,7 +7,8 @@ function create3x3InteractiveGrid() {
     visu.appendChild(gridDiv);
 
     let paperSize = 120;
-    let paper = Raphael(gridDiv, paperSize, paperSize);
+    let paper = Raphael(gridDiv, "100%", "100%");
+    paper.setViewBox(0, 0 , paperSize, paperSize, true);
 
     let gridNumber = 3;
     let offset = paperSize/gridNumber;
@@ -34,7 +35,8 @@ function createNeuralNetwork() {
     visu.appendChild(nnDiv);
 
     let paperSize = 120;
-    let paper = Raphael(nnDiv, paperSize, paperSize);
+    let paper = Raphael(nnDiv, "100%", "100%");
+    paper.setViewBox(0, 0 , paperSize, paperSize, true);
 
     const layersNeuronsNumber = [9, 3, 2];
     const neuronSize = 10;
