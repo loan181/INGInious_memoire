@@ -59,8 +59,28 @@ function createNeuralNetwork() {
             saveXYPos[i].push([x, y]);
         }
     }
+    let layersMat = [
+        [
+            [6, 6, 0],
+            [-4, 8, -1],
+            [6, 7, 9],
+            [8, -4, -3],
+            [-5, -5, -1],
+            [8, -4, 7],
+            [6, 4, 1],
+            [-4, 9, -1],
+            [7, 7, 8]
+        ]
+        ,[
+            [-5, 5],
+            [7, -7],
+            [-4, 4]
+        ]
+    ];
+    let layersAbsoluteMaximum = 9; // TODO : calculer dynamiquement
 
     for (let i = 0; i < saveXYPos.length-1; i++) {
+        let currentLayerMat = layersMat[i];
         for (let j = 0; j < saveXYPos[i].length; j++) {
             for (let k = 0; k < saveXYPos[i + 1].length; k++) {
                 let x1 = saveXYPos[i][j][0];
@@ -68,7 +88,16 @@ function createNeuralNetwork() {
                 let x2 = saveXYPos[i+1][k][0];
                 let y2 = saveXYPos[i+1][k][1];
 
+                let weight = currentLayerMat[j][k];
+                let color = "green";
+                if (weight < 0) {
+                    color = "red";
+                    weight = -weight;
+                }
+                let opacity = weight/layersAbsoluteMaximum;
+
                 let line = paper.path(`M${x1} ${y1}L${x2} ${y2}`)
+                    .attr({stroke:color, "stroke-opacity": opacity})
                     .toBack();
             }
         }
