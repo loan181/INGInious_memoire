@@ -42,6 +42,7 @@ problems:
         header: ''
         files:
         - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
         name: ''
         toolbox: <xml></xml>
 stored_submissions: 0
