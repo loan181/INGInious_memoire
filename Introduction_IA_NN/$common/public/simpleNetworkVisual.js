@@ -148,7 +148,12 @@ function classify(grid, nnNeurons, layersMat) {
     // Set the value of the second layer
     let secondLayerNeuronValues = matrixDot([gridFlatten], layersMat[0]);
     for (let i = 0; i < secondLayerNeuronValues[0].length; i++) {
-        secondLayerNeuronValues[0][i] = sigmoide(secondLayerNeuronValues[0][i]);
+        let neuronValue = sigmoide(secondLayerNeuronValues[0][i]);
+        secondLayerNeuronValues[0][i] = neuronValue;
+        let correspondingNeuron = nnNeurons[1][i];
+        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
+        let color = Raphael.hsl(0,0, lightness);
+        correspondingNeuron.attr("fill", color)
     }
     // TODO  mettre la couleur sur les neurones de la seconde couche et faire la 3ème
 
