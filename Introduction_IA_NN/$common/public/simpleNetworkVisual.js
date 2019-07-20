@@ -155,11 +155,69 @@ function classify(grid, nnNeurons, layersMat) {
         let color = Raphael.hsl(0,0, lightness);
         correspondingNeuron.attr("fill", color)
     }
-    // TODO  mettre la couleur sur les neurones de la seconde couche et faire la 3ème
 
+    // TODO : enorme copy-paste de au-dessus
+    let thirdLayerNeuronValues = matrixDot(secondLayerNeuronValues, layersMat[1]);
+    for (let i = 0; i < thirdLayerNeuronValues[0].length; i++) {
+        let neuronValue = sigmoide(thirdLayerNeuronValues[0][i]);
+        thirdLayerNeuronValues[0][i] = neuronValue;
+        let correspondingNeuron = nnNeurons[2][i];
+        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
+        let color = Raphael.hsl(0,0, lightness);
+        correspondingNeuron.attr("fill", color)
+    }
+    let pourcentageVertical = thirdLayerNeuronValues[0][0]*100;
+    let pourcentageVerticalBar = 100-thirdLayerNeuronValues[0][0]*100;
 
+    let progressBarVert = document.getElementById("progressBarVert");
+    progressBarVert.style = `width:${pourcentageVerticalBar}%;`;
+    progressBarVert.innerHTML = Math.round(pourcentageVerticalBar);
+
+    let progressBarHor = document.getElementById("progressBarHor");
+    progressBarHor.style = `width:${pourcentageVertical}%;`;
+    progressBarHor.innerHTML = Math.round(pourcentageVertical);
+}
+
+function createConclusionNeuralNetwork() {
+    let concluDiv = document.createElement("div");
+    concluDiv.id = "conclusionDiv";
+    visu.appendChild(concluDiv);
+
+    let progress = document.createElement("div");
+    progress.classList.add("progress");
+    concluDiv.appendChild(progress);
+
+    let progressBarVert = document.createElement("div");
+    progressBarVert.id = "progressBarVert";
+    progressBarVert.classList.add("progress-bar");
+    progressBarVert.style = "width:50%";
+    progressBarVert.innerHTML = "?";
+    progress.appendChild(progressBarVert);
+
+    let progressBarHor = document.createElement("div");
+    progressBarHor.id = "progressBarHor";
+    progressBarHor.classList.add("progress-bar");
+    progressBarHor.classList.add("bg-info");
+    progressBarHor.style = "width:50%";
+    progressBarHor.innerHTML = "?";
+    progress.appendChild(progressBarHor);
+
+    // Labels
+     let progressLabels = document.createElement("div");
+    concluDiv.appendChild(progressLabels);
+
+    let startLabel = document.createElement("span");
+    startLabel.style = "float:left";
+    startLabel.innerHTML = "Vertical";
+    progressLabels.appendChild(startLabel);
+
+    let endLabel = document.createElement("span");
+    endLabel.style = "float:right;text-align:right;";
+    endLabel.innerHTML = "Horizontal";
+    progressLabels.appendChild(endLabel);
 }
 
 $("#blocklySvgZone").hide();
 let gridRaphael = create3x3InteractiveGrid(grid);
 let nnRapheal = createNeuralNetwork(nnNeurons);
+createConclusionNeuralNetwork();
