@@ -176,11 +176,21 @@ function classify(grid, nnNeurons, layersMat) {
     let progressBarHor = document.getElementById("progressBarHor");
     progressBarHor.style = `width:${pourcentageVertical}%;`;
     progressBarHor.innerHTML = Math.round(pourcentageVertical);
+
+    // Refresh prediction
+    let conclusionSpan = document.getElementById("conclusion");
+    let conclusionText = "?";
+    if (pourcentageVertical >= 50) {
+        conclusionText = "Vertical"
+    } else {
+        conclusionText = "Horizontal";
+    }
+    conclusionSpan.innerHTML = conclusionText
 }
 
-function createConclusionNeuralNetwork() {
+function createConclusionsBarNeuralNetwork() {
     let concluDiv = document.createElement("div");
-    concluDiv.id = "conclusionDiv";
+    concluDiv.id = "conclusionsDiv";
     visu.appendChild(concluDiv);
 
     let progress = document.createElement("div");
@@ -217,7 +227,23 @@ function createConclusionNeuralNetwork() {
     progressLabels.appendChild(endLabel);
 }
 
+function createConclusion() {
+    let concluDiv = document.createElement("div");
+    concluDiv.style = "display: inline-block;";
+    concluDiv.classList.add("h5");
+    concluDiv.id = "conclusionsDiv";
+    concluDiv.innerHTML = "Résultat prédit : ";
+    visu.appendChild(concluDiv);
+
+    let result = document.createElement("span");
+    result.id = "conclusion";
+    result.style = "font-weight: bold;";
+    result.innerHTML = "?";
+    concluDiv.appendChild(result);
+}
+
 $("#blocklySvgZone").hide();
 let gridRaphael = create3x3InteractiveGrid(grid);
 let nnRapheal = createNeuralNetwork(nnNeurons);
-createConclusionNeuralNetwork();
+createConclusionsBarNeuralNetwork();
+createConclusion();
