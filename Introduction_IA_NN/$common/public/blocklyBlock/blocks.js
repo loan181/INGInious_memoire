@@ -37,6 +37,18 @@ Blockly.Blocks['nn_conclusion'] = {
   }
 };
 
+Blockly.Blocks['nnimgcustom'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("zero")
+        .appendField(new Blockly.FieldImage("https://www.gstatic.com/codesite/ph/images/star_on.gif", 35, 35, "*"));
+    this.setOutput(true, "Array");
+    this.setColour(330);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 // STUB JS
 Blockly.JavaScript['nn_handle_input'] = function(block) {
   var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
@@ -59,6 +71,13 @@ Blockly.JavaScript['nn_conclusion'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+Blockly.JavaScript['nnimgcustom'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // STUB Python
 Blockly.Python['nn_handle_input'] = function(block) {
   var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
@@ -75,6 +94,13 @@ Blockly.Python['nn_handle_layer'] = function(block) {
 };
 
 Blockly.Python['nn_conclusion'] = function(block) {
+  // TODO: Assemble Python into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['nnimgcustom'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
