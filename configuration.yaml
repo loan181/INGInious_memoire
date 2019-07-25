@@ -1,6 +1,6 @@
 backend: local
 backup_directory: .
-local-config: {}
+local-config: {tmp_dir: "/home/osboxes/Documents/agent_tmp"}
 mongo_opt:
     database: INGInious
     host: localhost
