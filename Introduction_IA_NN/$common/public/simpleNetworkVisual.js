@@ -134,31 +134,6 @@ function sigmoide(x) {
     return 1/(1+Math.exp(-x));
 }
 
-function classify(grid, nnNeurons, layersMat) {
-
-
-    let pourcentageVertical = thirdLayerNeuronValues[0][0]*100;
-    let pourcentageVerticalBar = 100-thirdLayerNeuronValues[0][0]*100;
-
-    let progressBarVert = document.getElementById("progressBarVert");
-    progressBarVert.style = `width:${pourcentageVerticalBar}%;`;
-    progressBarVert.innerHTML = Math.round(pourcentageVerticalBar);
-
-    let progressBarHor = document.getElementById("progressBarHor");
-    progressBarHor.style = `width:${pourcentageVertical}%;`;
-    progressBarHor.innerHTML = Math.round(pourcentageVertical);
-
-    // Refresh prediction
-    let conclusionSpan = document.getElementById("conclusion");
-    let conclusionText = "?";
-    if (pourcentageVertical >= 50) {
-        conclusionText = "Vertical"
-    } else {
-        conclusionText = "Horizontal";
-    }
-    conclusionSpan.innerHTML = conclusionText
-}
-
 function createConclusionsBarNeuralNetwork() {
     let concluDiv = document.createElement("div");
     concluDiv.id = "conclusionsDiv";
