@@ -120,6 +120,21 @@ function createNeuralNetwork(nnNeurons) {
     return paper
 }
 
+function addAnimationSpeedWidget() {
+    let target = document.getElementById("blocklyButtons");
+
+    let widget = document.createElement("input");
+    widget.type = "range";
+    widget.min = "0";
+    widget.max = "80";
+    widget.step = "5";
+
+    widget.oninput = function() {
+        blocklyTask.options.speed = this.value;
+    };
+    target.appendChild(widget);
+}
+
 function matrixDot (A, B) {
     var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
 
@@ -189,10 +204,12 @@ function createConclusion() {
 }
 
 $("#blocklySvgZone").hide();
+addAnimationSpeedWidget();
 let gridRaphael = create3x3InteractiveGrid(grid);
 let nnRapheal = createNeuralNetwork(nnNeurons);
 createConclusionsBarNeuralNetwork();
 createConclusion();
+
 
 function getNeuronsValues(layers_ind) {
     let ret = [];
