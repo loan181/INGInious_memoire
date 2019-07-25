@@ -52,9 +52,7 @@ Blockly.Blocks['nnimgcustom'] = {
 // STUB JS
 Blockly.JavaScript['nn_handle_input'] = function(block) {
   var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
+  return `handleFirstLayer(${value_picture});\n`;
 };
 
 Blockly.JavaScript['nn_handle_layer'] = function(block) {
@@ -72,10 +70,8 @@ Blockly.JavaScript['nn_conclusion'] = function(block) {
 };
 
 Blockly.JavaScript['nnimgcustom'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var code = 'getGrid()';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 // STUB Python

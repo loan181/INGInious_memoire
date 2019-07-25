@@ -1,4 +1,5 @@
 
+const neuronRaphaelJSValueName = "nnValue";
 let visu = document.getElementById('visualization');
 let grid = [
   [0,0,0],
@@ -85,6 +86,7 @@ function createNeuralNetwork(nnNeurons) {
             let y = (j+1)*verticalOffset;
             let neuron = paper.circle(x, y, neuronRadius)
             .attr({fill: "aqua", stroke:"#AAA"});
+            neuron.data(neuronRaphaelJSValueName, undefined); // Keep the neural network associated value
             nnNeurons[i].push(neuron);
             saveXYPos[i].push([x, y]);
         }
@@ -134,17 +136,7 @@ function sigmoide(x) {
 }
 
 function classify(grid, nnNeurons, layersMat) {
-    // Set the value of the first layer
-    let gridFlatten = grid.flat();
-    for (let i = 0; i < gridFlatten.length; i++) {
-        let correspondingNeuron = nnNeurons[0][i];
-        let value = gridFlatten[i];
-        if (value === 1) { // black pixel
-            correspondingNeuron.attr("fill", "black");
-        } else { // white pixel
-            correspondingNeuron.attr("fill", "white");
-        }
-    }
+
     // Set the value of the second layer
     let secondLayerNeuronValues = matrixDot([gridFlatten], layersMat[0]);
     for (let i = 0; i < secondLayerNeuronValues[0].length; i++) {
@@ -247,3 +239,47 @@ let gridRaphael = create3x3InteractiveGrid(grid);
 let nnRapheal = createNeuralNetwork(nnNeurons);
 createConclusionsBarNeuralNetwork();
 createConclusion();
+
+let Classify = {};
+Classify.handleFirstLayer = function(img) {
+    let imgFlatten = img.flat();
+    for (let i = 0; i < imgFlatten.length; i++) {
+        let correspondingNeuron = nnNeurons[0][i];
+        let value = imgFlatten[i];
+        correspondingNeuron.data(neuronRaphaelJSValueName, value);
+    }
+};
+
+let Animation = {};
+Animation.reset = function () {
+
+};
+
+Animation.layerColorNeuron = function (layer_i) {
+    for (let i = 0; i < nnNeurons[layer_i].length; i++) {
+        let correspondingNeuron = nnNeurons[layer_i][i];
+        let neuronValue = correspondingNeuron.data(neuronRaphaelJSValueName);
+        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
+        let color = Raphael.hsl(0, 0, lightness);
+        correspondingNeuron.attr("fill", color)
+    }
+};
+
+var initInterpreterApi = function(interpreter, scope) {
+    var wrapper;
+    wrapper = function() {
+        return grid;
+    };
+    interpreter.setProperty(scope, 'getGrid',
+        interpreter.createNativeFunction(wrapper)
+    );
+    wrapper = function(img) {
+        Classify.handleFirstLayer(img);
+        Animation.layerColorNeuron(0);
+    };
+    interpreter.setProperty(scope, 'handleFirstLayer',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    Animation.reset();
+};
