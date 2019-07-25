@@ -263,6 +263,16 @@ Animation.reset = function () {
         }
         Animation.layerColorNeuron(i);
     }
+    let progressBarVert = document.getElementById("progressBarVert");
+    progressBarVert.style = `width:50%;`;
+    progressBarVert.innerHTML = "?";
+
+    let progressBarHor = document.getElementById("progressBarHor");
+    progressBarHor.style = `width:50%;`;
+    progressBarHor.innerHTML = "?";
+
+    let conclusionSpan = document.getElementById("conclusion");
+    conclusionSpan.innerHTML = "?";
 };
 
 Animation.layerColorNeuron = function (layer_i) {
