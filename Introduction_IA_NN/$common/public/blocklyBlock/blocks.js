@@ -52,20 +52,16 @@ Blockly.Blocks['nnimgcustom'] = {
 // STUB JS
 Blockly.JavaScript['nn_handle_input'] = function(block) {
   var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
-  return `handleFirstLayer(${value_picture});\n`;
+  return `handleInputLayer(${value_picture});\n`;
 };
 
 Blockly.JavaScript['nn_handle_layer'] = function(block) {
   var value_layer_i = Blockly.JavaScript.valueToCode(block, 'layer_i', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...;\n';
-  return code;
+  return `handleLayer(${value_layer_i});\n`;
 };
 
 Blockly.JavaScript['nn_conclusion'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
+  var code = 'conclude()';
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 

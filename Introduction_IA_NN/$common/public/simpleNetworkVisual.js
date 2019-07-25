@@ -85,8 +85,7 @@ function createNeuralNetwork(nnNeurons) {
         for (let j = 0; j < layersNeuronsNumber[i]; j++) {
             let y = (j+1)*verticalOffset;
             let neuron = paper.circle(x, y, neuronRadius)
-            .attr({fill: "aqua", stroke:"#AAA"});
-            neuron.data(neuronRaphaelJSValueName, undefined); // Keep the neural network associated value
+            .attr({stroke:"#AAA"});
             nnNeurons[i].push(neuron);
             saveXYPos[i].push([x, y]);
         }
@@ -137,27 +136,7 @@ function sigmoide(x) {
 
 function classify(grid, nnNeurons, layersMat) {
 
-    // Set the value of the second layer
-    let secondLayerNeuronValues = matrixDot([gridFlatten], layersMat[0]);
-    for (let i = 0; i < secondLayerNeuronValues[0].length; i++) {
-        let neuronValue = sigmoide(secondLayerNeuronValues[0][i]);
-        secondLayerNeuronValues[0][i] = neuronValue;
-        let correspondingNeuron = nnNeurons[1][i];
-        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
-        let color = Raphael.hsl(0,0, lightness);
-        correspondingNeuron.attr("fill", color)
-    }
 
-    // TODO : enorme copy-paste de au-dessus
-    let thirdLayerNeuronValues = matrixDot(secondLayerNeuronValues, layersMat[1]);
-    for (let i = 0; i < thirdLayerNeuronValues[0].length; i++) {
-        let neuronValue = sigmoide(thirdLayerNeuronValues[0][i]);
-        thirdLayerNeuronValues[0][i] = neuronValue;
-        let correspondingNeuron = nnNeurons[2][i];
-        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
-        let color = Raphael.hsl(0,0, lightness);
-        correspondingNeuron.attr("fill", color)
-    }
     let pourcentageVertical = thirdLayerNeuronValues[0][0]*100;
     let pourcentageVerticalBar = 100-thirdLayerNeuronValues[0][0]*100;
 
@@ -240,8 +219,16 @@ let nnRapheal = createNeuralNetwork(nnNeurons);
 createConclusionsBarNeuralNetwork();
 createConclusion();
 
+function getNeuronsValues(layers_ind) {
+    let ret = [];
+    for (let i = 0; i < nnNeurons[layers_ind].length; i++) {
+        ret.push(nnNeurons[layers_ind][i].data(neuronRaphaelJSValueName));
+    }
+    return ret;
+}
+
 let Classify = {};
-Classify.handleFirstLayer = function(img) {
+Classify.handleInputLayer = function(img) {
     let imgFlatten = img.flat();
     for (let i = 0; i < imgFlatten.length; i++) {
         let correspondingNeuron = nnNeurons[0][i];
@@ -250,20 +237,68 @@ Classify.handleFirstLayer = function(img) {
     }
 };
 
+Classify.handleLayer = function(layerInd) {
+    let currentLayersMat = layersMat[layerInd-1];
+    let previousLayerNeuronValues = getNeuronsValues(layerInd-1);
+    let layerNeuronsValue = matrixDot([previousLayerNeuronValues], currentLayersMat)[0];
+    for (let i = 0; i < layerNeuronsValue.length; i++) {
+        let correspondingNeuron = nnNeurons[layerInd][i];
+        let value = sigmoide(layerNeuronsValue[i]);
+        correspondingNeuron.data(neuronRaphaelJSValueName, value);
+    }
+};
+
+Classify.conclude = function(layerInd) {
+    let lastLayerValue = getNeuronsValues(2);
+    let [verticalValue, horizontalValue] = lastLayerValue;
+    return verticalValue > horizontalValue ? "vertical": "horizontal";
+};
+
 let Animation = {};
 Animation.reset = function () {
-
+    // Reset all neurons colors and values
+    for (let i = 0; i < nnNeurons.length; i++) {
+        for (let j = 0; j < nnNeurons[i].length; j++) {
+            nnNeurons[i][j].data(neuronRaphaelJSValueName, undefined);
+        }
+        Animation.layerColorNeuron(i);
+    }
 };
 
 Animation.layerColorNeuron = function (layer_i) {
     for (let i = 0; i < nnNeurons[layer_i].length; i++) {
         let correspondingNeuron = nnNeurons[layer_i][i];
         let neuronValue = correspondingNeuron.data(neuronRaphaelJSValueName);
-        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
-        let color = Raphael.hsl(0, 0, lightness);
-        correspondingNeuron.attr("fill", color)
+        let fillColor = "aqua";
+        if (neuronValue !== undefined) {
+             let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
+            fillColor = Raphael.hsl(0, 0, lightness);
+        }
+        correspondingNeuron.attr("fill", fillColor)
     }
 };
+
+Animation.conclusionBar = function () {
+    let [verticalValue, horizontalValue] = getNeuronsValues(2);
+    let verticalBarValue = verticalValue*100;
+    let horizontalBarValue = horizontalValue*100;
+
+    let progressBarVert = document.getElementById("progressBarVert");
+    progressBarVert.style = `width:${verticalBarValue}%;`;
+    progressBarVert.innerHTML = Math.round(verticalBarValue);
+
+    let progressBarHor = document.getElementById("progressBarHor");
+    progressBarHor.style = `width:${horizontalBarValue}%;`;
+    progressBarHor.innerHTML = Math.round(horizontalBarValue);
+};
+
+Animation.conclusionText = function (conclusionText) {
+    let conclusionSpan = document.getElementById("conclusion");
+    conclusionSpan.innerHTML = conclusionText;
+};
+
+Animation.reset();
+
 
 var initInterpreterApi = function(interpreter, scope) {
     var wrapper;
@@ -273,11 +308,31 @@ var initInterpreterApi = function(interpreter, scope) {
     interpreter.setProperty(scope, 'getGrid',
         interpreter.createNativeFunction(wrapper)
     );
+
     wrapper = function(img) {
-        Classify.handleFirstLayer(img);
+        Classify.handleInputLayer(img);
         Animation.layerColorNeuron(0);
     };
-    interpreter.setProperty(scope, 'handleFirstLayer',
+    interpreter.setProperty(scope, 'handleInputLayer',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(layer_ind) {
+        layer_ind = layer_ind-1;
+        Classify.handleLayer(layer_ind);
+        Animation.layerColorNeuron(layer_ind);
+    };
+    interpreter.setProperty(scope, 'handleLayer',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function() {
+        let conclusion = Classify.conclude();
+        Animation.conclusionBar();
+        Animation.conclusionText(conclusion);
+        return conclusion;
+    };
+    interpreter.setProperty(scope, 'conclude',
         interpreter.createNativeFunction(wrapper)
     );
 
