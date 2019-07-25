@@ -9,12 +9,78 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    memory: '100'
     output: '2'
+    memory: '100'
 name: 1. Tutoriel 1
 network_grading: false
 problems:
     tuto1:
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        options:
+            oneBasedIndex: true
+            zoom:
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                minScale: 0.3
+                startScale: 1.0
+                controls: true
+                wheel: false
+            visual:
+                position: left
+            css: true
+            grid:
+                snap: true
+                colour: '#ccc'
+                length: 3
+                spacing: 20
+            speed: '60'
+            media: /plugins/blockly/static/blockly/media/
+            toolboxPosition: start
+            maxBlocks: Infinity
+            scrollbars: true
+        toolbox: |-
+            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+              <category name="NN" colour="#9fa55b">
+                <block type="nn_handle_input"/>
+                <block type="nn_handle_layer"/>
+                <block type="nn_conclusion"/>
+              </category>
+              <category name="NN-Debug" colour="#9fa55b">
+                <block type="nnimgcustom"/>
+                <block type="custom_print"/>
+              </category>
+              <sep/>
+              <category name="Loops" colour="#5ba55b">
+                <block type="controls_for">
+                  <field name="VAR" id="NB3Uo{:*R|E]KtG.g4V+">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep/>
+              <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
+              <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
+            </xml>
+        name: ''
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        type: blockly
+        header: ''
         workspace: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
               <variables>
@@ -80,8 +146,8 @@ problems:
                   </block>
                 </value>
               </block>
-              <block type="text_print" id="PZ{@8r!(k0TR8dc}(lSG" x="88" y="438">
-                <value name="TEXT">
+              <block type="custom_print" id="F`~~7vu7zJO7LlvsxF~;" x="88" y="438">
+                <value name="value">
                   <block type="procedures_callreturn" id="PbOgU??_c?Nthl]?[@cM">
                     <mutation name="classifier">
                       <arg name="image"/>
@@ -93,69 +159,6 @@ problems:
                 </value>
               </block>
             </xml>
-        options:
-            zoom:
-                scaleSpeed: 1.2
-                maxScale: 3.0
-                startScale: 1.0
-                controls: true
-                minScale: 0.3
-                wheel: false
-            grid:
-                spacing: 20
-                colour: '#ccc'
-                snap: true
-                length: 3
-            media: /plugins/blockly/static/blockly/media/
-            visual:
-                position: left
-            oneBasedIndex: true
-            speed: '60'
-            scrollbars: true
-            maxBlocks: Infinity
-            toolboxPosition: start
-            css: true
-        header: ''
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        toolbox: |-
-            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-              <category name="NN" colour="#9fa55b">
-                <block type="nn_handle_input"/>
-                <block type="nn_handle_layer"/>
-                <block type="nn_conclusion"/>
-                <block type="nnimgcustom"/>
-              </category>
-              <sep/>
-              <category name="Loops" colour="#5ba55b">
-                <block type="controls_for">
-                  <field name="VAR" id="NB3Uo{:*R|E]KtG.g4V+">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep/>
-              <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
-              <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
-            </xml>
-        type: blockly
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1
