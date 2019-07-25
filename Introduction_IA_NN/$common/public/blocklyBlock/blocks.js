@@ -40,8 +40,8 @@ Blockly.Blocks['nn_conclusion'] = {
 Blockly.Blocks['nnimgcustom'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("zero")
-        .appendField(new Blockly.FieldImage("https://www.gstatic.com/codesite/ph/images/star_on.gif", 35, 35, "*"));
+        .appendField("image déssinée")
+        .appendField(new Blockly.FieldImage("$common/img/pencilGrid.jpg", 32, 32, "*"));
     this.setOutput(true, "Array");
     this.setColour(330);
  this.setTooltip("");
@@ -73,28 +73,20 @@ Blockly.JavaScript['nnimgcustom'] = function(block) {
 // STUB Python
 Blockly.Python['nn_handle_input'] = function(block) {
   var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
-  return code;
+  return `handleInputLayer(${value_picture})\n`;
 };
 
 Blockly.Python['nn_handle_layer'] = function(block) {
   var value_layer_i = Blockly.Python.valueToCode(block, 'layer_i', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
-  return code;
+    return `handleLayer(${value_layer_i})\n`;
 };
 
 Blockly.Python['nn_conclusion'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = 'conclude()';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nnimgcustom'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = 'getGrid()';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };

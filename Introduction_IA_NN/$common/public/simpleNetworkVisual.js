@@ -240,7 +240,7 @@ Classify.handleLayer = function(layerInd) {
     }
 };
 
-Classify.conclude = function(layerInd) {
+Classify.conclude = function() {
     let lastLayerValue = getNeuronsValues(2);
     let [verticalValue, horizontalValue] = lastLayerValue;
     return verticalValue > horizontalValue ? "vertical": "horizontal";
