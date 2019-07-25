@@ -1,3 +1,16 @@
+Blockly.Blocks['custom_print'] = {
+  init: function() {
+    this.appendValueInput("value")
+        .setCheck(null)
+        .appendField("afficher");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(135);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['nn_handle_input'] = {
   init: function() {
     this.appendValueInput("picture")
@@ -50,6 +63,11 @@ Blockly.Blocks['nnimgcustom'] = {
 };
 
 // STUB JS
+Blockly.JavaScript['custom_print'] = function(block) {
+  var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
+  return `alert(${value_value});\n`;
+};
+
 Blockly.JavaScript['nn_handle_input'] = function(block) {
   var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
   return `handleInputLayer(${value_picture});\n`;
@@ -71,6 +89,10 @@ Blockly.JavaScript['nnimgcustom'] = function(block) {
 };
 
 // STUB Python
+Blockly.Python['custom_print'] = function(block) {
+  return "";
+};
+
 Blockly.Python['nn_handle_input'] = function(block) {
   var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
   return `handleInputLayer(${value_picture})\n`;
