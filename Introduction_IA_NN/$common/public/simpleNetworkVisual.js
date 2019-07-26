@@ -355,5 +355,19 @@ var initInterpreterApi = function(interpreter, scope) {
         interpreter.createNativeFunction(wrapper)
     );
 
+    wrapper = function(pixel_i, picture) {
+        return picture[pixel_i-1];
+    };
+    interpreter.setProperty(scope, 'getPixelValue',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(image) {
+        return image.flat();
+    };
+    interpreter.setProperty(scope, 'flatten',
+        interpreter.createNativeFunction(wrapper)
+    );
+
     Animation.reset();
 };
