@@ -62,53 +62,61 @@ Blockly.Blocks['nnimgcustom'] = {
   }
 };
 
-// STUB JS
-Blockly.JavaScript['custom_print'] = function(block) {
-  var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
-  return `alert(${value_value});\n`;
+Blockly.Blocks['nn_input_neuron_value'] = {
+  init: function() {
+    this.appendValueInput("neuron_i")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Donner au neurone d'entrée n°");
+    this.appendValueInput("neuron_value")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("la valeur");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
-Blockly.JavaScript['nn_handle_input'] = function(block) {
-  var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
-  return `handleInputLayer(${value_picture});\n`;
+Blockly.Blocks['nn_picture_get_pixel'] = {
+  init: function() {
+    this.appendValueInput("pixel_i")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("Obtenir la valeur du pixel n°");
+    this.appendValueInput("picture")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("de l'image");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
-Blockly.JavaScript['nn_handle_layer'] = function(block) {
-  var value_layer_i = Blockly.JavaScript.valueToCode(block, 'layer_i', Blockly.JavaScript.ORDER_ATOMIC);
-  return `handleLayer(${value_layer_i});\n`;
+Blockly.Blocks['nn_flatten_picture'] = {
+  init: function() {
+    this.appendValueInput("picture")
+        .setCheck("Array")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("aplatir l'image");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };
 
-Blockly.JavaScript['nn_conclusion'] = function(block) {
-  var code = 'conclude()';
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
-Blockly.JavaScript['nnimgcustom'] = function(block) {
-  var code = 'getGrid()';
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
-// STUB Python
-Blockly.Python['custom_print'] = function(block) {
-  return "";
-};
-
-Blockly.Python['nn_handle_input'] = function(block) {
-  var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
-  return `handleInputLayer(${value_picture})\n`;
-};
-
-Blockly.Python['nn_handle_layer'] = function(block) {
-  var value_layer_i = Blockly.Python.valueToCode(block, 'layer_i', Blockly.Python.ORDER_ATOMIC);
-    return `handleLayer(${value_layer_i})\n`;
-};
-
-Blockly.Python['nn_conclusion'] = function(block) {
-  var code = 'conclude()';
-  return [code, Blockly.Python.ORDER_ATOMIC];
-};
-
-Blockly.Python['nnimgcustom'] = function(block) {
-  var code = 'getGrid()';
-  return [code, Blockly.Python.ORDER_ATOMIC];
+Blockly.Blocks['nn_random_01'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("aléatoirement 0 ou 1");
+    this.setOutput(true, null);
+    this.setColour(300);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
 };

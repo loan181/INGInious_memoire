@@ -246,6 +246,10 @@ Classify.conclude = function() {
     return verticalValue > horizontalValue ? "vertical": "horizontal";
 };
 
+Classify.setNeuronValue = function(neuronInd, layerInd, value) {
+    nnNeurons[layerInd][neuronInd].data(neuronRaphaelJSValueName, value);
+};
+
 let Animation = {};
 Animation.reset = function () {
     // Reset all neurons colors and values
@@ -269,15 +273,19 @@ Animation.reset = function () {
 
 Animation.layerColorNeuron = function (layer_i) {
     for (let i = 0; i < nnNeurons[layer_i].length; i++) {
-        let correspondingNeuron = nnNeurons[layer_i][i];
-        let neuronValue = correspondingNeuron.data(neuronRaphaelJSValueName);
-        let fillColor = "aqua";
-        if (neuronValue !== undefined) {
-             let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
-            fillColor = Raphael.hsl(0, 0, lightness);
-        }
-        correspondingNeuron.attr("fill", fillColor)
+        Animation.colorNeuron(layer_i, i);
     }
+};
+
+Animation.colorNeuron = function(layer_i, neuron_i) {
+    let correspondingNeuron = nnNeurons[layer_i][neuron_i];
+    let neuronValue = correspondingNeuron.data(neuronRaphaelJSValueName);
+    let fillColor = "aqua";
+    if (neuronValue !== undefined) {
+        let lightness = 100-(neuronValue*100); // 100 = white, 0 = black
+        fillColor = Raphael.hsl(0, 0, lightness);
+    }
+    correspondingNeuron.attr("fill", fillColor)
 };
 
 Animation.conclusionBar = function () {
@@ -335,6 +343,15 @@ var initInterpreterApi = function(interpreter, scope) {
         return conclusion;
     };
     interpreter.setProperty(scope, 'conclude',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(neuronInd, layerInd, value) {
+        neuronInd = neuronInd-1;
+        Classify.setNeuronValue(neuronInd, layerInd, value);
+        Animation.colorNeuron(layerInd, neuronInd);
+    };
+    interpreter.setProperty(scope, 'setNeuronValue',
         interpreter.createNativeFunction(wrapper)
     );
 
