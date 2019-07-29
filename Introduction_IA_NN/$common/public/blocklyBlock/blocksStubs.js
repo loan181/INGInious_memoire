@@ -37,12 +37,6 @@ Blockly.JavaScript['nn_picture_get_pixel'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['nn_flatten_picture'] = function(block) {
-  var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = `flatten(${value_picture})`;
-  return [code, Blockly.JavaScript.ORDER_ATOMIC];
-};
-
 Blockly.JavaScript['nn_random_01'] = function(block) {
   var code = 'Math.round(Math.random())';
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
@@ -93,14 +87,6 @@ Blockly.Python['nn_input_neuron_value'] = function(block) {
 
 Blockly.Python['nn_picture_get_pixel'] = function(block) {
   var value_pixel_i = Blockly.Python.valueToCode(block, 'pixel_i', Blockly.Python.ORDER_ATOMIC);
-  var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
-};
-
-Blockly.Python['nn_flatten_picture'] = function(block) {
   var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
   var code = '...';

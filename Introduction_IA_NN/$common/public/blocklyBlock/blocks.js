@@ -97,19 +97,6 @@ Blockly.Blocks['nn_picture_get_pixel'] = {
   }
 };
 
-Blockly.Blocks['nn_flatten_picture'] = {
-  init: function() {
-    this.appendValueInput("picture")
-        .setCheck("Array")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("aplatir l'image");
-    this.setOutput(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
-};
-
 Blockly.Blocks['nn_random_01'] = {
   init: function() {
     this.appendDummyInput()
