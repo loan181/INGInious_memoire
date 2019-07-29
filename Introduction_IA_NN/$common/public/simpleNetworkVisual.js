@@ -203,13 +203,10 @@ function createConclusion() {
     concluDiv.appendChild(result);
 }
 
-$("#blocklySvgZone").hide();
-addAnimationSpeedWidget();
-let gridRaphael = create3x3InteractiveGrid(grid);
-let nnRapheal = createNeuralNetwork(nnNeurons);
-createConclusionsBarNeuralNetwork();
-createConclusion();
 
+function getGrid() {
+    return grid;
+}
 
 function getNeuronsValues(layers_ind) {
     let ret = [];
@@ -251,14 +248,18 @@ Classify.setNeuronValue = function(neuronInd, layerInd, value) {
 };
 
 let Animation = {};
-Animation.reset = function () {
-    // Reset all neurons colors and values
+Animation.resetNeurons = function () {
+     // Reset all neurons colors and values
     for (let i = 0; i < nnNeurons.length; i++) {
         for (let j = 0; j < nnNeurons[i].length; j++) {
             nnNeurons[i][j].data(neuronRaphaelJSValueName, undefined);
         }
         Animation.layerColorNeuron(i);
     }
+};
+
+Animation.reset = function () {
+    Animation.resetNeurons();
     let progressBarVert = document.getElementById("progressBarVert");
     progressBarVert.style = `width:50%;`;
     progressBarVert.innerHTML = "?";
@@ -306,9 +307,6 @@ Animation.conclusionText = function (conclusionText) {
     let conclusionSpan = document.getElementById("conclusion");
     conclusionSpan.innerHTML = conclusionText;
 };
-
-Animation.reset();
-
 
 var initInterpreterApi = function(interpreter, scope) {
     var wrapper;

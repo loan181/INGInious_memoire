@@ -9,34 +9,43 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    memory: '100'
     output: '2'
+    memory: '100'
 name: 1. Tutoriel 1
 network_grading: false
 problems:
     tuto1:
         options:
             grid:
-                colour: '#ccc'
-                snap: true
-                spacing: 20
                 length: 3
+                colour: '#ccc'
+                spacing: 20
+                snap: true
+            oneBasedIndex: true
+            css: true
+            scrollbars: true
             zoom:
-                controls: true
-                scaleSpeed: 1.2
-                minScale: 0.3
                 maxScale: 3.0
+                scaleSpeed: 1.2
+                controls: true
+                minScale: 0.3
                 startScale: 1.0
                 wheel: false
-            scrollbars: true
-            speed: '60'
-            media: /plugins/blockly/static/blockly/media/
-            oneBasedIndex: true
-            maxBlocks: Infinity
-            css: true
             visual:
                 position: left
             toolboxPosition: start
+            maxBlocks: Infinity
+            speed: '60'
+            media: /plugins/blockly/static/blockly/media/
+        header: ''
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - ../$common/defaultInit.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
         workspace: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
               <variables>
@@ -116,14 +125,6 @@ problems:
               </block>
             </xml>
         name: ''
-        type: blockly
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        header: ''
         toolbox: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
               <category name="NN" colour="#9fa55b">
