@@ -1,0 +1,3 @@
+addAnimationSpeedWidget();
+Animation.reset = function () {};
+

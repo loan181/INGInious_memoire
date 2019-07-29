@@ -48,6 +48,16 @@ Blockly.JavaScript['nn_random_01'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['grid_special'] = function(block) {
+  let specialGrid = [
+      ["","",""],
+      ["blue","red",""],
+      ["","black",""]
+  ];
+  var code = JSON.stringify(specialGrid);
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
 // STUB Python
 Blockly.Python['custom_print'] = function(block) {
   return "";
@@ -102,5 +112,10 @@ Blockly.Python['nn_random_01'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['grid_special'] = function(block) {
+  var code = "...";
   return [code, Blockly.Python.ORDER_NONE];
 };

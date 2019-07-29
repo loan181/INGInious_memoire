@@ -1,0 +1,133 @@
+accessible: true
+author: ''
+categories: []
+context: |
+    | Pour bien configurer les valeurs des neurones de la couche d'entrée nous aurons besoin de savoir la valeur des pixels/case de l'image/grille.
+    | Pour cela nous aurons le bloc ``obtenir la valeur du pixel n°X de l'image I``, avec:
+
+    - ``X`` : Une valeur entière entre 1 et 9.
+    - ``I`` : L'image/grille à partir de laquelle lire le ``X`` ème pixel
+
+    | Ce bloc *renvoie* une valeur, cette dernière sera ``0`` si le pixel est blanc et ``1`` s'il est noir.
+    |
+    | **Objectif**
+    | Fixer pour chaque variable sa valeur correspondante en la lisant sur la grille.
+
+    .. image:: preparationHandleInput2/grid.svg
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    time: '30'
+    memory: '100'
+    output: '2'
+name: Preparation gestion de la couche d'entrée 2
+network_grading: false
+order: 2
+problems:
+    blockly:
+        options:
+            grid:
+                colour: '#ccc'
+                length: 3
+                spacing: 20
+                snap: true
+            css: true
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
+            zoom:
+                scaleSpeed: 1.2
+                maxScale: 3.0
+                minScale: 0.3
+                controls: true
+                startScale: 1.0
+                wheel: false
+            scrollbars: true
+            speed: '60'
+            oneBasedIndex: true
+            toolboxPosition: start
+        files:
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Input">
+                <block type="nn_picture_get_pixel"></block>
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="grid_special"></block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="pWr$Swe$q.z,%y`F}+0j">valeur pixel bleu</variable>
+                <variable type="" id="6G_M{pNv8mvQhCa$(jAJ">valeur pixel rouge</variable>
+                <variable type="" id="[,25V|En8Ux#lzgDM[)(">valeur pixel noir</variable>
+              </variables>
+              <block type="variables_set" id="02?)|;}uB!Os5iVNYS-u" x="38" y="13">
+                <field name="VAR" id="pWr$Swe$q.z,%y`F}+0j" variabletype="">valeur pixel bleu</field>
+                <value name="VALUE">
+                  <block type="nn_picture_get_pixel" id=";qH~jNdBCbO1f7)j7Xzj">
+                    <value name="pixel_i">
+                      <shadow type="math_number" id="*`QhCGG7b;Wdvlnn?LfQ">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                    <value name="picture">
+                      <block type="grid_special" id="7q|hs-j//I9iU?;+TBpH"></block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="ew6J24y3{M|pXzu#$HAb">
+                    <field name="VAR" id="6G_M{pNv8mvQhCa$(jAJ" variabletype="">valeur pixel rouge</field>
+                    <value name="VALUE">
+                      <block type="nn_picture_get_pixel" id=";?@7fWGPJOK2bB-$]L+C">
+                        <value name="pixel_i">
+                          <shadow type="math_number" id="08Yz=^WKgKHd?,0G=y1a">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="picture">
+                          <block type="grid_special" id="CUcnU=+VU#*oQr4T++I4"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="!cJrg@$CPbV5X~cncf1O">
+                        <field name="VAR" id="[,25V|En8Ux#lzgDM[)(" variabletype="">valeur pixel noir</field>
+                        <value name="VALUE">
+                          <block type="nn_picture_get_pixel" id="{0mjWVi?0E!s0,l]D(wn">
+                            <value name="pixel_i">
+                              <shadow type="math_number" id="[ih%e8=9/H^Iem4c?hOO">
+                                <field name="NUM">0</field>
+                              </shadow>
+                            </value>
+                            <value name="picture">
+                              <block type="grid_special" id="BpOhnw(QtXQf?{f_$/Nn"></block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        name: ''
+        header: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

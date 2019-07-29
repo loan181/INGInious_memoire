@@ -120,3 +120,15 @@ Blockly.Blocks['nn_random_01'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['grid_special'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("grille spéciale")
+        .appendField(new Blockly.FieldImage("/course/Introduction_IA_NN/preparationHandleInput2/grid.svg", 15, 15, "*"));
+    this.setOutput(true, null);
+    this.setColour(285);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
