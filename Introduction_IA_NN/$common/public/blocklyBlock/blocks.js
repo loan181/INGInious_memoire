@@ -42,7 +42,7 @@ Blockly.Blocks['nn_handle_layer'] = {
 Blockly.Blocks['nn_conclusion'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Tirer une conclusion de la couche de sortie");
+        .appendField("tirer une conclusion de la couche de sortie");
     this.setOutput(true, null);
     this.setColour(230);
  this.setTooltip("");
@@ -67,7 +67,7 @@ Blockly.Blocks['nn_input_neuron_value'] = {
     this.appendValueInput("neuron_i")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Donner au neurone d'entrée n°");
+        .appendField("donner au neurone d'entrée n°");
     this.appendValueInput("neuron_value")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
@@ -85,7 +85,7 @@ Blockly.Blocks['nn_picture_get_pixel'] = {
     this.appendValueInput("pixel_i")
         .setCheck("Number")
         .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("Obtenir la valeur du pixel n°");
+        .appendField("obtenir la valeur du pixel n°");
     this.appendValueInput("picture")
         .setCheck("Array")
         .setAlign(Blockly.ALIGN_RIGHT)

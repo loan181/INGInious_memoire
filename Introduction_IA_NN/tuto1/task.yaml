@@ -1,7 +1,16 @@
 accessible: true
-author: ''
+author: Loan
 categories: []
-context: ''
+context: |-
+    | Bienvenue dans cette première tache Inginious destinée à l'implémentation d'un réseau de neurones.
+    | De la même manière que dans les exercices préparatoires, notre réseau tentera de reconnaitre une ligne verticale d'une ligne horizontale sur une image/grille de 3x3 en noir et blanc.
+    |
+    | Tu trouvera çi-bas le code *Blockly* permettant de correctement configurer le réseau de neurone, dans cette première partie le code est fonctionnel et complet.
+    | Dans les parties qui vont suivre je vais petit à petit retirer des blocs et t'introduire à des nouveaux blocs afin de résoudre chaque partie de l'implémentation étape après étape
+    |
+    | **Objectif**
+    | Le code est déja fonctionel.
+    | Dessine dans la grille à gauche pour voir comment le code et le réseau réagissent aux modifications.
 environment: default
 evaluate: best
 file: ''
@@ -9,10 +18,11 @@ groups: false
 input_random: '0'
 limits:
     time: '30'
-    output: '2'
     memory: '100'
+    output: '2'
 name: 1. Tutoriel 1
 network_grading: false
+order: 0
 problems:
     tuto1:
         options:
@@ -22,7 +32,6 @@ problems:
                 spacing: 20
                 snap: true
             oneBasedIndex: true
-            css: true
             scrollbars: true
             zoom:
                 maxScale: 3.0
@@ -34,9 +43,10 @@ problems:
             visual:
                 position: left
             toolboxPosition: start
-            maxBlocks: Infinity
+            css: true
             speed: '60'
             media: /plugins/blockly/static/blockly/media/
+            maxBlocks: Infinity
         header: ''
         files:
         - ../$common/raphael.min.js
@@ -166,4 +176,3 @@ submission_limit:
     amount: -1
     period: -1
 weight: 1.0
-order: 0

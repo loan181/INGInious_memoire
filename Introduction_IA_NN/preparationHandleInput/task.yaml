@@ -2,7 +2,7 @@ accessible: true
 author: ''
 categories: []
 context: |
-    | Dans cette première préparation pour configurer la valeur des neurones de la couche d'entrée, nous allons utiliser le bloc ``donner au neuronne d'entrée n°X la valeur Y``.
+    | Dans cette première préparation pour configurer la valeur des neurones de la couche d'entrée. Pour cela nous allons utiliser le bloc ``donner au neuronne d'entrée n°X la valeur Y``.
     | Dans notre cas ``X`` est n'importe quel nombre entier entre 1 et 9 et ``Y`` vaut soit 0 soit 1.
     |
     | **Objectif**
@@ -20,16 +20,17 @@ limits:
     time: '30'
     memory: '100'
     output: '2'
-name: Preparation gestion de la couche d'entrée
+name: Preparation gestion de la couche d'entrée 1
 network_grading: false
+order: 1
 problems:
     blockly:
         options:
             grid:
                 colour: '#ccc'
                 length: 3
-                spacing: 20
                 snap: true
+                spacing: 20
             css: true
             maxBlocks: Infinity
             media: /plugins/blockly/static/blockly/media/
@@ -100,4 +101,3 @@ submission_limit:
     amount: -1
     period: -1
 weight: 1.0
-order: 1
