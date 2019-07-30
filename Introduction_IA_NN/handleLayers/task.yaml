@@ -1,0 +1,274 @@
+accessible: true
+author: ''
+categories: []
+context: ''
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    time: '30'
+    memory: '100'
+name: 3. Gérer les autres couches
+network_grading: false
+order: 4
+problems:
+    blockly:
+        name: ''
+        options:
+            visual:
+                position: left
+            speed: '60'
+            css: true
+            maxBlocks: Infinity
+            oneBasedIndex: true
+            grid:
+                snap: true
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+            zoom:
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                startScale: 1.0
+                controls: true
+                minScale: 0.3
+                wheel: false
+            scrollbars: true
+            toolboxPosition: start
+            media: /plugins/blockly/static/blockly/media/
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
+        header: ''
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="q95,-3I{;t~8Nj3p$.cZ">i</variable>
+                <variable type="" id="xqt-AR@%7lw}h7Y7o?]!">neurones couche précédente</variable>
+                <variable type="" id="r~6vAmJ5h]i)R]-oiN2*">poids couche précédente</variable>
+                <variable type="" id="%j5Ewe_YBC(kHt1%N0/P">produit matriciel</variable>
+                <variable type="" id="-OIi%|`Db+k$Q-IQt[%D">j</variable>
+              </variables>
+              <block type="procedures_defnoreturn" id="4$Wriel5UW(7EBdp6CAt" x="38" y="13">
+                <mutation>
+                  <arg name="i" varid="q95,-3I{;t~8Nj3p$.cZ"></arg>
+                </mutation>
+                <field name="NAME">calculer la valeur des neurones de la nouche n°</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                <statement name="STACK">
+                  <block type="variables_set" id="0bSTKwMG(gR+,pfkm)Nx">
+                    <field name="VAR" id="xqt-AR@%7lw}h7Y7o?]!" variabletype="">neurones couche précédente</field>
+                    <value name="VALUE">
+                      <block type="nn_get_neuron_layer" id="Jw`kir4V).gm87b$NC$h">
+                        <value name="NAME">
+                          <block type="math_arithmetic" id="jN^%I#vb5q+Qi9Mt:auZ">
+                            <field name="OP">MINUS</field>
+                            <value name="A">
+                              <block type="variables_get" id="CmN8iy@0nk|^F)qh/U5$">
+                                <field name="VAR" id="q95,-3I{;t~8Nj3p$.cZ" variabletype="">i</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <shadow type="math_number" id=")2j~iTG_-Dqonh}.6nTx">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="fOIq~YN~Px=Mk|1Nw9}x">
+                        <field name="VAR" id="r~6vAmJ5h]i)R]-oiN2*" variabletype="">poids couche précédente</field>
+                        <value name="VALUE">
+                          <block type="nn_get_weight_layer" id="};f(bo}`|ySoRbFD812(">
+                            <value name="NAME">
+                              <block type="math_arithmetic" id="|;N?C,EJ7rK{njFm45Zp">
+                                <field name="OP">MINUS</field>
+                                <value name="A">
+                                  <block type="variables_get" id="A`qAYuTkm9bgp7SoDv08">
+                                    <field name="VAR" id="q95,-3I{;t~8Nj3p$.cZ" variabletype="">i</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="bB;l2WMlIH/Uz)pW.Q@y">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="lXNDF5!0hp,a%KRne39q">
+                            <field name="VAR" id="%j5Ewe_YBC(kHt1%N0/P" variabletype="">produit matriciel</field>
+                            <value name="VALUE">
+                              <block type="nn_matrix_prod" id="!HUUD0KSWO@zsd0Z,}Fm">
+                                <value name="X">
+                                  <block type="variables_get" id="/RzM9f1LL@Ktq3FY)=GG">
+                                    <field name="VAR" id="xqt-AR@%7lw}h7Y7o?]!" variabletype="">neurones couche précédente</field>
+                                  </block>
+                                </value>
+                                <value name="Y">
+                                  <block type="variables_get" id="D9AlmXxGP/E@@$=+%v*n">
+                                    <field name="VAR" id="r~6vAmJ5h]i)R]-oiN2*" variabletype="">poids couche précédente</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_for" id="Od#Cy!.,35yeE71pjdaU">
+                                <field name="VAR" id="-OIi%|`Db+k$Q-IQt[%D" variabletype="">j</field>
+                                <value name="FROM">
+                                  <shadow type="math_number" id="Heh4w#%`Y-o:%iYleOa7">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                </value>
+                                <value name="TO">
+                                  <block type="nn_mat_len" id="QG}qy.G|nr99xP{(X8]#">
+                                    <value name="mat">
+                                      <block type="variables_get" id="3~A2!`F/d:;j$9K%5Vum">
+                                        <field name="VAR" id="%j5Ewe_YBC(kHt1%N0/P" variabletype="">produit matriciel</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="BY">
+                                  <shadow type="math_number" id="o2iB^E(PVd6a_jP58Yi6">
+                                    <field name="NUM">1</field>
+                                  </shadow>
+                                </value>
+                                <statement name="DO">
+                                  <block type="nn_neuron_set_value_layer" id="%*z*)^{.`|U*CyKK5vE(">
+                                    <value name="value">
+                                      <block type="nn_sigmoid" id="hiN?%Tx$M6fiT!?6JEKh">
+                                        <value name="x">
+                                          <block type="nn_mat_get" id="ClCxLO.2@8kC$`bQMxR]">
+                                            <value name="mat">
+                                              <block type="variables_get" id="z35icEJ#*n9:bnPl~iR_">
+                                                <field name="VAR" id="%j5Ewe_YBC(kHt1%N0/P" variabletype="">produit matriciel</field>
+                                              </block>
+                                            </value>
+                                            <value name="elem_i">
+                                              <block type="variables_get" id="KsQ;,(H-U4QoRfAF*qWB">
+                                                <field name="VAR" id="-OIi%|`Db+k$Q-IQt[%D" variabletype="">j</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="neuron_i">
+                                      <block type="variables_get" id="nok0}N7fYAZJBD]~NMtv">
+                                        <field name="VAR" id="-OIi%|`Db+k$Q-IQt[%D" variabletype="">j</field>
+                                      </block>
+                                    </value>
+                                    <value name="layer_i">
+                                      <block type="variables_get" id="5r*;B8K6@GmGln^tz=R#">
+                                        <field name="VAR" id="q95,-3I{;t~8Nj3p$.cZ" variabletype="">i</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+              <block type="procedures_callnoreturn" id="fxOw$^u`+4NpHqMd#jB." x="38" y="363">
+                <mutation name="calculer la valeur des neurones de la nouche n°">
+                  <arg name="i"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="math_number" id="Co))iv}u/F?)dovO:+5~">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="5^:9Ei}.WP]`LEr@%^^K">
+                    <mutation name="calculer la valeur des neurones de la nouche n°">
+                      <arg name="i"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="math_number" id="mw-gw^yKUVZxRTORRDN6">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Couche">
+                <block type="nn_get_neuron_layer"></block>
+                <block type="nn_get_weight_layer"></block>
+                <block type="nn_matrix_prod"></block>
+                <block type="nn_mat_len"></block>
+                <block type="nn_mat_get"></block>
+                <block type="nn_neuron_set_value_layer"></block>
+                <block type="nn_sigmoid"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

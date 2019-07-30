@@ -119,3 +119,109 @@ Blockly.Blocks['grid_special'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['nn_get_neuron_layer'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck("Number")
+        .appendField("Obtenir la valeur des neurones de la couche");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_get_weight_layer'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck("Number")
+        .appendField("Obtenir la valeur des poids de la couche");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_matrix_prod'] = {
+  init: function() {
+    this.appendValueInput("X")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("calculer le produit matriciel de");
+    this.appendValueInput("Y")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("avec");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_neuron_set_value_layer'] = {
+  init: function() {
+    this.appendValueInput("value")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("donner la valeur");
+    this.appendValueInput("neuron_i")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("au neurone");
+    this.appendValueInput("layer_i")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("de la couche");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_sigmoid'] = {
+  init: function() {
+    this.appendValueInput("x")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("sigmoide");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_mat_len'] = {
+  init: function() {
+    this.appendValueInput("mat")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("longueur de");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_mat_get'] = {
+  init: function() {
+    this.appendValueInput("mat")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("dans la matrice");
+    this.appendValueInput("elem_i")
+        .setCheck(null)
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("obtenir l'élément");
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

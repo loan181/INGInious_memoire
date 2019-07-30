@@ -360,5 +360,55 @@ var initInterpreterApi = function(interpreter, scope) {
         interpreter.createNativeFunction(wrapper)
     );
 
+    wrapper = function(layerInd) {
+        return getNeuronsValues(layerInd-1);
+    };
+    interpreter.setProperty(scope, 'getNeuronLayers',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(layerInd) {
+        return layersMat[layerInd-1];
+    };
+    interpreter.setProperty(scope, 'getWeightLayers',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(matNeuron, matWeight) {
+        return matrixDot([matNeuron], matWeight);
+    };
+    interpreter.setProperty(scope, 'matrixProd',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(layerInd, neuronInd, value) {
+        Classify.setNeuronValue(neuronInd-1, layerInd-1, value);
+        Animation.colorNeuron(layerInd-1, neuronInd-1);
+    };
+    interpreter.setProperty(scope, 'setValueLayer',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(x) {
+        return sigmoide(x);
+    };
+    interpreter.setProperty(scope, 'sigmoid',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+     wrapper = function(mat) {
+        return mat.flat().length;
+    };
+    interpreter.setProperty(scope, 'matrixLength',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+     wrapper = function(mat, i) {
+        return mat.flat()[i-1];
+    };
+    interpreter.setProperty(scope, 'matrixGet',
+        interpreter.createNativeFunction(wrapper)
+    );
+
     Animation.reset();
 };
