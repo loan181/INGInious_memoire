@@ -57,40 +57,6 @@ function create3x3InteractiveGrid(grid) {
     return paper;
 }
 
-let nnInformationText;
-const nnInformationTextDefault = "(Aucun élément survolé)";
-function resetToolTip() {
-    nnInformationText.attr({"text":nnInformationTextDefault})
-}
-
-function neuronEnter(handler, mouse_x, mouse_y) {
-    let nnLayer = this.data("layer");
-    let nnInd = this.data("index");
-    let nnValue = nnNeurons[nnLayer][nnInd].data(neuronRaphaelJSValueName);
-    let nnValueText = "Non défini";
-    if (nnValue !== undefined) {
-        nnValueText = Number(nnValue).toFixed(2);
-    }
-    let text = "";
-    text += `Neurone: ${nnInd+1}\n
-    Couche: ${nnLayer+1}\n
-    Valeur: ${nnValueText}`;
-    nnInformationText.attr({"text":text})
-}
-
-function weightEnter(handler, mouse_x, mouse_y) {
-    let wLayer = this.data("layer");
-    let wN1 = this.data("n1");
-    let wN2 = this.data("n2");
-    let wValue = layersMat[wLayer][wN1][wN2];
-    let nnValueText = Number(wValue).toFixed(2);
-    let text = "";
-    text += `Poids reliant ${wN1+1} à ${wN2+1}\n
-    Couche: ${wLayer+1}\n
-    Valeur: ${nnValueText}`;
-    nnInformationText.attr({"text":text})
-}
-
 function createNeuralNetwork(nnNeurons) {
     let nnDiv = document.createElement("div");
     nnDiv.id = "raphaelNN";
@@ -102,6 +68,39 @@ function createNeuralNetwork(nnNeurons) {
     paper.setViewBox(0, 0 , paperSize, paperSize+extraVerticalSpaceForTooltip, true);
 
 
+    let nnInformationText;
+    const nnInformationTextDefault = "(Aucun élément survolé)";
+    function resetToolTip() {
+        nnInformationText.attr({"text":nnInformationTextDefault})
+    }
+
+    function neuronEnter(handler, mouse_x, mouse_y) {
+        let nnLayer = this.data("layer");
+        let nnInd = this.data("index");
+        let nnValue = nnNeurons[nnLayer][nnInd].data(neuronRaphaelJSValueName);
+        let nnValueText = "Non définie";
+        if (nnValue !== undefined) {
+            nnValueText = Number(nnValue).toFixed(2);
+        }
+        let text = "";
+        text += `Neurone: ${nnInd+1}\n
+    Couche: ${nnLayer+1}\n
+    Valeur: ${nnValueText}`;
+        nnInformationText.attr({"text":text})
+    }
+
+    function weightEnter(handler, mouse_x, mouse_y) {
+        let wLayer = this.data("layer");
+        let wN1 = this.data("n1");
+        let wN2 = this.data("n2");
+        let wValue = layersMat[wLayer][wN1][wN2];
+        let nnValueText = Number(wValue).toFixed(2);
+        let text = "";
+        text += `Poids reliant ${wN1+1} à ${wN2+1}\n
+    Couche: ${wLayer+1}\n
+    Valeur: ${nnValueText}`;
+        nnInformationText.attr({"text":text})
+    }
 
     const layersNeuronsNumber = [9, 3, 2];
     const neuronSize = 10;
