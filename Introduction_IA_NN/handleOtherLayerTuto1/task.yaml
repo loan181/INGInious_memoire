@@ -1,0 +1,186 @@
+accessible: true
+author: ''
+categories: []
+context: |4
+     | Maintenant que nous avons correctement configuré la première couche, il nous reste à configurer les suivantes.
+     | Pour cela on va utiliser un nouveau bloc ``donner la valeur(X, N, C)`` ou :
+
+     - ``X``, ``N`` et ``C`` sont tout les 3 des nombres entiers
+     - ``X`` représente la valeur à donner au neurone n°``N`` de la couche ``C``
+     - ``C`` est la valeur de la couche
+        - 1 = couche d'entrée
+        - 2 = couche cachée
+        - 3 = couche de sortie
+     - ``N`` est le numéro du neurone de la couche ``C`` définie
+
+     .. image:: handleOtherLayerTuto1/layers.svg
+
+     | **Objectif**
+     | Effectue les opérations suivantes:
+
+     - Mets la valeur du 3ème neurone de la couche 2 à 0
+     - Mets la valeur du premier neurone de la couche de sortie à 1
+     - Mets tout les neurones de la couche d'entrée à 1
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    time: '30'
+    memory: '100'
+name: Préparation gestion des autres couches 1
+network_grading: false
+order: 4
+problems:
+    blockly:
+        name: ''
+        options:
+            visual:
+                position: left
+            speed: '60'
+            css: true
+            maxBlocks: '16'
+            oneBasedIndex: true
+            grid:
+                snap: true
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+            zoom:
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                startScale: 1.0
+                controls: true
+                minScale: 0.3
+                wheel: false
+            scrollbars: true
+            toolboxPosition: start
+            media: /plugins/blockly/static/blockly/media/
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
+        header: ''
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="mm`h_@v@%8Cn]2,a`qqs">i</variable>
+              </variables>
+              <block type="nn_neuron_set_value_layer" id=".L4.SGrc%:q*F?LnK^O6" x="38" y="38">
+                <value name="value">
+                  <shadow type="math_number" id="LSZzOU*XwfG9;7*~3Bc(">
+                    <field name="NUM">0</field>
+                  </shadow>
+                </value>
+                <value name="neuron_i">
+                  <shadow type="math_number" id="Mx7ZZ[=2s/V65@t2x+%u">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <value name="layer_i">
+                  <shadow type="math_number" id="x)xYv;,eNrWVhQ#TQ9+P">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="controls_for" id="3quD9IBr$waZnA)0eMni">
+                    <field name="VAR" id="mm`h_@v@%8Cn]2,a`qqs" variabletype="">i</field>
+                    <value name="FROM">
+                      <block type="math_number" id="uNg+bBYdPNYpUi%SfQ:d">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <value name="TO">
+                      <shadow type="math_number" id="#-.VlEK804AA@{Jg;JjY">
+                        <field name="NUM">3</field>
+                      </shadow>
+                    </value>
+                    <value name="BY">
+                      <block type="math_number" id="|{XuW$sZV]@TrnqKxOcV">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                    <statement name="DO">
+                      <block type="nn_neuron_set_value_layer" id="IrC.n]NRU{#u@H$ym`im">
+                        <value name="value">
+                          <shadow type="math_number" id="E4y]C~GZPPN%MhWK`fW~">
+                            <field name="NUM">0</field>
+                          </shadow>
+                        </value>
+                        <value name="neuron_i">
+                          <block type="variables_get" id="`W=@Ba1!7CbGcO|e]cIA">
+                            <field name="VAR" id="mm`h_@v@%8Cn]2,a`qqs" variabletype="">i</field>
+                          </block>
+                        </value>
+                        <value name="layer_i">
+                          <shadow type="math_number" id="FlFymn)x1SQWE;#x-{W*">
+                            <field name="NUM">2</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Couche">
+                <block type="nn_neuron_set_value_layer"></block>
+              </category>
+              <sep></sep>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

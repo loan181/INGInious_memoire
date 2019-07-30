@@ -1,0 +1,64 @@
+<svg width="130" height="130" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <desc>Created with Raphaël 2.2.0</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="132" width="132" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" stroke-opacity="0.444444" d="m65.294119,88.235294l55,-10" stroke="#008000" fill="none"/>
+  <path id="svg_2" stroke-opacity="0.444444" d="m65.294119,88.235294l55,-50" stroke="#ff0000" fill="none"/>
+  <path id="svg_3" stroke-opacity="0.777778" d="m65.294119,58.235294l55,20" stroke="#ff0000" fill="none"/>
+  <path id="svg_4" stroke-opacity="0.777778" d="m65.294119,58.235294l55,-20" stroke="#008000" fill="none"/>
+  <path id="svg_5" stroke-opacity="0.555556" d="m65.294119,28.235294l55,50" stroke="#008000" fill="none"/>
+  <path id="svg_6" stroke-opacity="0.555556" d="m65.294119,28.235294l55,10" stroke="#ff0000" fill="none"/>
+  <path id="svg_7" stroke-opacity="0.888889" d="m10.294119,106.235294l55,-18" stroke="#008000" fill="none"/>
+  <path id="svg_8" stroke-opacity="0.777778" d="m10.294119,106.235294l55,-48" stroke="#008000" fill="none"/>
+  <path id="svg_9" stroke-opacity="0.777778" d="m10.294119,106.235294l55,-78" stroke="#008000" fill="none"/>
+  <path id="svg_10" stroke-opacity="0.111111" d="m10.294119,94.235294l55,-6" stroke="#ff0000" fill="none"/>
+  <path id="svg_11" d="m10.294119,94.235294l55,-36" stroke="#008000" fill="none"/>
+  <path id="svg_12" stroke-opacity="0.444444" d="m10.294119,94.235294l55,-66" stroke="#ff0000" fill="none"/>
+  <path id="svg_13" stroke-opacity="0.111111" d="m10.294119,82.235294l55,6" stroke="#008000" fill="none"/>
+  <path id="svg_14" stroke-opacity="0.444444" d="m10.294119,82.235294l55,-24" stroke="#008000" fill="none"/>
+  <path id="svg_15" stroke-opacity="0.666667" d="m10.294119,82.235294l55,-54" stroke="#008000" fill="none"/>
+  <path id="svg_16" stroke-opacity="0.777778" d="m10.294119,70.235294l55,18" stroke="#008000" fill="none"/>
+  <path id="svg_17" stroke-opacity="0.444444" d="m10.294119,70.235294l55,-12" stroke="#ff0000" fill="none"/>
+  <path id="svg_18" stroke-opacity="0.888889" d="m10.294119,70.235294l55,-42" stroke="#008000" fill="none"/>
+  <path id="svg_19" stroke-opacity="0.111111" d="m10.294119,58.235294l55,30" stroke="#ff0000" fill="none"/>
+  <path id="svg_20" stroke-opacity="0.555556" d="m10.294119,58.235294l55,0" stroke="#ff0000" fill="none"/>
+  <path id="svg_21" stroke-opacity="0.555556" d="m10.294119,58.235294l55,-30" stroke="#ff0000" fill="none"/>
+  <path id="svg_22" stroke-opacity="0.333333" d="m10.294119,46.235294l55,42" stroke="#ff0000" fill="none"/>
+  <path id="svg_23" stroke-opacity="0.444444" d="m10.294119,46.235294l55,12" stroke="#ff0000" fill="none"/>
+  <path id="svg_24" stroke-opacity="0.888889" d="m10.294119,46.235294l55,-18" stroke="#008000" fill="none"/>
+  <path id="svg_25" d="m10.294119,34.235294l55,54" stroke="#008000" fill="none"/>
+  <path id="svg_26" stroke-opacity="0.777778" d="m10.294119,34.235294l55,24" stroke="#008000" fill="none"/>
+  <path id="svg_27" stroke-opacity="0.666667" d="m10.294119,34.235294l55,-6" stroke="#008000" fill="none"/>
+  <path id="svg_28" stroke-opacity="0.111111" d="m10.294119,22.235294l55,66" stroke="#ff0000" fill="none"/>
+  <path id="svg_29" stroke-opacity="0.888889" d="m10.294119,22.235294l55,36" stroke="#008000" fill="none"/>
+  <path id="svg_30" stroke-opacity="0.444444" d="m10.294119,22.235294l55,6" stroke="#ff0000" fill="none"/>
+  <path id="svg_31" stroke-opacity="0" d="m10.294119,10.235294l55,78" stroke="#008000" fill="none"/>
+  <path id="svg_32" stroke-opacity="0.666667" d="m10.294119,10.235294l55,48" stroke="#008000" fill="none"/>
+  <path id="svg_33" stroke-opacity="0.666667" d="m10.294119,10.235294l55,18" stroke="#008000" fill="none"/>
+  <circle id="svg_34" stroke="#aaaaaa" fill="#00ffff" r="5" cy="10.235294" cx="10.294119"/>
+  <circle id="svg_35" stroke="#aaaaaa" fill="#00ffff" r="5" cy="22.235294" cx="10.294119"/>
+  <circle id="svg_36" stroke="#aaaaaa" fill="#00ffff" r="5" cy="34.235294" cx="10.294119"/>
+  <circle id="svg_37" stroke="#aaaaaa" fill="#00ffff" r="5" cy="46.235294" cx="10.294119"/>
+  <circle id="svg_38" stroke="#aaaaaa" fill="#00ffff" r="5" cy="58.235294" cx="10.294119"/>
+  <circle id="svg_39" stroke="#aaaaaa" fill="#00ffff" r="5" cy="70.235294" cx="10.294119"/>
+  <circle id="svg_40" stroke="#aaaaaa" fill="#00ffff" r="5" cy="82.235294" cx="10.294119"/>
+  <circle id="svg_41" stroke="#aaaaaa" fill="#00ffff" r="5" cy="94.235294" cx="10.294119"/>
+  <circle id="svg_42" stroke="#aaaaaa" fill="#00ffff" r="5" cy="106.235294" cx="10.294119"/>
+  <circle id="svg_43" stroke="#aaaaaa" fill="#00ffff" r="5" cy="28.235294" cx="65.294119"/>
+  <circle id="svg_44" stroke="#aaaaaa" fill="#00ffff" r="5" cy="58.235294" cx="65.294119"/>
+  <circle id="svg_45" stroke="#aaaaaa" fill="#00ffff" r="5" cy="88.235294" cx="65.294119"/>
+  <circle id="svg_46" stroke="#aaaaaa" fill="#00ffff" r="5" cy="38.235294" cx="120.294119"/>
+  <circle id="svg_47" stroke="#aaaaaa" fill="#00ffff" r="5" cy="78.235294" cx="120.294119"/>
+  <text style="cursor: move;" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" id="svg_51" y="128.533546" x="6.400277" stroke-width="0" stroke="#000" fill="#aaaaaa">1</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" id="svg_52" y="128.530329" x="61.419477" stroke-width="0" stroke="#000" fill="#aaaaaa">2</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" id="svg_53" y="128.531248" x="116.108921" stroke-width="0" stroke="#000" fill="#aaaaaa">3</text>
+  <rect id="svg_54" height="112.941176" width="17.352941" y="2.040441" x="1.617648" stroke-width="null" stroke="#aaaaaa" fill="none"/>
+  <rect id="svg_55" height="112.941176" width="17.352941" y="2.040441" x="56.637305" stroke-opacity="null" stroke-width="null" stroke="#aaaaaa" fill="none"/>
+  <rect id="svg_56" height="112.941176" width="17.352941" y="2.040441" x="111.323528" stroke-opacity="null" stroke-width="null" stroke="#aaaaaa" fill="none"/>
+ </g>
+</svg>
