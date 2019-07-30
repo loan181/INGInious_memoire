@@ -57,14 +57,51 @@ function create3x3InteractiveGrid(grid) {
     return paper;
 }
 
+let nnInformationText;
+const nnInformationTextDefault = "(Aucun élément survolé)";
+function resetToolTip() {
+    nnInformationText.attr({"text":nnInformationTextDefault})
+}
+
+function neuronEnter(handler, mouse_x, mouse_y) {
+    let nnLayer = this.data("layer");
+    let nnInd = this.data("index");
+    let nnValue = nnNeurons[nnLayer][nnInd].data(neuronRaphaelJSValueName);
+    let nnValueText = "Non défini";
+    if (nnValue !== undefined) {
+        nnValueText = Number(nnValue).toFixed(2);
+    }
+    let text = "";
+    text += `Neurone: ${nnInd+1}\n
+    Couche: ${nnLayer+1}\n
+    Valeur: ${nnValueText}`;
+    nnInformationText.attr({"text":text})
+}
+
+function weightEnter(handler, mouse_x, mouse_y) {
+    let wLayer = this.data("layer");
+    let wN1 = this.data("n1");
+    let wN2 = this.data("n2");
+    let wValue = layersMat[wLayer][wN1][wN2];
+    let nnValueText = Number(wValue).toFixed(2);
+    let text = "";
+    text += `Poids reliant ${wN1+1} à ${wN2+1}\n
+    Couche: ${wLayer+1}\n
+    Valeur: ${nnValueText}`;
+    nnInformationText.attr({"text":text})
+}
+
 function createNeuralNetwork(nnNeurons) {
     let nnDiv = document.createElement("div");
     nnDiv.id = "raphaelNN";
     visu.appendChild(nnDiv);
 
     let paperSize = 120;
+    let extraVerticalSpaceForTooltip = 38;
     let paper = Raphael(nnDiv, "100%", "100%");
-    paper.setViewBox(0, 0 , paperSize, paperSize, true);
+    paper.setViewBox(0, 0 , paperSize, paperSize+extraVerticalSpaceForTooltip, true);
+
+
 
     const layersNeuronsNumber = [9, 3, 2];
     const neuronSize = 10;
@@ -75,7 +112,6 @@ function createNeuralNetwork(nnNeurons) {
         nnNeurons.push([])
     }
 
-
     const neuronRadius = neuronSize/2;
     let paperHorizontalSpace = paperSize - neuronSize;
     let horizontalOffset = paperHorizontalSpace/(layersNeuronsNumber.length-1);
@@ -85,7 +121,10 @@ function createNeuralNetwork(nnNeurons) {
         for (let j = 0; j < layersNeuronsNumber[i]; j++) {
             let y = (j+1)*verticalOffset;
             let neuron = paper.circle(x, y, neuronRadius)
-            .attr({stroke:"#AAA"});
+                .attr({stroke:"#AAA"})
+                .data("layer", i)
+                .data("index", j);
+            neuron.hover(neuronEnter, resetToolTip);
             nnNeurons[i].push(neuron);
             saveXYPos[i].push([x, y]);
         }
@@ -112,11 +151,20 @@ function createNeuralNetwork(nnNeurons) {
 
                 let line = paper.path(`M${x1} ${y1}L${x2} ${y2}`)
                     .attr({stroke:color, "stroke-opacity": opacity})
-                    .toBack();
+                    .toBack()
+                    .data("layer", i)
+                    .data("n1", j)
+                    .data("n2", k);
+                line.hover(weightEnter, resetToolTip);
             }
         }
     }
 
+    // Information panel
+    paper.rect(0,paperSize,paperSize,extraVerticalSpaceForTooltip).attr({stroke:"black"});
+    nnInformationText = paper.text(paperSize/2, paperSize+extraVerticalSpaceForTooltip/2,
+        nnInformationTextDefault)
+        .attr({"font-size": 10});
     return paper
 }
 
@@ -152,6 +200,7 @@ function sigmoide(x) {
 function createConclusionsBarNeuralNetwork() {
     let concluDiv = document.createElement("div");
     concluDiv.id = "conclusionsDiv";
+    concluDiv.style = "margin-top: 10px;";
     visu.appendChild(concluDiv);
 
     let progress = document.createElement("div");

@@ -17,45 +17,45 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     time: '30'
     memory: '100'
-    output: '2'
 name: 1. Tutoriel 1
 network_grading: false
 order: 0
 problems:
     tuto1:
-        options:
-            grid:
-                length: 3
-                colour: '#ccc'
-                spacing: 20
-                snap: true
-            oneBasedIndex: true
-            scrollbars: true
-            zoom:
-                maxScale: 3.0
-                scaleSpeed: 1.2
-                controls: true
-                minScale: 0.3
-                startScale: 1.0
-                wheel: false
-            visual:
-                position: left
-            toolboxPosition: start
-            css: true
-            speed: '60'
-            media: /plugins/blockly/static/blockly/media/
-            maxBlocks: Infinity
-        header: ''
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - ../$common/defaultInit.js
+        - ../$common/popup.js
+        header: ''
+        options:
+            scrollbars: true
+            zoom:
+                scaleSpeed: 1.2
+                startScale: 1.0
+                maxScale: 3.0
+                controls: true
+                minScale: 0.3
+                wheel: false
+            speed: '60'
+            oneBasedIndex: true
+            visual:
+                position: left
+            grid:
+                colour: '#ccc'
+                length: 3
+                snap: true
+                spacing: 20
+            media: /plugins/blockly/static/blockly/media/
+            toolboxPosition: start
+            maxBlocks: Infinity
+            css: true
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
-        type: blockly
         workspace: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
               <variables>
@@ -134,7 +134,6 @@ problems:
                 </value>
               </block>
             </xml>
-        name: ''
         toolbox: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
               <category name="NN" colour="#9fa55b">
@@ -171,6 +170,8 @@ problems:
               <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
               <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
             </xml>
+        type: blockly
+        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1
