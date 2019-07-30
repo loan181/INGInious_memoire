@@ -8,5 +8,3 @@ Animation.reset = function () {
     Classify.handleInputLayer(grid);
     Animation.layerColorNeuron(0);
 };
-
-Animation.reset();
