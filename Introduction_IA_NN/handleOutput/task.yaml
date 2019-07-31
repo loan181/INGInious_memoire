@@ -1,7 +1,17 @@
 accessible: true
 author: ''
 categories: []
-context: ''
+context: |-
+    | Maintenant que toutes les couches sont configurés il ne nous reste plus qu'à déduire la prédiction du réseau.
+    |
+    | Pour rappel, notre réseau distingue une ligne verticale d'une ligne horizontale.
+    | Les probabilités des 2 types de lignes sont les valeurs des neurones de la couche de sortie. Le premier neurone correspond à la probabilité de la ligne verticale alors que le second la probabilité de la ligne horizontale.
+    |
+    | Pour lire les valeurs des neurones des la couche de sortie, le nouveau bloc ``obtenir la valeur du neurone n°X de la couche de sortie`` entre en scène. Ce bloc te donnerra la valeur des neurones de la couche de sortie, cette valeur est une probabilité, c'est donc un réel compris entre 0 et 1.
+    |
+    | **Objectif**
+    | Déduire correctement la conclusion/prédiction du réseau.
+    | Pour cela tu peux dessiner le schéma de ton choix dans la grille, le traitement des couches du réseau sont géré automatiquement à chaque éxécution du code.
 environment: default
 evaluate: best
 file: ''
