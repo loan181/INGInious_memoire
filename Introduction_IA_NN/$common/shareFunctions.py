@@ -1,3 +1,4 @@
+from random import random
 from math import exp
 
 
@@ -70,3 +71,41 @@ class NeuralNetwork:
 
     def sigmoide(self, x):
         return 1 / (1 + exp(-x))
+
+
+globalNN = NeuralNetwork()
+
+
+def setNeuronValue(neuronN, layerN, value):
+    global globalNN
+    globalNN.setNeuronValue(layerN-1, neuronN-1, value)
+
+
+def handleInputLayer(image):
+    global globalNN
+    globalNN.handleInputLayer(image)
+
+
+def handleLayer(layerInd):
+    global globalNN
+    globalNN.handleLayer(layerInd)
+
+
+def conclude():
+    global globalNN
+    return globalNN.conclude()
+
+def getPixelValue(pixelI, img):
+    flat_list = []
+    for sublist in img:
+        for item in sublist:
+            flat_list.append(item)
+    return flat_list[pixelI-1]
+
+def choose01():
+    return round(random())
+
+# Added so it does not crash
+def getGrid():
+    return [[0]*3]*3 # dummy grid
+

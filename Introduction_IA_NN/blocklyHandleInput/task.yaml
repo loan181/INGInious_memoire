@@ -6,7 +6,7 @@ context: |-
     |
     | **Objectif**
     | Donner la valeur des neurones de la couche d'entrée à partir de celle de la grille.
-environment: mcq
+environment: default
 evaluate: best
 file: ''
 groups: false
@@ -19,7 +19,7 @@ name: 2. Blockly gérer l'entrée
 network_grading: false
 order: 3
 problems:
-    blockly:
+    blocklyRes:
         options:
             grid:
                 colour: '#ccc'

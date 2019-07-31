@@ -150,17 +150,13 @@ Blockly.Python['nn_input_neuron_value'] = function(block) {
 Blockly.Python['nn_picture_get_pixel'] = function(block) {
   var value_pixel_i = Blockly.Python.valueToCode(block, 'pixel_i', Blockly.Python.ORDER_ATOMIC);
   var value_picture = Blockly.Python.valueToCode(block, 'picture', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getPixelValue(${value_pixel_i}, ${value_picture})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_random_01'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = 'choose01()';
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['grid_special'] = function(block) {

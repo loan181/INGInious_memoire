@@ -15,16 +15,37 @@ def run():
     if p.returncode:
         feedback.set_global_result("crash")
         feedback.set_global_feedback(
-            "Le code n'a pas pu être exécuté. Vérifie que tes blocs sont bien assemblés.\n"
-            "DEBUG information: " + make_output # TODO : a supprimer pour le release
+"""
+CRASH
+-----
+Le code n'a pas pu être exécuté. Vérifie que tes blocs sont bien assemblés.
+
+Détails::
+
+    {}
+
+""".format(make_output)
         )
         exit(0)
     elif make_output == "True\n":
         feedback.set_global_result("success")
-        feedback.set_global_feedback("Bravo, tu as résolu cet exercice !")
+        feedback.set_global_feedback(
+"""
+BONNE REPONSE
+-------------
+Bravo, tu as résolu cet exercice !
+""")
     else:
         feedback.set_global_result("failed")
         feedback.set_global_feedback(
-            "Tu as fait une erreur !\n"
-            + make_output
+"""
+MAUVAISE REPONSE
+----------------
+Tu as fait une erreur !
+
+Détails::
+
+    {}
+    
+""".format(make_output)
         )
