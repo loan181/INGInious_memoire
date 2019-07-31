@@ -18,44 +18,81 @@ groups: false
 input_random: '0'
 limits:
     output: '2'
-    time: '30'
     memory: '100'
+    time: '30'
 name: 1. Tutoriel 1
 network_grading: false
 order: 0
 problems:
     tuto1:
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - ../$common/defaultInit.js
-        - ../$common/popup.js
-        header: ''
         options:
-            scrollbars: true
             zoom:
+                controls: true
                 scaleSpeed: 1.2
+                minScale: 0.3
                 startScale: 1.0
                 maxScale: 3.0
-                controls: true
-                minScale: 0.3
                 wheel: false
-            speed: '60'
-            oneBasedIndex: true
-            visual:
-                position: left
             grid:
                 colour: '#ccc'
                 length: 3
                 snap: true
                 spacing: 20
-            media: /plugins/blockly/static/blockly/media/
-            toolboxPosition: start
-            maxBlocks: Infinity
             css: true
+            visual:
+                position: left
+            media: /plugins/blockly/static/blockly/media/
+            oneBasedIndex: true
+            speed: '60'
+            maxBlocks: Infinity
+            toolboxPosition: start
+            scrollbars: true
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - ../$common/defaultInit.js
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
+        name: ''
+        toolbox: |-
+            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+              <category name="NN" colour="#9fa55b">
+                <block type="nn_handle_input"/>
+                <block type="nn_handle_layer"/>
+                <block type="nn_conclusion"/>
+              </category>
+              <category name="NN-Debug" colour="#9fa55b">
+                <block type="nnimgcustom"/>
+                <block type="custom_print"/>
+              </category>
+              <sep/>
+              <category name="Loops" colour="#5ba55b">
+                <block type="controls_for">
+                  <field name="VAR" id="|#yeaEgs)5d=).{s(T7C">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep/>
+              <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
+              <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
+            </xml>
+        type: blockly
+        header: ''
         workspace: |-
             <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
               <variables>
@@ -134,44 +171,6 @@ problems:
                 </value>
               </block>
             </xml>
-        toolbox: |-
-            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-              <category name="NN" colour="#9fa55b">
-                <block type="nn_handle_input"/>
-                <block type="nn_handle_layer"/>
-                <block type="nn_conclusion"/>
-              </category>
-              <category name="NN-Debug" colour="#9fa55b">
-                <block type="nnimgcustom"/>
-                <block type="custom_print"/>
-              </category>
-              <sep/>
-              <category name="Loops" colour="#5ba55b">
-                <block type="controls_for">
-                  <field name="VAR" id="|#yeaEgs)5d=).{s(T7C">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep/>
-              <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
-              <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
-            </xml>
-        type: blockly
-        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

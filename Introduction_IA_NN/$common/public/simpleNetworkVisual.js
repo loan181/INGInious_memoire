@@ -451,10 +451,17 @@ var initInterpreterApi = function(interpreter, scope) {
         interpreter.createNativeFunction(wrapper)
     );
 
-     wrapper = function(mat, i) {
+    wrapper = function(mat, i) {
         return mat.flat()[i-1];
     };
     interpreter.setProperty(scope, 'matrixGet',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(neuronInd) {
+        return nnNeurons[2][neuronInd-1].data(neuronRaphaelJSValueName);
+    };
+    interpreter.setProperty(scope, 'getNeuronOutputLayer',
         interpreter.createNativeFunction(wrapper)
     );
 

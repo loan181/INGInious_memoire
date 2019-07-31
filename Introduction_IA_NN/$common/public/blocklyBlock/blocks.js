@@ -225,3 +225,46 @@ Blockly.Blocks['nn_mat_get'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['get_neuron_last_layer'] = {
+  init: function() {
+    this.appendValueInput("neuron_i")
+        .setCheck("Number")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("obtenir la valeur du neurone n°");
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("de la couche de sortie");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_res_hor'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("ligne horizontale");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['nn_res_ver'] = {
+  init: function() {
+    this.appendDummyInput()
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField("ligne verticale");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

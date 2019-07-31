@@ -97,7 +97,26 @@ Blockly.JavaScript['nn_mat_get'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-// STUB Python
+Blockly.JavaScript['get_neuron_last_layer'] = function(block) {
+  var value_neuron_i = Blockly.JavaScript.valueToCode(block, 'neuron_i', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = `getNeuronOutputLayer(${value_neuron_i})`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['nn_res_hor'] = function(block) {
+  var code = '"horizontal"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['nn_res_ver'] = function(block) {
+  var code = '"vertical"';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+
+///// STUB Python /////
+
+
 Blockly.Python['custom_print'] = function(block) {
   return "";
 };
@@ -204,6 +223,28 @@ Blockly.Python['nn_mat_len'] = function(block) {
 Blockly.Python['nn_mat_get'] = function(block) {
   var value_mat = Blockly.Python.valueToCode(block, 'mat', Blockly.Python.ORDER_ATOMIC);
   var value_elem_i = Blockly.Python.valueToCode(block, 'elem_i', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['get_neuron_last_layer'] = function(block) {
+  var value_neuron_i = Blockly.Python.valueToCode(block, 'neuron_i', Blockly.Python.ORDER_ATOMIC);
+  // TODO: Assemble Python into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['nn_res_hor'] = function(block) {
+  // TODO: Assemble Python into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+Blockly.Python['nn_res_ver'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
