@@ -144,7 +144,7 @@ Blockly.Python['nnimgcustom'] = function(block) {
 Blockly.Python['nn_input_neuron_value'] = function(block) {
   var value_neuron_i = Blockly.Python.valueToCode(block, 'neuron_i', Blockly.Python.ORDER_ATOMIC);
   var value_neuron_value = Blockly.Python.valueToCode(block, 'neuron_value', Blockly.Python.ORDER_ATOMIC);
-  return `setNeuronValue(${value_neuron_i}, 0, ${value_neuron_value})\n`;
+  return `setNeuronValue(${value_neuron_i}, 1, ${value_neuron_value})\n`;
 };
 
 Blockly.Python['nn_picture_get_pixel'] = function(block) {

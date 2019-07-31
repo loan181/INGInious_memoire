@@ -48,7 +48,13 @@ class NeuralNetwork:
             self.setNeuronValue(layerInd, i, self.sigmoide(layerNeuronsValue[i]))
 
     def setNeuronValue(self, layerInd, neuronInd, value):
-        self.nnValues[layerInd][neuronInd] = value
+        try:
+            self.nnValues[layerInd][neuronInd] = value
+        except IndexError as e:
+            raise IndexError("Le neurone {} de la couche {} n'existe pas".format(neuronInd+1, layerInd+1))
+
+    def getNeuronValue(self, layerInd, neuronInd):
+        return self.nnValues[layerInd][neuronInd]
 
     def conclude(self):
         verticalValue, horizontalValue = self.nnValues[2]
