@@ -246,7 +246,6 @@ function recognize() {
     console.log(nnOutput);
     nnOutput.reduce(function(p,c,i){if(p<c) {maxIndex=i; return c;} else return p;});
     console.log('maxIndex: '+maxIndex);
-    refreshNetworkRepresentation(maxIndex);
     // Update bar to reflect each percentage
     for (let i = 0; i < 10; i++) {
         let curBar = document.getElementById("percentBar"+i);
@@ -343,13 +342,13 @@ function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
     if (evt.touches === undefined) {
         return {
-            x: evt.clientX - rect.left,
-            y: evt.clientY - rect.top
-        };
+            x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+            y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+        }
     } else {
         return {
-            x: evt.touches[0].clientX - rect.left,
-            y: evt.touches[0].clientY - rect.top
+            x: (evt.touches[0].clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+            y: (evt.touches[0].clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
         };
     }
 }
