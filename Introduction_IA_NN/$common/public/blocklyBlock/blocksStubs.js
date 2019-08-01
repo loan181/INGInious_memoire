@@ -193,9 +193,7 @@ Blockly.Python['nn_neuron_set_value_layer'] = function(block) {
   var value_value = Blockly.Python.valueToCode(block, 'value', Blockly.Python.ORDER_ATOMIC);
   var value_neuron_i = Blockly.Python.valueToCode(block, 'neuron_i', Blockly.Python.ORDER_ATOMIC);
   var value_layer_i = Blockly.Python.valueToCode(block, 'layer_i', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
-  return code;
+  return `setNeuronValue(${value_neuron_i}, ${value_layer_i}, ${value_value})\n`;
 };
 
 Blockly.Python['nn_sigmoid'] = function(block) {

@@ -21,7 +21,7 @@ context: |4
      - Mets la valeur du 3ème neurone de la couche 2 à 0
      - Mets la valeur du premier neurone de la couche de sortie à 1
      - Mets tout les neurones de la couche d'entrée à 1
-environment: mcq
+environment: default
 evaluate: best
 file: ''
 groups: false
@@ -34,7 +34,7 @@ name: Préparation gestion des autres couches 1
 network_grading: false
 order: 4
 problems:
-    blockly:
+    blocklyRes:
         name: ''
         options:
             visual:
