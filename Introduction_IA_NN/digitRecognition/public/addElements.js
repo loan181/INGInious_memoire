@@ -21,6 +21,28 @@ function createCanva() {
     visu.appendChild(canvaDiv);
 }
 
+function createCanvasButtons() {
+
+    //<button id="playButton" type="button" class="btn btn-success" style="border-radius:10px;"><span class="fa fa-fw fa-play"></span> Run code</button>
+
+    let recognizeButton = document.createElement("button");
+    recognizeButton.type = "button";
+    recognizeButton.className = "btn btn-primary" ;
+    recognizeButton.innerHTML =  '<span class="fa fa-fw fa-search"></span> Reconnaitre';
+    recognizeButton.style = "border-radius:10px;";
+    recognizeButton.onclick = function () {recognize();};
+
+    let eraseButton = document.createElement("button");
+    eraseButton.type = "button";
+    eraseButton.className = "btn btn-warning" ;
+    eraseButton.innerHTML =  '<span class="fa fa-fw fa-eraser"></span> Effacer';
+    eraseButton.style = "border-radius:10px;";
+    eraseButton.onclick = function () {erase();};
+
+    visu.appendChild(recognizeButton);
+    visu.appendChild(eraseButton);
+}
+
 function createPredictionBar() {
     let predictionTable = document.createElement("table");
     predictionTable.className = "table table-sm table-borderless";
@@ -68,5 +90,6 @@ function createResultText() {
 
 $("#blocklySvgZone").hide();
 createCanva();
+createCanvasButtons();
 createPredictionBar();
 createResultText();
