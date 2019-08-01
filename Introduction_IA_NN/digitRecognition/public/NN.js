@@ -251,7 +251,7 @@ function recognize() {
         let curBar = document.getElementById("percentBar"+i);
         let estimation = nnOutput[i]*100;
         let val = estimation.toFixed(2)+"%";
-        curBar.style.height = val;
+        curBar.style.width = val;
         curBar.textContent = val;
         if (i === maxIndex) {
             curBar.className = "progress-bar progress-bar-striped progress-bar-animated bg-success";
@@ -357,7 +357,6 @@ function findxy(res, e) {
     if (res == 'down') {
         if (clearBeforeDraw == true) {
             canvasDrawCtx.clearRect(0,0,canvasDraw.width,canvasDraw.height);
-            document.getElementById('nnInput').innerHTML='';
             document.getElementById('nnOut').innerHTML='';
             paths = [];
             clearBeforeDraw = false;
