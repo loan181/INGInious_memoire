@@ -1,7 +1,20 @@
 accessible: true
 author: Loan
 categories: []
-context: ''
+context: |4-
+     | Le réseau que nous utilisions jusqu'à présent permet de distinguer une ligne verticale d'une ligne horizontale dans une image en noir et blanc de taille 3 x 3.
+     | Ici on va utiliser un réseau de neurone différent, celui-çi sera capable de reconnaitre les dix chiffres arabes à partir d'une image en nuance de gris de 28 x 28.
+     | Comme le réseau précédent, il ne possède qu'une seule couche cachée, cependant le nombre de neurones est bien plus élevé ! La première couche est composée de 784 neurones (28 x 28), la couche cachée de 200 neurones et la couche de sortie de 10 neurones (les 10 chiffres qu'il peut reconnaitre).
+
+    Si tu veux en savoir plus sur la confection de ce réseau : `source
+    <http://myselph.de/neuralNet.html>`_.
+
+     | **Utilisation**
+     | Dessine dans le cadre de gauche le chiffre de ton choix.
+     | Tu peux utiliser le bouton "Reconnaitre" pour utiliser une implémentation du réseau de neurone qui t'es cachée, ça te permettra de comparer le résultat de ton code par rapport à l'implémentation réelle.
+     |
+     | **Objectif**
+     | TODO
 environment: default
 evaluate: best
 file: ''
