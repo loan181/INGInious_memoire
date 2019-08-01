@@ -1,0 +1,59 @@
+accessible: true
+author: Loan
+categories: []
+context: ''
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: BONUS Reconnaissance de chiffre
+network_grading: false
+order: 7
+problems:
+    blocklyRes:
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - addElements.js
+        - NNDatas.js
+        - NN.js
+        options:
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
+            grid:
+                snap: true
+                colour: '#ccc'
+                length: 3
+                spacing: 20
+            zoom:
+                controls: true
+                scaleSpeed: 1.2
+                minScale: 0.3
+                maxScale: 3.0
+                startScale: 1.0
+                wheel: false
+            speed: '60'
+            oneBasedIndex: true
+            visual:
+                position: left
+            css: true
+            scrollbars: true
+            toolboxPosition: start
+        name: ''
+        type: blockly
+        header: ''
+        workspace: <xml></xml>
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        toolbox: <xml></xml>
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
