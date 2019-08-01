@@ -55,7 +55,10 @@ class NeuralNetwork:
             raise IndexError("Le neurone {} de la couche {} n'existe pas".format(neuronInd+1, layerInd+1))
 
     def getNeuronValue(self, layerInd, neuronInd):
-        return self.nnValues[layerInd][neuronInd]
+        try:
+            return self.nnValues[layerInd][neuronInd]
+        except IndexError as e:
+            raise IndexError("Le neurone {} de la couche {} n'existe pas".format(neuronInd+1, layerInd+1))
 
     def conclude(self):
         verticalValue, horizontalValue = self.nnValues[2]
