@@ -33,7 +33,7 @@ limits:
     memory: '100'
     time: '30'
     output: '2'
-name: 1. Tutoriel 1
+name: 1. Introduction du code Blockly
 network_grading: false
 order: 0
 problems:

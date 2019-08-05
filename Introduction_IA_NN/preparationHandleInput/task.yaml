@@ -3,6 +3,9 @@ author: Loan
 categories: []
 context: |
     | Dans cette première préparation pour configurer la valeur des neurones de la couche d'entrée. Pour cela nous allons utiliser le bloc ``donner au neuronne d'entrée n°X la valeur Y``.
+
+    .. image:: $common/img/blocks/setNeuronValue.svg
+
     | Dans notre cas ``X`` est n'importe quel nombre entier entre 1 et 9 et ``Y`` vaut soit 0 soit 1.
     |
     | **Objectif**
@@ -18,36 +21,39 @@ groups: false
 input_random: '0'
 limits:
     memory: '100'
-    output: '2'
     time: '30'
+    output: '2'
 name: Preparation gestion de la couche d'entrée 1
 network_grading: false
 order: 1
 problems:
     blocklyCode:
         options:
-            grid:
-                colour: '#ccc'
-                length: 3
-                snap: true
-                spacing: 20
-            zoom:
-                startScale: 1.0
-                controls: true
-                minScale: 0.3
-                maxScale: 3.0
-                scaleSpeed: 1.2
-                wheel: false
             visual:
                 position: left
-            media: /plugins/blockly/static/blockly/media/
-            speed: '60'
             oneBasedIndex: true
+            grid:
+                length: 3
+                snap: true
+                colour: '#ccc'
+                spacing: 20
+            css: true
+            zoom:
+                scaleSpeed: 1.2
+                minScale: 0.3
+                startScale: 1.0
+                controls: true
+                maxScale: 3.0
+                wheel: false
+            media: /plugins/blockly/static/blockly/media/
+            scrollbars: true
+            speed: '60'
             toolboxPosition: start
             maxBlocks: Infinity
-            scrollbars: true
-            css: true
-        header: ''
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN Input">
@@ -57,6 +63,9 @@ problems:
                 </block>
               </category>
             </xml>
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
         name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
@@ -88,13 +97,7 @@ problems:
                 </next>
               </block>
             </xml>
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
         type: blockly
 stored_submissions: 0
 submission_limit:
