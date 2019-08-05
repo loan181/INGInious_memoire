@@ -30,7 +30,7 @@ Blockly.Blocks['nn_handle_input'] = {
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(285);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -44,7 +44,7 @@ Blockly.Blocks['nn_handle_layer'] = {
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(285);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -55,7 +55,7 @@ Blockly.Blocks['nn_conclusion'] = {
     this.appendDummyInput()
         .appendField("tirer une conclusion de la couche de sortie");
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(285);
  this.setTooltip("");
  this.setHelpUrl("");
   }

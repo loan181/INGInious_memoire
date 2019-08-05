@@ -6,11 +6,24 @@ context: |-
     | De la même manière que dans les exercices préparatoires, notre réseau tentera de reconnaitre une ligne verticale d'une ligne horizontale sur une image/grille de 3x3 en noir et blanc.
     |
     | Tu trouvera çi-bas le code *Blockly* permettant de correctement configurer le réseau de neurone, dans cette première partie le code est fonctionnel et complet.
-    | Dans les parties qui vont suivre je vais petit à petit retirer des blocs et t'introduire à des nouveaux blocs afin de résoudre chaque partie de l'implémentation étape après étape
+    |
+    | Chacune des 3 étapes de la classification d'un réseau neuronal consiste en 1 bloc:
+    |  1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
+    | |block1|
+    |  2. Calculer la valeur des neurones des autres couches une par une
+    | |block2|
+    |  3. Tirer une conclusion de la couche de sortie
+    | |block3|
+    |
+    | Dans les parties qui vont suivre je vais petit à petit retirer ces blocs et tu devra implémenter leur logique toi même. Pour cela des nouveaux blocs te seront à chaque fois introduit pour accomplir ton objectif.
     |
     | **Objectif**
     | Le code est déja fonctionel.
     | Dessine dans la grille à gauche pour voir comment le code et le réseau réagissent aux modifications.
+
+    .. |block1| image:: $common/img/blocks/handleInput.svg
+    .. |block2| image:: $common/img/blocks/handleLayers.svg
+    .. |block3| image:: $common/img/blocks/conclude.svg
 environment: default
 evaluate: best
 file: ''
