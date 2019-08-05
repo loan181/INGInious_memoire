@@ -4,6 +4,10 @@ Blockly.JavaScript['custom_print'] = function(block) {
   return `alert(${value_value});\n`;
 };
 
+Blockly.JavaScript['main'] = function(block) {
+  return "";
+};
+
 Blockly.JavaScript['nn_handle_input'] = function(block) {
   var value_picture = Blockly.JavaScript.valueToCode(block, 'picture', Blockly.JavaScript.ORDER_ATOMIC);
   return `handleInputLayer(${value_picture});\n`;
@@ -118,6 +122,10 @@ Blockly.JavaScript['nn_res_ver'] = function(block) {
 
 
 Blockly.Python['custom_print'] = function(block) {
+  return "";
+};
+
+Blockly.Python['main'] = function(block) {
   return "";
 };
 

@@ -17,135 +17,107 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    output: '2'
     memory: '100'
     time: '30'
+    output: '2'
 name: 1. Tutoriel 1
 network_grading: false
 order: 0
 problems:
     tuto1:
+        type: blockly
         options:
             zoom:
+                startScale: 1.0
+                maxScale: 3.0
                 controls: true
                 scaleSpeed: 1.2
                 minScale: 0.3
-                startScale: 1.0
-                maxScale: 3.0
                 wheel: false
             grid:
-                colour: '#ccc'
                 length: 3
-                snap: true
+                colour: '#ccc'
                 spacing: 20
-            css: true
+                snap: true
+            maxBlocks: Infinity
             visual:
                 position: left
+            css: true
+            scrollbars: true
+            toolboxPosition: start
+            speed: '60'
             media: /plugins/blockly/static/blockly/media/
             oneBasedIndex: true
-            speed: '60'
-            maxBlocks: Infinity
-            toolboxPosition: start
-            scrollbars: true
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - ../$common/defaultInit.js
+        name: ''
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN" colour="#a5935b">
+                <block type="nn_handle_input"></block>
+                <block type="nn_handle_layer"></block>
+                <block type="nn_conclusion"></block>
+              </category>
+              <category name="NN Image" colour="#a55b93">
+                <block type="nnimgcustom"></block>
+              </category>
+              <category name="NN Debug" colour="#80a55b">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
-        name: ''
-        toolbox: |-
-            <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-              <category name="NN" colour="#9fa55b">
-                <block type="nn_handle_input"/>
-                <block type="nn_handle_layer"/>
-                <block type="nn_conclusion"/>
-              </category>
-              <category name="NN-Debug" colour="#9fa55b">
-                <block type="nnimgcustom"/>
-                <block type="custom_print"/>
-              </category>
-              <sep/>
-              <category name="Loops" colour="#5ba55b">
-                <block type="controls_for">
-                  <field name="VAR" id="|#yeaEgs)5d=).{s(T7C">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep/>
-              <category name="Variables" colour="#a55b80" custom="VARIABLE"/>
-              <category name="Functions" colour="#995ba5" custom="PROCEDURE"/>
-            </xml>
-        type: blockly
-        header: ''
         workspace: |-
-            <xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
-                <variable id="C8fj1M4[7LQD`4alc4-(" type="">image</variable>
-                <variable id="O)mGOAfOOzvUskc(%Czf" type="">resultat</variable>
-                <variable id="|#yeaEgs)5d=).{s(T7C" type="">i</variable>
+                <variable type="" id="5r;uFq#S(ATV!I;_OHb:">image</variable>
+                <variable type="" id="#loSxYMpW/.zVKV`r}d^">resultat</variable>
+                <variable type="" id="DRiV+!WQR=}%0e}t.O[X">resultat classification</variable>
               </variables>
-              <block type="procedures_defreturn" id="dUH7PM~O}vsVXi:a6lhZ" x="88" y="213">
+              <block type="procedures_defreturn" id="seJU@)_oop;:n0P[7KN4" x="38" y="13">
                 <mutation>
-                  <arg name="image" varid="C8fj1M4[7LQD`4alc4-("/>
+                  <arg name="image" varid="5r;uFq#S(ATV!I;_OHb:"></arg>
                 </mutation>
                 <field name="NAME">classifier</field>
                 <comment pinned="false" h="80" w="160">Describe this function...</comment>
                 <statement name="STACK">
-                  <block type="nn_handle_input" id="egNkdbycDnvNd:TQ-#N8">
+                  <block type="nn_handle_input" id="J?mNY;s3Oydpe$TN_x%8">
                     <value name="picture">
-                      <block type="variables_get" id="?_^q+%PdwtJVcd;+Fdmj">
-                        <field name="VAR" variabletype="" id="C8fj1M4[7LQD`4alc4-(">image</field>
+                      <block type="variables_get" id="n0ATYb6Ze.TFl)jtModK">
+                        <field name="VAR" id="5r;uFq#S(ATV!I;_OHb:" variabletype="">image</field>
                       </block>
                     </value>
                     <next>
-                      <block type="controls_for" id="q.7mX~!kq_M|.C:.wZky">
-                        <field name="VAR" id="|#yeaEgs)5d=).{s(T7C">i</field>
-                        <value name="FROM">
-                          <shadow type="math_number" id="!Ueygi?R$3SzTB2^R3b5">
+                      <block type="nn_handle_layer" id="O#9z/lQ._j{PuVK/ic/o">
+                        <value name="layer_i">
+                          <block type="math_number" id="-jxVfCr}%C,alArslE#5">
                             <field name="NUM">2</field>
-                          </shadow>
+                          </block>
                         </value>
-                        <value name="TO">
-                          <shadow type="math_number" id="oa44y_^h-2_]A,SGKtdv">
-                            <field name="NUM">3</field>
-                          </shadow>
-                        </value>
-                        <value name="BY">
-                          <shadow type="math_number" id="lM6yg8q1%Bf@M+6QiH@$">
-                            <field name="NUM">1</field>
-                          </shadow>
-                        </value>
-                        <statement name="DO">
-                          <block type="nn_handle_layer" id="a(4%#bs`zNu;]zHXA;?1">
+                        <next>
+                          <block type="nn_handle_layer" id="w?`Ta2/S%^]Z@d0H8e@K">
                             <value name="layer_i">
-                              <block type="variables_get" id="IZkb4F0%}X)Y)nIY19[[">
-                                <field name="VAR" id="|#yeaEgs)5d=).{s(T7C">i</field>
+                              <block type="math_number" id="=PP2p^*P=;Zfz*}H$.v?">
+                                <field name="NUM">3</field>
                               </block>
                             </value>
-                          </block>
-                        </statement>
-                        <next>
-                          <block type="variables_set" id="y*::y:)+^8n`gi%FpoIs">
-                            <field name="VAR" id="O)mGOAfOOzvUskc(%Czf">resultat</field>
-                            <value name="VALUE">
-                              <block type="nn_conclusion" id="qJh$HSiB3.NHG:6ow[]G"/>
-                            </value>
+                            <next>
+                              <block type="variables_set" id="G54l`$wC=fuQ.WyiZ@vY">
+                                <field name="VAR" id="#loSxYMpW/.zVKV`r}d^" variabletype="">resultat</field>
+                                <value name="VALUE">
+                                  <block type="nn_conclusion" id="~u7Ui:`teaX(/-ke+_{1"></block>
+                                </value>
+                              </block>
+                            </next>
                           </block>
                         </next>
                       </block>
@@ -153,24 +125,43 @@ problems:
                   </block>
                 </statement>
                 <value name="RETURN">
-                  <block type="variables_get" id="7ZF(9+c+HWbP=X[N:1Ga">
-                    <field name="VAR" id="O)mGOAfOOzvUskc(%Czf">resultat</field>
+                  <block type="variables_get" id="cUCnb#][xB@q|19%o{S9">
+                    <field name="VAR" id="#loSxYMpW/.zVKV`r}d^" variabletype="">resultat</field>
                   </block>
                 </value>
               </block>
-              <block type="custom_print" id="F`~~7vu7zJO7LlvsxF~;" x="88" y="438">
-                <value name="value">
-                  <block type="procedures_callreturn" id="PbOgU??_c?Nthl]?[@cM">
-                    <mutation name="classifier">
-                      <arg name="image"/>
-                    </mutation>
-                    <value name="ARG0">
-                      <block type="nnimgcustom" id="OK|.)zmh37X.]T4@JoKI"/>
+              <block type="main" id="jmWh+]iUp:3TMBfC0eb`" x="38" y="238">
+                <next>
+                  <block type="variables_set" id="2#rO6vQnrqhr.Jx6bhCf">
+                    <field name="VAR" id="DRiV+!WQR=}%0e}t.O[X" variabletype="">resultat classification</field>
+                    <value name="VALUE">
+                      <block type="procedures_callreturn" id=")/~$8Z3t},M(UPkXnyAl">
+                        <mutation name="classifier">
+                          <arg name="image"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="nnimgcustom" id="``WP!@ZSA-N;t]#%[AbU"></block>
+                        </value>
+                      </block>
                     </value>
+                    <next>
+                      <block type="custom_print" id="h83zPIjM1Fr8H8FE-#KE">
+                        <value name="value">
+                          <block type="variables_get" id="-G$ecKXzuE*jagPmolin">
+                            <field name="VAR" id="DRiV+!WQR=}%0e}t.O[X" variabletype="">resultat classification</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
                   </block>
-                </value>
+                </next>
               </block>
             </xml>
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - ../$common/defaultInit.js
+        header: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

@@ -23,13 +23,17 @@ if __name__ == '__main__':
 
     # Check if it answer to the question
     actual_expected = (
-        (globalNN.getNeuronValue(0, 1), 0),
-        (globalNN.getNeuronValue(0, 3), 1),
-        (globalNN.getNeuronValue(0, 6), 1),
+        (1, 0),
+        (3, 1),
+        (6, 1),
     )
-    for actual, expected in actual_expected:
-        if actual != expected:
-            print("La valeur attendue ({}) n'est pas celle trouvée ({})".format(expected, actual))
+    for neuronInd, expected in actual_expected:
+        actualValue = globalNN.getNeuronValue(0, neuronInd)
+
+        if actualValue != expected:
+            if actualValue is None:
+                actualValue = "non définie"
+            print("La valeur du neurone n°{} est {} au lieu de {}".format(neuronInd+1, actualValue, expected))
             exit()
 
     print("True")

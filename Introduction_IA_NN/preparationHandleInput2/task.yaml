@@ -1,4 +1,4 @@
-accessible: true
+accessible: false
 author: ''
 categories: []
 context: |
@@ -20,53 +20,35 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    time: '30'
     memory: '100'
+    time: '30'
     output: '2'
 name: Preparation gestion de la couche d'entrée 2
 network_grading: false
 order: 2
 problems:
     blockly:
+        type: blockly
         options:
-            grid:
-                colour: '#ccc'
-                length: 3
-                spacing: 20
-                snap: true
-            css: true
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
             zoom:
-                scaleSpeed: 1.2
-                maxScale: 3.0
-                minScale: 0.3
                 controls: true
                 startScale: 1.0
+                scaleSpeed: 1.2
+                minScale: 0.3
+                maxScale: 3.0
                 wheel: false
+            grid:
+                spacing: 20
+                length: 3
+                snap: true
+                colour: '#ccc'
             scrollbars: true
-            speed: '60'
-            oneBasedIndex: true
             toolboxPosition: start
-        files:
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        type: blockly
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Input">
-                <block type="nn_picture_get_pixel"></block>
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="grid_special"></block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-            </xml>
+            css: true
+            oneBasedIndex: true
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -124,8 +106,26 @@ problems:
                 </next>
               </block>
             </xml>
-        name: ''
         header: ''
+        name: ''
+        files:
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Input">
+                <block type="nn_picture_get_pixel"></block>
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="grid_special"></block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
 stored_submissions: 0
 submission_limit:
     amount: -1

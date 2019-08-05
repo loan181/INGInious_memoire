@@ -11,6 +11,17 @@ Blockly.Blocks['custom_print'] = {
   }
 };
 
+Blockly.Blocks['main'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("quand l'exécution commence");
+    this.setNextStatement(true, null);
+    this.setColour(105);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['nn_handle_input'] = {
   init: function() {
     this.appendValueInput("picture")
