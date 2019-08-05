@@ -1,0 +1,140 @@
+accessible: true
+author: ''
+categories: []
+context: |-
+    | Bienvenue dans cette série de tâches Inginious sur le concept du réseau neuronal
+    | De la même manière que dans les exercices préparatoires, notre réseau tentera de reconnaître une ligne verticale d'une ligne horizontale sur une image/grille de 3x3 en noir et blanc.
+    |
+
+    ***************
+    Définition
+    ***************
+    Le concept du réseau de neurone est une **méthode de classification et d'apprentissage supervisé** :
+
+    Classification
+      Attribuer une classe ou catégorie à chaque objet à classer
+
+    Apprentissage supervisé
+      Désigne la tâche d’apprentissage automatique consistant à apprendre une fonction de prédiction à partir d’exemples annotés
+
+    Base de données d'apprentissage
+      Ensemble des exemples annotés utilisés dans l'apprentissage supervisé
+
+    Note bien ici que ce processus se déroule en 2 étapes:
+      1. **Apprentissage supervisé** : on va "entraîner" le modèle afin qu'il soit capable de classifier d'une certaine façon.
+      2. **Classification**: après que notre modèle est été entraîne, il sera capable de classifier/distinguer/reconnaître ce pour quoi il à été entraîne pour dans l'étape précédente
+
+    *****************
+    Réseau de neurone
+    *****************
+    1. Apprentissage supervisé
+    ==========================
+    | **Dans tout les exercices cette étape a déjà était faite pour toi**
+    |
+    | Afin d’entraîner un réseau de neurone à classifier des éléments bien particulier il existe des algorithmes informatique bien particulier. L'objectif de cette étape est qu'a la fin de l’apprentissage, les valeurs des poids soient fixés de manière que les neurones de la couche de sortie prédisent ce qu'on souhaite classifier
+    | L'idée générale de l'algorithme d'entrainement est la suivante :
+    |  1. On mets tout les poids à 0 et on fixe ce que chaque neurone de la couche de sortie est censé classifier
+    |  2. On n'utilise en entrée des éléments qu'on souhaite pouvoir être classifié dont on connait aussi le résultat de la classification
+    |  3. A chaque nouvelle entrée, on mets à jour les poids de manière qu'ils améliore la précision du réseau (une entrée ``X`` est correctement prédite en ``X``)
+    |
+
+    2. Classification
+    =============================
+    | A noter qu'à ce stade l'apprentissage supervisé à déjà eut lieu. Donc, normalement, les poids du réseau sont fixés et chaque neurone de la couche de sortie permettent de prédire un certain résultat.
+    |
+    | Dans le cas d'un réseau de neurone, la classification est découpée en plusieurs étapes distinctes:
+    |  1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
+    |  2. Calculer la valeur des neurones des autres couches une par une
+    |  3. Tirer une conclusion de la couche de sortie
+    |
+    | Ce sont chacune de ces 3 étapes que tu devra réalisé pas-à-pas dans les tâches qui vont suivre
+    |
+    |
+    |
+    | Ci-bas tu trouvera un QCM (Questionaire à Choix Multiple), qui résume l'ensemble des informations importantes pour la suite des tâches.
+    | Les réponses se trouvent dans le texte plus haut ainsi que dans les exercices réalisés précédemment.
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: Introduction
+network_grading: false
+problems:
+    qcm_nn:
+        choices:
+        -   feedback: La classification n'est pas suffisante, si le modèle n'est pas
+                entrainé il sera incapable de pouvoir classifier/distinguer quoi que
+                se soit
+            text: '**1** (la classification)'
+        -   text: '**2** ( l''apprentissage supervisé puis la classification)'
+            valid: true
+        -   text: |-
+                | **3**
+                |  1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée X
+                |  2. Calculer la valeur des neurones des autres couches une par une
+                |  3. Tirer une conclusion de la couche de sortie
+            feedback: Ces 3 étapes concernent la classification d'un réseau de neurone
+                (et non les étapes d'une méthode de classification et d'apprentissage
+                supervisé)
+        type: multiple_choice
+        header: Combien d'étape il y a-t-il dans une **méthode de classification et
+            d'apprentissage supervisé** ?
+        limit: 0
+        name: ''
+    qcm_nn1:
+        choices:
+        -   feedback: il s'agit de l'apprentissage supervisé
+            text: Entrainer un modèle afin qu'il soit capable de reconnaitre certains
+                objets
+        -   valid: true
+            text: A permettre de pouvoir reconnaitre certaines choses
+        -   text: Permet à partir d'une entrée ``X`` déduire que c'est bien un ``X``
+            valid: true
+        -   feedback: la classification s'étend à bien plus que juste reconnaitre
+                2 types de lignes. Mais cette réponse est bien un cas particulier
+                de classification
+            text: Distinguer une ligne verticale d'une ligne horizontale
+        header: En quoi consiste la classification ?
+        type: multiple_choice
+        multiple: true
+        name: ''
+        limit: 0
+    qcm_nn2:
+        choices:
+        -   valid: true
+            text: |-
+                1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
+                2. Calculer la valeur des neurones des autres couches une par une
+                3. Tirer une conclusion de la couche de sortie
+        -   text: |-
+                1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
+                2. Tirer une conclusion de la couche de sortie
+                3. Calculer la valeur des neurones des autres couches une par une
+            feedback: La 2ème étape déclenchera une erreur vu que la valeur de cette
+                couche n'ont pas était initialisée
+        -   text: |-
+                1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
+                2. Tirer une conclusion de la couche d'entrée
+            feedback: La couche d'entrée ne nous donne aucune information sur le résultat
+                prédit, seulement sur l'entrée
+        -   text: |-
+                1. On mets tout les poids à 0 et on fixe ce que chaque neurone de la couche de sortie est censé classifier
+                2. On n'utilise en entrée des éléments qu'on souhaite pouvoir être classifié dont on connait aussi le résultat de la classification
+                3. A chaque nouvelle entrée, on mets à jour les poids de manière qu'ils améliore la précision du réseau (une entrée ``X`` est correctement prédite en ``X``)
+            feedback: Ce sont les étapes de l'apprentissage supervisé (donc l'entrainement
+                du modèle) et non les étapes de la classification
+        header: Quel est l'ordre correct des étapes pour la **classification d'un
+            réseau neuronal** ?
+        type: multiple_choice
+        name: ''
+        limit: 0
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
