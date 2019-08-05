@@ -467,3 +467,57 @@ var initInterpreterApi = function(interpreter, scope) {
 
     Animation.reset();
 };
+
+
+let Utilities = {};
+Utilities.downloadSvg = function () {
+    Utilities.download(Utilities.getSvgOfCanva(), "blocklyProjectImg.svg", ".svg");
+};
+
+Utilities.getSvgOfCanva = function () { // Source : https://gist.github.com/thomasdenney/aa76acb36d47120ee338b3bd96459556
+    /*
+    I've only tested this with http://codethemicrobit.com in Chrome, but it should work in other browsers
+    Paste the JS below into the Chrome Developer Tools Console and hit enter
+    It will then open the generated PNG file in a new tab, from where it can be copied/saved
+    Based on https://gist.github.com/acbart/dcda677555e97b59c1c91554270dc80b, with adaptations for styling
+    and output format
+    */
+
+    //Any modifications are executed on a deep copy of the element
+    var cp = Blockly.mainWorkspace.svgBlockCanvas_.cloneNode(true);
+    cp.removeAttribute("width");
+    cp.removeAttribute("height");
+    cp.removeAttribute("transform");
+
+    //It is important to create this element in the SVG namespace rather than the XHTML namespace
+    var styleElem = document.createElementNS("http://www.w3.org/2000/svg", "style");
+    //I've manually pasted codethemicrobit.com's CSS for blocks in here, but that can be removed as necessary
+    styleElem.textContent = Blockly.Css.CONTENT.join('') + ".blocklyPathLight { fill: none;stroke-linecap: round;stroke-width: 1;}.blocklyText { cursor:default;fill: #fff;font-family: sans-serif;font-size: 11pt;}.blocklyNonEditableText>text {pointer-events: none;}.blocklyNonEditableText>rect,.blocklyEditableText>rect {fill: #fff;fill-opacity: .6;}.blocklyNonEditableText>text,.blocklyEditableText>text {fill: #000;}.blocklyIconGroup,.blocklyIconGroupReadonly {opacity: .6;}.blocklyIconShape {fill: #00f;stroke: #fff;stroke-width: 1px;}.blocklyIconSymbol {fill: #fff;}";//".blocklyToolboxDiv {background: rgba(0, 0, 0, 0.05);}.blocklyMainBackground {stroke:none !important;}.blocklyTreeLabel, .blocklyText, .blocklyHtmlInput {font-family:'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace !important;}.blocklyText { font-size:1rem !important;}.rtl .blocklyText {text-align:right;} .blocklyTreeLabel { font-size:1.25rem !important;} .blocklyCheckbox {fill: #ff3030 !important;text-shadow: 0px 0px 6px #f00;font-size: 17pt !important;}";
+    cp.insertBefore(styleElem, cp.firstChild);
+
+    //Creates a complete SVG document with the correct bounds (it is necessary to get the viewbox right, in the case of negative offsets)
+    var xml = new XMLSerializer().serializeToString(cp);
+    var bbox = Blockly.mainWorkspace.svgBlockCanvas_.getBBox();
+    xml = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="' + bbox.width + '" height="' + bbox.height + '" viewBox="' + bbox.x + ' ' + bbox.y + ' ' + bbox.width + ' ' + bbox.height + '"><rect width="100%" height="100%" fill="white"></rect>' + xml + '</svg>';
+    //If you just want the SVG then do console.log(xml)
+    //Otherwise we render as an image and export to PNG
+    return xml;
+};
+
+Utilities.download =  function (data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 0);
+    }
+};
