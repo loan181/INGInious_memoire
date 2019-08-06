@@ -1,0 +1,337 @@
+accessible: true
+author: ''
+categories: []
+context: |
+    | Si tu as fais les exercices préparatoires plus difficile tu as sans doute un bon souvenir des **produits matriciels**, c'est justement le sujet de cet exercice ! Si tu ne t'en souviens plus très bien, tu peux consulter la page d'introduction au produit matriciel lien_.
+    | En effet, l'utilisation d'un produit matriciel est nécessaire pour calculer les valeurs des neurones des couches (excepté celle d'entrée)
+    |
+    | **Objectif**
+    | Implémente cette fonction qui renverra le produit matriciel des deux matrices données en entrée.
+
+    .. _lien: https://loan181.github.io/algo/NN/produitMatriciel
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: Utilisation des matrices
+network_grading: false
+order: 6
+problems:
+    blocklyRes:
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="Matrice" colour="#5b6da5">
+                <block type="nn_create_matrix">
+                  <field name="NAME1">0</field>
+                  <field name="NAME2">0</field>
+                  <field name="NAME3">0</field>
+                  <field name="NAME4">0</field>
+                  <field name="NAME5">0</field>
+                  <field name="NAME6">0</field>
+                  <field name="NAME7">0</field>
+                  <field name="NAME8">0</field>
+                  <field name="NAME9">0</field>
+                  <field name="NAME10">0</field>
+                  <field name="NAME11">0</field>
+                  <field name="NAME12">0</field>
+                  <field name="NAME13">0</field>
+                  <field name="NAME14">0</field>
+                  <field name="NAME15">0</field>
+                  <field name="NAME16">0</field>
+                  <field name="NAME17">0</field>
+                  <field name="NAME18">0</field>
+                  <field name="NAME19">0</field>
+                  <field name="NAME20">0</field>
+                  <field name="NAME21">0</field>
+                  <field name="NAME22">0</field>
+                  <field name="NAME23">0</field>
+                  <field name="NAME24">0</field>
+                  <field name="NAME25">0</field>
+                </block>
+                <block type="nn_matrix_create2">
+                  <value name="lines_number">
+                    <shadow type="math_number">
+                      <field name="NUM">5</field>
+                    </shadow>
+                  </value>
+                  <value name="column_number">
+                    <shadow type="math_number">
+                      <field name="NUM">5</field>
+                    </shadow>
+                  </value>
+                  <value name="value">
+                    <shadow type="math_number">
+                      <field name="NUM">0</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_get_matrix">
+                  <value name="row">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="column">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_set_matrix">
+                  <value name="row">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="column">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="value">
+                    <shadow type="math_number">
+                      <field name="NUM">0</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_get_width"></block>
+                <block type="nn_get_height"></block>
+              </category>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="O*9.Kx;?u)%LABxoR.;`" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
+        options:
+            css: true
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+                snap: true
+            toolboxPosition: start
+            zoom:
+                minScale: 0.3
+                controls: true
+                startScale: 1.0
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                wheel: false
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
+            oneBasedIndex: true
+            scrollbars: true
+        header: ''
+        name: ''
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="VFR4R*Yx#S#}3ByI[?V1">mat1</variable>
+                <variable type="" id="it_L3?ZEY(k:{={#{~Qh">mat2</variable>
+                <variable type="" id="738=T0%gCR9vDa1|0`6I">res</variable>
+                <variable type="" id="Y^}Xj^L[=X_-3SB$QUaL">A</variable>
+                <variable type="" id="X]h2~8ow.B;y=nEiCQpA">B</variable>
+                <variable type="" id="L/$0D[h=Nq1?X|2iB/8]">produit mat</variable>
+              </variables>
+              <block type="procedures_defreturn" id="U{wp8Q1epu~Cd;3(ZM3I" x="13" y="113">
+                <mutation>
+                  <arg name="mat1" varid="VFR4R*Yx#S#}3ByI[?V1"></arg>
+                  <arg name="mat2" varid="it_L3?ZEY(k:{={#{~Qh"></arg>
+                </mutation>
+                <field name="NAME">calculer le produit matriciel de</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                <statement name="STACK">
+                  <block type="variables_set" id="0XxhE{_]n:C]m76{KaXd">
+                    <field name="VAR" id="738=T0%gCR9vDa1|0`6I" variabletype="">res</field>
+                    <value name="VALUE">
+                      <block type="nn_matrix_create2" id="YjvL)f,$a4^:?_mWoMlD">
+                        <value name="lines_number">
+                          <block type="nn_get_height" id="Cl{=AYwU3^h35*E^GS8I">
+                            <value name="mat">
+                              <block type="variables_get" id="/uW`}v40mc2[,L/(ay+K">
+                                <field name="VAR" id="VFR4R*Yx#S#}3ByI[?V1" variabletype="">mat1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="column_number">
+                          <block type="nn_get_width" id="m#A?*TTs1{R`{$^KtTZ7">
+                            <value name="mat">
+                              <block type="variables_get" id="?pZlR#Sy@wznKv4fi)_.">
+                                <field name="VAR" id="it_L3?ZEY(k:{={#{~Qh" variabletype="">mat2</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="value">
+                          <block type="math_number" id="n+bPWI7_9~+-E{9aTTXv">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="RETURN">
+                  <block type="variables_get" id="NPYyHpWzVBugjlBkWq]%">
+                    <field name="VAR" id="738=T0%gCR9vDa1|0`6I" variabletype="">res</field>
+                  </block>
+                </value>
+              </block>
+              <block type="main" id="xBzzt`bdlX4K69lEFMr=" x="13" y="362">
+                <next>
+                  <block type="variables_set" id="`=n(!RC,jmj-1I#w2*V1">
+                    <field name="VAR" id="Y^}Xj^L[=X_-3SB$QUaL" variabletype="">A</field>
+                    <value name="VALUE">
+                      <block type="nn_create_matrix" id=";%sDuaE35sl$uZ).?Gn[">
+                        <field name="NAME1">1</field>
+                        <field name="NAME2">0</field>
+                        <field name="NAME3">0</field>
+                        <field name="NAME4">0</field>
+                        <field name="NAME5">0</field>
+                        <field name="NAME6">2</field>
+                        <field name="NAME7">-1</field>
+                        <field name="NAME8">0</field>
+                        <field name="NAME9">0</field>
+                        <field name="NAME10">0</field>
+                        <field name="NAME11">0</field>
+                        <field name="NAME12">0</field>
+                        <field name="NAME13">0</field>
+                        <field name="NAME14">0</field>
+                        <field name="NAME15">0</field>
+                        <field name="NAME16">0</field>
+                        <field name="NAME17">0</field>
+                        <field name="NAME18">0</field>
+                        <field name="NAME19">0</field>
+                        <field name="NAME20">0</field>
+                        <field name="NAME21">0</field>
+                        <field name="NAME22">0</field>
+                        <field name="NAME23">0</field>
+                        <field name="NAME24">0</field>
+                        <field name="NAME25">0</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="b{,8~](p1h;3;J+{wFeB">
+                        <field name="VAR" id="X]h2~8ow.B;y=nEiCQpA" variabletype="">B</field>
+                        <value name="VALUE">
+                          <block type="nn_create_matrix" id="(8sZo^jch8y%h|~@}L9Q">
+                            <field name="NAME1">3</field>
+                            <field name="NAME2">4</field>
+                            <field name="NAME3">0</field>
+                            <field name="NAME4">0</field>
+                            <field name="NAME5">0</field>
+                            <field name="NAME6">-2</field>
+                            <field name="NAME7">-3</field>
+                            <field name="NAME8">0</field>
+                            <field name="NAME9">0</field>
+                            <field name="NAME10">0</field>
+                            <field name="NAME11">0</field>
+                            <field name="NAME12">0</field>
+                            <field name="NAME13">0</field>
+                            <field name="NAME14">0</field>
+                            <field name="NAME15">0</field>
+                            <field name="NAME16">0</field>
+                            <field name="NAME17">0</field>
+                            <field name="NAME18">0</field>
+                            <field name="NAME19">0</field>
+                            <field name="NAME20">0</field>
+                            <field name="NAME21">0</field>
+                            <field name="NAME22">0</field>
+                            <field name="NAME23">0</field>
+                            <field name="NAME24">0</field>
+                            <field name="NAME25">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="@AYYp6T9AbcP8u*m0!~X">
+                            <field name="VAR" id="L/$0D[h=Nq1?X|2iB/8]" variabletype="">produit mat</field>
+                            <value name="VALUE">
+                              <block type="procedures_callreturn" id="TVm0sFUPU],[m:^-}kXE">
+                                <mutation name="calculer le produit matriciel de">
+                                  <arg name="mat1"></arg>
+                                  <arg name="mat2"></arg>
+                                </mutation>
+                                <value name="ARG0">
+                                  <block type="variables_get" id="m54;iM}2Ua=Q_XksL3`:">
+                                    <field name="VAR" id="Y^}Xj^L[=X_-3SB$QUaL" variabletype="">A</field>
+                                  </block>
+                                </value>
+                                <value name="ARG1">
+                                  <block type="variables_get" id="D~P%E;O^*K%Z3(vXyb6H">
+                                    <field name="VAR" id="X]h2~8ow.B;y=nEiCQpA" variabletype="">B</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="custom_print" id="aUOjK@#F6wApP*7F2~La">
+                                <value name="value">
+                                  <block type="variables_get" id="5$cPL=f:K2~.lHvMxhxK">
+                                    <field name="VAR" id="L/$0D[h=Nq1?X|2iB/8]" variabletype="">produit mat</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        type: blockly
+        files:
+        - ../$common/simpleNetworkVisual.js
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

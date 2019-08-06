@@ -21,14 +21,91 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     memory: '100'
     time: '30'
-    output: '2'
 name: BONUS Reconnaissance de chiffre
 network_grading: false
 order: 10
 problems:
     blocklyRes:
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN">
+                <block type="nnimgcustom"></block>
+                <block type="nn_layer_number"></block>
+                <block type="nn_layer_neuron_number"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <category name="NN Input">
+                <block type="nn_input_neuron_value"></block>
+                <block type="nn_picture_get_pixel"></block>
+              </category>
+              <category name="NN Couches">
+                <block type="nn_get_neuron_layer"></block>
+                <block type="nn_get_weight_layer"></block>
+                <block type="nn_matrix_prod"></block>
+                <block type="nn_get_matrix"></block>
+                <block type="nn_get_width"></block>
+                <block type="nn_get_height"></block>
+                <block type="nn_neuron_set_value_layer"></block>
+                <block type="nn_sigmoid"></block>
+              </category>
+              <category name="NN Output">
+                <block type="get_neuron_last_layer"></block>
+              </category>
+              <sep></sep>
+              <category name="Logic" colour="#5C81A6">
+                <block type="controls_if"></block>
+                <block type="logic_compare">
+                  <field name="OP">EQ</field>
+                </block>
+              </category>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id=")DsZU[v6RUCRk(u$B}1s" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
@@ -36,35 +113,167 @@ problems:
         - NNDatas.js
         - NN.js
         options:
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
             grid:
-                snap: true
                 colour: '#ccc'
-                length: 3
                 spacing: 20
+                length: 3
+                snap: true
+            visual:
+                position: left
+            toolboxPosition: start
             zoom:
-                controls: true
-                scaleSpeed: 1.2
                 minScale: 0.3
                 maxScale: 3.0
                 startScale: 1.0
+                controls: true
+                scaleSpeed: 1.2
                 wheel: false
-            speed: '60'
-            oneBasedIndex: true
-            visual:
-                position: left
+            maxBlocks: Infinity
             css: true
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
             scrollbars: true
-            toolboxPosition: start
-        name: ''
-        type: blockly
-        header: ''
-        workspace: <xml></xml>
+            oneBasedIndex: true
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
-        toolbox: <xml></xml>
+        header: ''
+        name: ''
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="|VT/gARq4y}5tv9WF^kt">image</variable>
+                <variable type="" id="QL3Z^@K6eRY_55(XZSAt">couche_c</variable>
+                <variable type="" id="4vB:_k!H2E{LdR?ZA1L!">res</variable>
+                <variable type="" id="X25xP~kH[je0.3QZ:BU:">res conclusion</variable>
+                <variable type="" id="1!4joRY:]z;sq^C^P%%}">resultat classification</variable>
+                <variable type="" id="uJ7=PLESZ88d/=Oqt*zm">i</variable>
+              </variables>
+              <block type="procedures_defreturn" id="3Xap_!zrYPgpEiYN0pD/" x="-38" y="13">
+                <mutation>
+                  <arg name="image" varid="|VT/gARq4y}5tv9WF^kt"></arg>
+                </mutation>
+                <field name="NAME">classifier</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                <statement name="STACK">
+                  <block type="procedures_callnoreturn" id="qv27T0p{wNDfw;(:m6@j">
+                    <mutation name="gérer la couche d'entrée à partir de l'image">
+                      <arg name="image"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="variables_get" id="PgKX09+^0?[17$DmqJSY">
+                        <field name="VAR" id="|VT/gARq4y}5tv9WF^kt" variabletype="">image</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_for" id="pd-NA8on4R%`!SqyT1Us">
+                        <field name="VAR" id="uJ7=PLESZ88d/=Oqt*zm" variabletype="">i</field>
+                        <value name="FROM">
+                          <block type="math_number" id="o=bC).aV]l*x5AnjHVy^">
+                            <field name="NUM">2</field>
+                          </block>
+                        </value>
+                        <value name="TO">
+                          <block type="nn_layer_number" id="f5dD|74I8uT$VWPI8HUv"></block>
+                        </value>
+                        <value name="BY">
+                          <block type="math_number" id="aBR|DY5~R,zwnQ9ZO]Ht">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                        <statement name="DO">
+                          <block type="procedures_callnoreturn" id="?i@./|_j{niuEt#k*}5g">
+                            <mutation name="calculer la valeur des neurones de la couche n°">
+                              <arg name="couche_c"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="!Yep22B~c]Q,:=U1?2kq">
+                                <field name="VAR" id="uJ7=PLESZ88d/=Oqt*zm" variabletype="">i</field>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="variables_set" id="m/2WMtX#$jFC9)qt4:J7">
+                            <field name="VAR" id="4vB:_k!H2E{LdR?ZA1L!" variabletype="">res</field>
+                            <value name="VALUE">
+                              <block type="procedures_callreturn" id="BQCgxaWs[Y%_-_LKPe]/">
+                                <mutation name="tirer une conclusion de la couche sortie"></mutation>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="RETURN">
+                  <block type="variables_get" id="pq-Ts~X@qm5RXd4E.jO5">
+                    <field name="VAR" id="4vB:_k!H2E{LdR?ZA1L!" variabletype="">res</field>
+                  </block>
+                </value>
+              </block>
+              <block type="procedures_defnoreturn" id="SC9;^dhrTRI$EyZ{(s8?" x="-38" y="288">
+                <mutation>
+                  <arg name="image" varid="|VT/gARq4y}5tv9WF^kt"></arg>
+                </mutation>
+                <field name="NAME">gérer la couche d'entrée à partir de l'image</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+              </block>
+              <block type="procedures_defnoreturn" id="WBG`Lij~{kz)3s;TX}/~" x="-37" y="388">
+                <mutation>
+                  <arg name="couche_c" varid="QL3Z^@K6eRY_55(XZSAt"></arg>
+                </mutation>
+                <field name="NAME">calculer la valeur des neurones de la couche n°</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+              </block>
+              <block type="procedures_defreturn" id="=B)hN,0ou!dRl$yF_.KP" x="-38" y="488">
+                <field name="NAME">tirer une conclusion de la couche sortie</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                <statement name="STACK">
+                  <block type="variables_set" id="Ke^*|`PU8BonA!z)5*W1">
+                    <field name="VAR" id="X25xP~kH[je0.3QZ:BU:" variabletype="">res conclusion</field>
+                    <value name="VALUE">
+                      <block type="math_number" id="W}:Iy^Z({XT7%z|q(NNd">
+                        <field name="NUM">0</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="RETURN">
+                  <block type="variables_get" id="QkXP7$W-/,]R?^%Dg=0M">
+                    <field name="VAR" id="X25xP~kH[je0.3QZ:BU:" variabletype="">res conclusion</field>
+                  </block>
+                </value>
+              </block>
+              <block type="main" id="^O98=)w1Z{EqO~OhAdH1" x="-38" y="613">
+                <next>
+                  <block type="variables_set" id="F#c`sR}%BwNJ2j~I@)re">
+                    <field name="VAR" id="1!4joRY:]z;sq^C^P%%}" variabletype="">resultat classification</field>
+                    <value name="VALUE">
+                      <block type="procedures_callreturn" id="m~5qlS*;7Fg~QDvK-*4,">
+                        <mutation name="classifier">
+                          <arg name="image"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="nnimgcustom" id="~.Ijm$3ji`*Uo,WYL$q!"></block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="custom_print" id="lt/A:c^#CciHGp?H-X+=">
+                        <value name="value">
+                          <block type="variables_get" id="~,(`MjX~o`b]j,wQr:a(">
+                            <field name="VAR" id="1!4joRY:]z;sq^C^P%%}" variabletype="">resultat classification</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        type: blockly
 stored_submissions: 0
 submission_limit:
     amount: -1

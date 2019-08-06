@@ -1,0 +1,195 @@
+accessible: true
+author: ''
+categories: []
+context: |-
+    | Le cas précédent était assez simple à gérer, en effet nous avions que 2 neurones dans la couche de sortie. Ainsi il était aisé de vroi lequel des deux est le plus grand.
+    | Dans ce nouvel exercice on va s'intéresser au cas plus générique, c'est à dire qu'au lieu d'avoir 2 neurones en couche de sortie nous allons en avoir un certain nombre ``N``.
+    |
+    | La conclusion ne sera plus une ligne verticale ou horizontale, mais le numéro du neurone en question.
+    | Par exemple si les valeurs de la dernière couches sont : ``0.1``, ``0.2``, ``0.4`` et ``0.3`` je souhaite que la conclusion trouvée soit ``3`` (car la valeur du 3ème neurone est le maximum des 4 (``0.4``) ).
+    | Pour cela un nouveau bloc fait son apparition : ``nombre de neurone de la couche C`` où ``C`` est la valeur de la couche dont on souhaite obtenir le nombre de neurones. Remarque que tu peux utiliser ce bloc sur n'importe quel couche, tu pourra l'utiliser dans d'autres situation sue celle-çi par la suite.
+    |
+    | **Objectif**
+    | Détermine la conclusion du réseau neuronal.
+    | Ce dernier t'es inconnu, je te donne uniquement comme information que sa couche de sortie se trouve sur la 5ème couche (il a donc 3 couches cachés).
+    | La réponse attendue pour le réseau caché est **7**.
+    |
+    | Le code que je t'ai mis te mets sur la piste, l'idée est qu'on va retenir dans une variable le numéro du neurone qui a la valeur maximum. On regarde chaque neurone un par un, si sa valeur est plus grande que celle enregistrée, alors on met à jour la variable du numéro du neurone qui a la valeur maximum.
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: 4. Tirer une conclusion (générique)
+network_grading: false
+order: 9
+problems:
+    blocklyRes:
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Output">
+                <block type="get_neuron_last_layer"></block>
+                <block type="nn_layer_neuron_number"></block>
+                <block type="nn_layer_number"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+              <category name="Logic" colour="#5C81A6">
+                <block type="controls_if"></block>
+                <block type="logic_compare">
+                  <field name="OP">EQ</field>
+                </block>
+              </category>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="2xgK+a(b#(tDtsH{G9/7" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
+        options:
+            css: true
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+                snap: true
+            toolboxPosition: start
+            zoom:
+                minScale: 0.3
+                maxScale: 3.0
+                controls: true
+                scaleSpeed: 1.2
+                startScale: 1.0
+                wheel: false
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
+            oneBasedIndex: true
+            scrollbars: true
+        files:
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        header: ''
+        name: ''
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        workspace: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
+              <variables>
+                <variable type="" id="@}=#ov0P;#,}yp,|;kwE">res</variable>
+                <variable type="" id="I+YIO{ptC{)cw?3XOas~">valeur maximum</variable>
+                <variable type="" id="s{I#Vt6(e6EC8ihG2kAT">i</variable>
+                <variable type="" id="xMQbvDoQj@22oypoCf%1">valeur courante</variable>
+              </variables>
+              <block type="procedures_defreturn" id="TFwY4J7O]mb`tcbP2th)" x="-38" y="13">
+                <field name="NAME">tirer une conclusion de la couche de sortie</field>
+                <comment pinned="false" h="80" w="160">Describe this function...</comment>
+                <statement name="STACK">
+                  <block type="variables_set" id="h.U5#LaX%KeBtI/GwBfA">
+                    <field name="VAR" id="@}=#ov0P;#,}yp,|;kwE" variabletype="">res</field>
+                    <value name="VALUE">
+                      <shadow type="math_number" id="Yt!:QWpX_v[#$?@VnO.Q">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="N4so|$VLF#yQZX82z2S#">
+                        <field name="VAR" id="I+YIO{ptC{)cw?3XOas~" variabletype="">valeur maximum</field>
+                        <value name="VALUE">
+                          <block type="math_number" id="@OHBCNJQgErYCDJb?+!~">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_for" id="oH^IFwo2j4.wVMrote/b">
+                            <field name="VAR" id="s{I#Vt6(e6EC8ihG2kAT" variabletype="">i</field>
+                            <value name="FROM">
+                              <shadow type="math_number" id="Ds#n;{V@x*E}w!n|waQF">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <value name="TO">
+                              <shadow type="math_number" id="0X/|;[`?Pu0wyN2YsP]=">
+                                <field name="NUM">3</field>
+                              </shadow>
+                            </value>
+                            <value name="BY">
+                              <shadow type="math_number" id="v{ndMGb%5w1eHn@UBEvW">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <statement name="DO">
+                              <block type="variables_set" id="Sziy?zXEnZ,m2Y}6tA|V">
+                                <field name="VAR" id="xMQbvDoQj@22oypoCf%1" variabletype="">valeur courante</field>
+                                <value name="VALUE">
+                                  <block type="get_neuron_last_layer" id="FNdZfwhXlSrF6~+{5zb]">
+                                    <value name="neuron_i">
+                                      <block type="variables_get" id="Hp_v!%gvNEg2p?^6]n:a">
+                                        <field name="VAR" id="s{I#Vt6(e6EC8ihG2kAT" variabletype="">i</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="RETURN">
+                  <block type="variables_get" id="?2pY,sU6B|-[DAAESgDU">
+                    <field name="VAR" id="@}=#ov0P;#,}yp,|;kwE" variabletype="">res</field>
+                  </block>
+                </value>
+              </block>
+              <block type="main" id="vb4+%|#r~uZC!:NBU?pD" x="-38" y="263">
+                <next>
+                  <block type="custom_print" id="qPy:{G}}5jYzHphj*n/$">
+                    <value name="value">
+                      <block type="procedures_callreturn" id="sziht/d#%3sL.BnCfIL[">
+                        <mutation name="tirer une conclusion de la couche de sortie"></mutation>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </xml>
+        type: blockly
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
