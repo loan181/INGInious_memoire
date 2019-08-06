@@ -1,0 +1,29 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <desc>Created with Raphaël 2.2.0</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="0" x="0"/>
+  <rect id="svg_2" stroke="#aaaaaa" fill="#000000" height="40" width="40" y="40" x="0"/>
+  <rect id="svg_3" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="80" x="0"/>
+  <rect id="svg_4" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="0" x="40"/>
+  <rect id="svg_5" stroke="#aaaaaa" fill="#000000" height="40" width="40" y="40" x="40"/>
+  <rect id="svg_6" stroke="#aaaaaa" fill="#000000" height="40" width="40" y="80" x="40"/>
+  <rect id="svg_7" stroke="#aaaaaa" fill="#000000" height="40" width="40" y="0" x="80"/>
+  <rect id="svg_8" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="40" x="80"/>
+  <rect id="svg_9" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="80" x="80"/>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_10" y="11.921274" x="31.003606" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">1</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_11" y="11.916466" x="70.622596" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">2</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_12" y="11.919471" x="111.151442" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">3</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_13" y="51.605168" x="30.999399" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">4</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_14" y="51.60637" x="70.61899" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">5</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_15" y="51.605769" x="111.15625" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">6</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_16" y="91.684495" x="30.996394" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">7</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_17" y="91.68089" x="111.153846" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">9</text>
+  <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="14" id="svg_18" y="91.679086" x="70.615986" stroke-width="0" stroke="#ffffff" fill="#aaaaaa">8</text>
+ </g>
+</svg>

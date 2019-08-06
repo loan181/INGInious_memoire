@@ -2,7 +2,16 @@ accessible: true
 author: Loan
 categories: []
 context: |-
-    | Nous avons maintenant tout les outils en mains pour pouvoir effectuer la configuration de la valeurs des neurones d'entrées.
+    | Pour bien configurer les valeurs des neurones de la couche d'entrée nous aurons besoin de savoir la valeur des pixels/case de l'image/grille.
+    | Pour cela nous aurons le bloc ``obtenir la valeur du pixel n°X de l'image I``, avec:
+    | - ``X`` : Une valeur entière entre 1 et <le nombre de pixel de l'image> (donc 3x3 = 9 dans notre cas).
+    | - ``I`` : L'image/grille à partir de laquelle lire le ``X`` ème pixel. Les pixels se lisent dans le sens de la lecture (de gauche à droite et de haut en bas)
+
+    .. image:: blocklyHandleInput/grid.svg
+
+    | Ce bloc *renvoie* une valeur, cette dernière sera ``0`` si le pixel est blanc et ``1`` s'il est noir.
+    |
+    | Avec ce bloc, nous avons maintenant tout les outils en mains pour pouvoir effectuer la configuration de la valeurs des neurones d'entrées.
     |
     | **Objectif**
     | Donner la valeur des neurones de la couche d'entrée à partir de celle de la grille.
@@ -12,44 +21,14 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    time: '30'
-    memory: '100'
     output: '2'
+    memory: '100'
+    time: '30'
 name: 2. Blockly gérer l'entrée
 network_grading: false
-order: 3
+order: 4
 problems:
     blocklyRes:
-        options:
-            grid:
-                colour: '#ccc'
-                length: 3
-                snap: true
-                spacing: 20
-            css: true
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
-            zoom:
-                scaleSpeed: 1.2
-                maxScale: 3.0
-                minScale: 0.3
-                controls: true
-                startScale: 1.0
-                wheel: false
-            scrollbars: true
-            visual:
-                position: left
-            speed: '60'
-            oneBasedIndex: true
-            toolboxPosition: start
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        type: blockly
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN Input" colour="#5ba5a5">
@@ -91,6 +70,34 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
+        options:
+            scrollbars: true
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+                snap: true
+            visual:
+                position: left
+            toolboxPosition: start
+            zoom:
+                minScale: 0.3
+                startScale: 1.0
+                controls: true
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                wheel: false
+            maxBlocks: Infinity
+            oneBasedIndex: true
+            css: true
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
+        header: ''
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -145,8 +152,10 @@ problems:
                 </value>
               </block>
             </xml>
-        name: ''
-        header: ''
+        type: blockly
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
 stored_submissions: 0
 submission_limit:
     amount: -1

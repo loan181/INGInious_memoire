@@ -459,7 +459,7 @@ var initInterpreterApi = function(interpreter, scope) {
     );
 
     wrapper = function(neuronInd) {
-        return nnNeurons[2][neuronInd-1].data(neuronRaphaelJSValueName);
+        return nnNeurons[nnNeurons.length-1][neuronInd-1].data(neuronRaphaelJSValueName);
     };
     interpreter.setProperty(scope, 'getNeuronOutputLayer',
         interpreter.createNativeFunction(wrapper)
