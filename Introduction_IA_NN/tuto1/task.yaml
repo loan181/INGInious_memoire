@@ -2,10 +2,34 @@ accessible: true
 author: Loan
 categories: []
 context: |-
-    | Bienvenue dans cette première tache Inginious destinée à l'implémentation d'un réseau de neurones.
+    Bienvenue dans cette première tache Inginious destinée à l'implémentation d'un réseau de neurones.
+
+    --------------
+    Réseau utilisé
+    --------------
+
     | De la même manière que dans les exercices préparatoires, notre réseau tentera de reconnaitre une ligne verticale d'une ligne horizontale sur une image/grille de 3x3 en noir et blanc.
+    | Celui ci est composé de 3 couches au total.
+    | - La couche d'entrée comporte 9 neurones, correspondant au 9 pixels de l'image/grille donné en entrées
+    | - La couche cachée (il n'y en a qu'une seule dans ce réseau), comporte 3 neurones
+    | - La couche de sortie comporte 2 neurones, le premier détermine la conclusion **vertical** et le second **horizontal**
     |
-    | Tu trouvera çi-bas le code *Blockly* permettant de correctement configurer le réseau de neurone, dans cette première partie le code est fonctionnel et complet.
+    | Ce réseau à déjà été entrainé au préalable par *apprentissage supervisé*, la valeur des matrices des poids sont les suivantes :
+
+    $$
+    \\text{Entrée - Cachée}
+    \\begin{pmatrix}6 & 6 & 0 \\\\ -4 & 8 & -1 \\\\ 6 & 7 & 9 \\\\ 8 & -4 & -3 \\\\ -5 & -5 & -1 \\\\ 8 & -4 & 7 \\\\ 6 & 4 & 1 \\\\ -4 & 9 & -1 \\\\ 7 & 7 & 8 \\end{pmatrix}
+    \\quad
+    \\text{Cachée - Sortie}
+    \\begin{pmatrix}-5 & 5 \\\\ 7 & -7 \\\\ -4 & 4 \\end{pmatrix}
+    $$
+
+    --------
+    Blockly
+    --------
+
+    | Tu trouvera çi-bas le code *Blockly* permettant de correctement configurer le réseau de neurone.
+    | Dans cette première partie le code est fonctionnel et complet.
     |
     | Chacune des 3 étapes de la classification d'un réseau neuronal consiste en 1 bloc:
     |  1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
@@ -15,7 +39,7 @@ context: |-
     |  3. Tirer une conclusion de la couche de sortie
     | |block3|
     |
-    | Dans les parties qui vont suivre je vais petit à petit retirer ces blocs et tu devra implémenter leur logique toi même. Pour cela des nouveaux blocs te seront à chaque fois introduit pour accomplir ton objectif.
+    | Dans les parties qui vont suivre je vais retirer ces blocs et tu devra implémenter leur logique toi même. Pour cela des nouveaux blocs te seront à chaque fois introduit pour accomplir ton objectif.
     |
     | **Objectif**
     | Le code est déja fonctionel.
@@ -30,38 +54,40 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    memory: '100'
-    time: '30'
     output: '2'
+    time: '30'
+    memory: '100'
 name: 1. Introduction du code Blockly
 network_grading: false
 order: 1
 problems:
     tuto1:
-        type: blockly
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - ../$common/defaultInit.js
         options:
-            zoom:
-                startScale: 1.0
-                maxScale: 3.0
-                controls: true
-                scaleSpeed: 1.2
-                minScale: 0.3
-                wheel: false
+            maxBlocks: Infinity
             grid:
+                snap: true
+                spacing: 20
                 length: 3
                 colour: '#ccc'
-                spacing: 20
-                snap: true
-            maxBlocks: Infinity
+            zoom:
+                maxScale: 3.0
+                minScale: 0.3
+                scaleSpeed: 1.2
+                startScale: 1.0
+                controls: true
+                wheel: false
             visual:
                 position: left
-            css: true
-            scrollbars: true
-            toolboxPosition: start
-            speed: '60'
-            media: /plugins/blockly/static/blockly/media/
             oneBasedIndex: true
-        name: ''
+            toolboxPosition: start
+            css: true
+            speed: '60'
+            scrollbars: true
+            media: /plugins/blockly/static/blockly/media/
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN" colour="#a5935b">
@@ -89,6 +115,8 @@ problems:
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
+        name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -170,10 +198,6 @@ problems:
                 </next>
               </block>
             </xml>
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - ../$common/defaultInit.js
         header: ''
 stored_submissions: 0
 submission_limit:
