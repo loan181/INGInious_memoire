@@ -7,9 +7,7 @@ nnNeurons = [];
 for (let i = 0; i < networkSize.length; i++) {
     nnNeurons.push([]);
     for (let j = 0; j < networkSize[i]; j++) {
-        let obj = $(new Object());
-        obj.data(neuronRaphaelJSValueName, 0); // Oblige to use .data() as it is the way values are read
-        nnNeurons[i].push(obj)
+        nnNeurons[i].push(0)
     }
 }
 

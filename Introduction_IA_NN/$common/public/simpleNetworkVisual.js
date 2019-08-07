@@ -167,62 +167,6 @@ function createNeuralNetwork(nnNeurons) {
     return paper
 }
 
-function addAnimationSpeedWidget() {
-    let target = document.getElementById("blocklyButtons");
-
-    let widget = document.createElement("input");
-    widget.type = "range";
-    widget.min = "0";
-    widget.max = "80";
-    widget.step = "5";
-
-    widget.oninput = function() {
-        blocklyTask.options.speed = this.value;
-    };
-    target.appendChild(widget);
-}
-
-function addRunButton() {
-    let target = document.getElementById("blocklyButtons");
-
-    let widget = document.createElement("button");
-    widget.id = "playDirectlyButton";
-    widget.type = "button";
-    widget.className = "btn btn-primary";
-    widget.style = "border-radius: 10px; margin-left: 5px;";
-    widget.innerHTML = '<span class="fa fa-fw fa-forward"></span> Run directly code';
-
-    widget.onclick = function() {
-        // See : https://developers.google.com/blockly/guides/app-integration/running-javascript
-        Blockly.JavaScript.STATEMENT_PREFIX = ""; // Delete occurences of highlights
-        window.LoopTrap = 1000;
-        Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
-        let code = Blockly.JavaScript.workspaceToCode();
-        try {
-            eval(code);
-        } catch (e) {
-            alert(e);
-            console.warn(e);
-        }
-    };
-
-    target.insertBefore(widget, target.childNodes[2]);
-}
-
-function matrixDot (A, B) {
-    var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
-
-    return result.map((row, i) => {
-        return row.map((val, j) => {
-            return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
-        })
-    })
-}
-
-function sigmoide(x) {
-    return 1/(1+Math.exp(-x));
-}
-
 function createConclusionsBarNeuralNetwork() {
     let concluDiv = document.createElement("div");
     concluDiv.id = "conclusionsDiv";
@@ -279,6 +223,68 @@ function createConclusion() {
 }
 
 
+function addAnimationSpeedWidget() {
+    let target = document.getElementById("blocklyButtons");
+
+    let widget = document.createElement("input");
+    widget.type = "range";
+    widget.min = "0";
+    widget.max = "80";
+    widget.step = "5";
+
+    widget.oninput = function() {
+        blocklyTask.options.speed = this.value;
+    };
+    target.appendChild(widget);
+}
+
+function addRunButton() {
+    let target = document.getElementById("blocklyButtons");
+
+    let widget = document.createElement("button");
+    widget.id = "playDirectlyButton";
+    widget.type = "button";
+    widget.className = "btn btn-primary";
+    widget.style = "border-radius: 10px; margin-left: 5px;";
+    widget.innerHTML = '<span class="fa fa-fw fa-forward"></span> Run directly code';
+
+    widget.onclick = function() {
+        // See : https://developers.google.com/blockly/guides/app-integration/running-javascript
+        Blockly.JavaScript.STATEMENT_PREFIX = ""; // Delete occurences of highlights
+        window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        let code = Blockly.JavaScript.workspaceToCode();
+        try {
+            eval(code);
+        } catch (e) {
+            alert(e);
+            console.warn(e);
+        }
+    };
+
+    // We put it at the right of the run code button
+    target.insertBefore(widget, target.childNodes[6]); // (6 because there is the play, stop and restart that are hidden)
+}
+
+
+
+// External functions
+
+function matrixDot (A, B) {
+    var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
+
+    return result.map((row, i) => {
+        return row.map((val, j) => {
+            return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
+        })
+    })
+}
+
+function sigmoide(x) {
+    return 1/(1+Math.exp(-x));
+}
+
+
 function getGrid() {
     return grid;
 }
@@ -289,6 +295,31 @@ function getNeuronsValues(layers_ind) {
         ret.push(nnNeurons[layers_ind][i].data(neuronRaphaelJSValueName));
     }
     return ret;
+}
+
+function getNeuronLayer(layerInd, neuronInd) {
+    let value;
+    let item = nnNeurons[layerInd][neuronInd];
+    try {
+        // If we use RaphaelJs Interface
+        value = item.data(neuronRaphaelJSValueName);
+    } catch (e) {
+        // If we store the values directly inside the table
+        value = item;
+    }
+    return value;
+}
+
+function getNeuronOutputLayer(neuronInd) {
+    return getNeuronLayer(nnNeurons.length-1, neuronInd-1);
+}
+
+function getLayersNumber() {
+    return nnNeurons.length;
+}
+
+function getNeuronNumberOfLayer(layer_i) {
+    return nnNeurons[layer_i-1].length
 }
 
 let Classify = {};
@@ -486,21 +517,22 @@ var initInterpreterApi = function(interpreter, scope) {
     );
 
     wrapper = function(neuronInd) {
-        return nnNeurons[nnNeurons.length-1][neuronInd-1].data(neuronRaphaelJSValueName);
+        return getNeuronOutputLayer(neuronInd);
+
     };
     interpreter.setProperty(scope, 'getNeuronOutputLayer',
         interpreter.createNativeFunction(wrapper)
     );
 
     wrapper = function() {
-        return nnNeurons.length;
+        return getLayersNumber();
     };
     interpreter.setProperty(scope, 'getLayersNumber',
         interpreter.createNativeFunction(wrapper)
     );
 
     wrapper = function(layer_i) {
-        return nnNeurons[layer_i-1].length;
+        return getNeuronNumberOfLayer(layer_i);
     };
     interpreter.setProperty(scope, 'getNeuronNumberOfLayer',
         interpreter.createNativeFunction(wrapper)
