@@ -182,6 +182,33 @@ function addAnimationSpeedWidget() {
     target.appendChild(widget);
 }
 
+function addRunButton() {
+    let target = document.getElementById("blocklyButtons");
+
+    let widget = document.createElement("button");
+    widget.id = "playDirectlyButton";
+    widget.type = "button";
+    widget.className = "btn btn-primary";
+    widget.style = "border-radius: 10px; margin-left: 5px;";
+    widget.innerHTML = '<span class="fa fa-fw fa-forward"></span> Run directly code';
+
+    widget.onclick = function() {
+        // See : https://developers.google.com/blockly/guides/app-integration/running-javascript
+        Blockly.JavaScript.STATEMENT_PREFIX = ""; // Delete occurences of highlights
+        window.LoopTrap = 1000;
+        Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
+        let code = Blockly.JavaScript.workspaceToCode();
+        try {
+            eval(code);
+        } catch (e) {
+            alert(e);
+            console.warn(e);
+        }
+    };
+
+    target.insertBefore(widget, target.childNodes[2]);
+}
+
 function matrixDot (A, B) {
     var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
 
@@ -359,7 +386,7 @@ Animation.conclusionText = function (conclusionText) {
 var initInterpreterApi = function(interpreter, scope) {
     var wrapper;
     wrapper = function() {
-        return grid;
+        return getGrid();
     };
     interpreter.setProperty(scope, 'getGrid',
         interpreter.createNativeFunction(wrapper)
@@ -462,6 +489,20 @@ var initInterpreterApi = function(interpreter, scope) {
         return nnNeurons[nnNeurons.length-1][neuronInd-1].data(neuronRaphaelJSValueName);
     };
     interpreter.setProperty(scope, 'getNeuronOutputLayer',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function() {
+        return nnNeurons.length;
+    };
+    interpreter.setProperty(scope, 'getLayersNumber',
+        interpreter.createNativeFunction(wrapper)
+    );
+
+    wrapper = function(layer_i) {
+        return nnNeurons[layer_i-1].length;
+    };
+    interpreter.setProperty(scope, 'getNeuronNumberOfLayer',
         interpreter.createNativeFunction(wrapper)
     );
 
