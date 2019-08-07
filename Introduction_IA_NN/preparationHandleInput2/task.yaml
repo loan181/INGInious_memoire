@@ -1,7 +1,8 @@
 accessible: false
 author: ''
 categories: []
-context: |
+context: |4
+
     | Pour bien configurer les valeurs des neurones de la couche d'entrée nous aurons besoin de savoir la valeur des pixels/case de l'image/grille.
     | Pour cela nous aurons le bloc ``obtenir la valeur du pixel n°X de l'image I``, avec:
 
@@ -13,6 +14,10 @@ context: |
     | **Objectif**
     | Fixer pour chaque variable sa valeur correspondante en la lisant sur la grille.
 
+    ===================
+    **EXERCICE ANNULE**
+    ===================
+
     .. image:: preparationHandleInput2/grid.svg
 environment: mcq
 evaluate: best
@@ -20,35 +25,55 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    memory: '100'
-    time: '30'
     output: '2'
+    time: '30'
+    memory: '100'
 name: Preparation gestion de la couche d'entrée 2
 network_grading: false
 order: 3
 problems:
     blockly:
-        type: blockly
         options:
-            speed: '60'
+            toolboxPosition: start
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                snap: true
+                length: 3
             zoom:
+                minScale: 0.3
+                maxScale: 3.0
                 controls: true
                 startScale: 1.0
                 scaleSpeed: 1.2
-                minScale: 0.3
-                maxScale: 3.0
                 wheel: false
-            grid:
-                spacing: 20
-                length: 3
-                snap: true
-                colour: '#ccc'
+            speed: '60'
+            maxBlocks: Infinity
             scrollbars: true
-            toolboxPosition: start
             css: true
             oneBasedIndex: true
-            maxBlocks: Infinity
             media: /plugins/blockly/static/blockly/media/
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Input">
+                <block type="nn_picture_get_pixel"></block>
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="grid_special"></block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
+        files:
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        header: ''
+        name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -105,26 +130,6 @@ problems:
                   </block>
                 </next>
               </block>
-            </xml>
-        header: ''
-        name: ''
-        files:
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Input">
-                <block type="nn_picture_get_pixel"></block>
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="grid_special"></block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
             </xml>
 stored_submissions: 0
 submission_limit:

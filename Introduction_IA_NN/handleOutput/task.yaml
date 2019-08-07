@@ -18,43 +18,69 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    memory: '100'
     output: '2'
     time: '30'
+    memory: '100'
 name: 4. Tirer une conclusion
 network_grading: false
 order: 8
 problems:
     blockly:
+        header: ''
+        options:
+            toolboxPosition: start
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                snap: true
+                length: 3
+            zoom:
+                minScale: 0.3
+                maxScale: 3.0
+                controls: true
+                startScale: 1.0
+                scaleSpeed: 1.2
+                wheel: false
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
+            visual:
+                position: left
+            css: true
+            oneBasedIndex: true
+            maxBlocks: Infinity
+            scrollbars: true
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Output">
+                <block type="get_neuron_last_layer"></block>
+                <block type="nn_res_hor"></block>
+                <block type="nn_res_ver"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+              <category name="Logic" colour="#5C81A6">
+                <block type="controls_if"></block>
+                <block type="logic_compare">
+                  <field name="OP">EQ</field>
+                </block>
+                <block type="logic_ternary"></block>
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - init.js
-        options:
-            css: true
-            grid:
-                colour: '#ccc'
-                snap: true
-                length: 3
-                spacing: 20
-            zoom:
-                scaleSpeed: 1.2
-                maxScale: 3.0
-                minScale: 0.3
-                controls: true
-                startScale: 1.0
-                wheel: false
-            toolboxPosition: start
-            oneBasedIndex: true
-            visual:
-                position: left
-            scrollbars: true
-            speed: '60'
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
+        type: blockly
         name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
@@ -109,39 +135,17 @@ problems:
                   </block>
                 </value>
               </block>
-              <block type="custom_print" id="YIwJNyQt9t@hTIp2nduQ" x="12" y="338">
-                <value name="value">
-                  <block type="procedures_callreturn" id="(8@~U1I_waT9!l~R4.I%">
-                    <mutation name="tirer une conclusion de la couche de sortie"></mutation>
+              <block type="main" id="?e8d}nNm24_w]LTo~~R2" x="38" y="13">
+                <next>
+                  <block type="custom_print" id="YIwJNyQt9t@hTIp2nduQ" x="12" y="338">
+                    <value name="value">
+                      <block type="procedures_callreturn" id="(8@~U1I_waT9!l~R4.I%">
+                        <mutation name="tirer une conclusion de la couche de sortie"></mutation>
+                      </block>
+                    </value>
                   </block>
-                </value>
+                </next>
               </block>
-            </xml>
-        type: blockly
-        header: ''
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Output">
-                <block type="get_neuron_last_layer"></block>
-                <block type="nn_res_hor"></block>
-                <block type="nn_res_ver"></block>
-              </category>
-              <category name="NN Debug">
-                <block type="custom_print"></block>
-              </category>
-              <sep></sep>
-              <category name="Logic" colour="#5C81A6">
-                <block type="controls_if"></block>
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                </block>
-                <block type="logic_ternary"></block>
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-              </category>
-              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
             </xml>
 stored_submissions: 0
 submission_limit:
