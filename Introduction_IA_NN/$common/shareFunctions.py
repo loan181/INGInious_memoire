@@ -68,6 +68,14 @@ class NeuralNetwork:
         else:
             return "horizontal"
 
+    def concludeIndex(self):
+        lastLayer = self.nnValues[len(self)-1]
+        indMax = 0
+        for i in range(1, len(lastLayer)):
+            if lastLayer[i] > lastLayer[indMax]:
+                indMax = i
+        return indMax
+
     def matmult(self, a, b):
         zip_b = list(zip(*b))
         return [[sum(ele_a * ele_b for ele_a, ele_b in zip(row_a, col_b))
@@ -109,6 +117,10 @@ def conclude():
     global globalNN
     return globalNN.conclude()
 
+def getLayerNeuronNumber(layerN):
+    global globalNN
+    return len(globalNN.nnValues[layerN-1])
+
 def getPixelValue(pixelI, img):
     flat_list = []
     for sublist in img:
@@ -118,6 +130,8 @@ def getPixelValue(pixelI, img):
 
 def choose01():
     return round(random())
+
+
 
 # Added so it does not crash
 def getGrid():
