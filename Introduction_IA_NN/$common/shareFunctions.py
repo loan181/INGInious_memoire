@@ -54,6 +54,7 @@ class NeuralNetwork:
         except IndexError as e:
             raise IndexError("Le neurone {} de la couche {} n'existe pas".format(neuronInd+1, layerInd+1))
 
+
     def getNeuronValue(self, layerInd, neuronInd):
         try:
             return self.nnValues[layerInd][neuronInd]
@@ -61,7 +62,7 @@ class NeuralNetwork:
             raise IndexError("Le neurone {} de la couche {} n'existe pas".format(neuronInd+1, layerInd+1))
 
     def conclude(self):
-        verticalValue, horizontalValue = self.nnValues[2]
+        verticalValue, horizontalValue = self.nnValues[len(self)-1]
         if verticalValue > horizontalValue:
             return "vertical"
         else:
@@ -75,6 +76,9 @@ class NeuralNetwork:
     def sigmoide(self, x):
         return 1 / (1 + exp(-x))
 
+    def __len__(self):
+        return len(self.nnValues)
+
 
 globalNN = NeuralNetwork()
 
@@ -83,6 +87,13 @@ def setNeuronValue(neuronN, layerN, value):
     global globalNN
     globalNN.setNeuronValue(layerN-1, neuronN-1, value)
 
+def getNeuronValue(neuronN, layerN):
+    global globalNN
+    return globalNN.getNeuronValue(layerN-1, neuronN-1)
+
+def getNeuronValueLastLayer(neuronN):
+    global globalNN
+    return getNeuronValue(neuronN, len(globalNN))
 
 def handleInputLayer(image):
     global globalNN
