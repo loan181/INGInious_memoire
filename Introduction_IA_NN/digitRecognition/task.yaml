@@ -22,13 +22,47 @@ groups: false
 input_random: '0'
 limits:
     output: '2'
-    memory: '100'
     time: '30'
+    memory: '100'
 name: BONUS Reconnaissance de chiffre
 network_grading: false
 order: 10
 problems:
     blocklyRes:
+        options:
+            grid:
+                colour: '#ccc'
+                length: 3
+                spacing: 20
+                snap: true
+            media: /plugins/blockly/static/blockly/media/
+            zoom:
+                maxScale: 3.0
+                controls: true
+                scaleSpeed: 1.2
+                startScale: 1.0
+                minScale: 0.3
+                wheel: false
+            oneBasedIndex: true
+            toolboxPosition: start
+            speed: '60'
+            css: true
+            visual:
+                position: left
+            maxBlocks: Infinity
+            scrollbars: true
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        name: ''
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - addElements.js
+        - NNDatas.js
+        - NN.js
+        - init.js
+        header: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN">
@@ -66,7 +100,7 @@ problems:
               </category>
               <category name="Loops" colour="#5CA65C">
                 <block type="controls_for">
-                  <field name="VAR" id=")DsZU[v6RUCRk(u$B}1s" variabletype="">i</field>
+                  <field name="VAR" id="uJ7=PLESZ88d/=Oqt*zm" variabletype="">i</field>
                   <value name="FROM">
                     <shadow type="math_number">
                       <field name="NUM">1</field>
@@ -106,39 +140,7 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - addElements.js
-        - NNDatas.js
-        - NN.js
-        options:
-            grid:
-                colour: '#ccc'
-                spacing: 20
-                length: 3
-                snap: true
-            visual:
-                position: left
-            toolboxPosition: start
-            zoom:
-                minScale: 0.3
-                maxScale: 3.0
-                startScale: 1.0
-                controls: true
-                scaleSpeed: 1.2
-                wheel: false
-            maxBlocks: Infinity
-            css: true
-            media: /plugins/blockly/static/blockly/media/
-            speed: '60'
-            scrollbars: true
-            oneBasedIndex: true
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        header: ''
-        name: ''
+        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -273,7 +275,6 @@ problems:
                 </next>
               </block>
             </xml>
-        type: blockly
 stored_submissions: 0
 submission_limit:
     amount: -1

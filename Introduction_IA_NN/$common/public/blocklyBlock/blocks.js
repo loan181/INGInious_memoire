@@ -1,3 +1,10 @@
+let colors = {};
+colors.NNFunctions = 285;
+colors.NN = 180;
+colors.NNDebug = 120;
+
+
+
 Blockly.Blocks['custom_print'] = {
   init: function() {
     this.appendValueInput("value")
@@ -5,7 +12,7 @@ Blockly.Blocks['custom_print'] = {
         .appendField("afficher");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(135);
+    this.setColour(colors.NNDebug);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -16,7 +23,7 @@ Blockly.Blocks['main'] = {
     this.appendDummyInput()
         .appendField("quand l'exécution commence");
     this.setNextStatement(true, null);
-    this.setColour(105);
+    this.setColour(colors.NNDebug);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -30,7 +37,7 @@ Blockly.Blocks['nn_handle_input'] = {
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(285);
+    this.setColour(colors.NNFunctions);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -44,7 +51,7 @@ Blockly.Blocks['nn_handle_layer'] = {
     this.appendDummyInput();
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(285);
+    this.setColour(colors.NNFunctions);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -55,7 +62,7 @@ Blockly.Blocks['nn_conclusion'] = {
     this.appendDummyInput()
         .appendField("tirer une conclusion de la couche de sortie");
     this.setOutput(true, null);
-    this.setColour(285);
+    this.setColour(colors.NNFunctions);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -446,7 +453,7 @@ Blockly.Blocks['nn_layer_number'] = {
     this.appendDummyInput()
         .appendField("nombre de couches du réseau");
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(colors.NN);
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -461,7 +468,7 @@ Blockly.Blocks['nn_layer_neuron_number'] = {
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField("la couche");
     this.setOutput(true, null);
-    this.setColour(230);
+    this.setColour(colors.NN);
  this.setTooltip("");
  this.setHelpUrl("");
   }

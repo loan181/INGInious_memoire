@@ -1,0 +1,8 @@
+#!/bin/python3
+
+import sys
+sys.path.insert(1, '/course/common')
+from defaultRun import run
+
+if __name__ == '__main__':
+    run()

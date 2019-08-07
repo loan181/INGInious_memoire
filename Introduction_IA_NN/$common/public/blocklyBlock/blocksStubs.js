@@ -196,18 +196,14 @@ Blockly.JavaScript['nn_matrix_create2'] = function(block) {
 };
 
 Blockly.JavaScript['nn_layer_number'] = function(block) {
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var code = 'getLayersNumber()';
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['nn_layer_neuron_number'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var code = `getNeuronNumberOfLayer(${value_name})`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 ///// STUB Python /////
@@ -416,10 +412,8 @@ Blockly.Python['nn_matrix_create2'] = function(block) {
 };
 
 Blockly.Python['nn_layer_number'] = function(block) {
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = 'getLayersNumber()';
+  return [code, Blockly.Python.ORDER_ATOLIC];
 };
 
 Blockly.Python['nn_layer_neuron_number'] = function(block) {
