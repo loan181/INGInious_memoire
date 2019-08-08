@@ -342,9 +342,9 @@ function matrixDot (A, B) {
     return result.map((row, i) => {
         return row.map((val, j) => {
             let defaultValue = 0;
-            // if (chosenBias != null) {
-            //     defaultValue = chosenBias[j];
-            // }
+            if (chosenBias != null) {
+                defaultValue = chosenBias[j];
+            }
             return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]), defaultValue)
         })
     })
