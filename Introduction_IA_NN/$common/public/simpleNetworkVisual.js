@@ -252,7 +252,7 @@ function addRunButton() {
     widget.onclick = function() {
         // See : https://developers.google.com/blockly/guides/app-integration/running-javascript
         Blockly.JavaScript.STATEMENT_PREFIX = ""; // Delete occurences of highlights
-        window.LoopTrap = 1000;
+        window.LoopTrap = 5000;
         Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if(--window.LoopTrap == 0) throw "Infinite loop.";\n';
         let code = Blockly.JavaScript.workspaceToCode();
         try {
