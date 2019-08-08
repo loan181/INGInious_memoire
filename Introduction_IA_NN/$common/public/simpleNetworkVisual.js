@@ -546,3 +546,41 @@ Utilities.download =  function (data, filename, type) {
         }, 0);
     }
 };
+
+Utilities.exportProject = function() {
+    let xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+    return Blockly.Xml.domToText(xml);
+};
+
+Utilities.importProject = function(xml_text) {
+    let xml = Blockly.Xml.textToDom(xml_text);
+    Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
+};
+
+ Utilities.downloadProject = function() {
+    Utilities.download(Utilities.exportProject(), "blocklyProject.xml", ".xml")
+};
+
+ Utilities.loadProject = function() {
+     let input = document.createElement('input');
+     input.type = 'file';
+
+     input.onchange = e => {
+
+         // getting a hold of the file reference
+         let file = e.target.files[0];
+
+         // setting up the reader
+         let reader = new FileReader();
+         reader.readAsText(file,'UTF-8');
+
+         // here we tell the reader what to do when it's done reading...
+         reader.onload = readerEvent => {
+             let content = readerEvent.target.result; // this is the content!
+             Utilities.importProject(content);
+         }
+
+     };
+
+     input.click();
+};
