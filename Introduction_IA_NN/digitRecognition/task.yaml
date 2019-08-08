@@ -1,7 +1,7 @@
 accessible: true
 author: Loan
 categories: []
-context: |4-
+context: |4
      | Le réseau que nous utilisions jusqu'à présent permet de distinguer une ligne verticale d'une ligne horizontale dans une image en noir et blanc de taille 3 x 3.
      | Ici on va utiliser un réseau de neurone différent, celui-çi sera capable de reconnaitre les dix chiffres arabes à partir d'une image en nuance de gris de 28 x 28.
      | Comme le réseau précédent, il ne possède qu'une seule couche cachée, cependant le nombre de neurones est bien plus élevé ! La première couche est composée de 784 neurones (28 x 28), la couche cachée de 200 neurones et la couche de sortie de 10 neurones (les 10 chiffres qu'il peut reconnaitre).
@@ -30,31 +30,30 @@ order: 10
 problems:
     blocklyRes:
         options:
-            grid:
-                colour: '#ccc'
-                length: 3
-                spacing: 20
-                snap: true
-            media: /plugins/blockly/static/blockly/media/
+            css: true
             zoom:
+                startScale: 1.0
                 maxScale: 3.0
                 controls: true
-                scaleSpeed: 1.2
-                startScale: 1.0
                 minScale: 0.3
+                scaleSpeed: 1.2
                 wheel: false
-            oneBasedIndex: true
-            toolboxPosition: start
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                length: 3
+                snap: true
+            scrollbars: true
+            media: /plugins/blockly/static/blockly/media/
+            maxBlocks: Infinity
             speed: '60'
-            css: true
+            toolboxPosition: start
             visual:
                 position: left
-            maxBlocks: Infinity
-            scrollbars: true
+            oneBasedIndex: true
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
-        name: ''
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
@@ -62,84 +61,7 @@ problems:
         - NNDatas.js
         - NN.js
         - init.js
-        header: ''
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN">
-                <block type="nnimgcustom"></block>
-                <block type="nn_layer_number"></block>
-                <block type="nn_layer_neuron_number"></block>
-              </category>
-              <category name="NN Debug">
-                <block type="main"></block>
-                <block type="custom_print"></block>
-              </category>
-              <category name="NN Input">
-                <block type="nn_input_neuron_value"></block>
-                <block type="nn_picture_get_pixel"></block>
-              </category>
-              <category name="NN Couches">
-                <block type="nn_get_neuron_layer"></block>
-                <block type="nn_get_weight_layer"></block>
-                <block type="nn_matrix_prod"></block>
-                <block type="nn_get_matrix"></block>
-                <block type="nn_get_width"></block>
-                <block type="nn_get_height"></block>
-                <block type="nn_neuron_set_value_layer"></block>
-                <block type="nn_sigmoid"></block>
-              </category>
-              <category name="NN Output">
-                <block type="get_neuron_last_layer"></block>
-              </category>
-              <sep></sep>
-              <category name="Logic" colour="#5C81A6">
-                <block type="controls_if"></block>
-                <block type="logic_compare">
-                  <field name="OP">EQ</field>
-                </block>
-              </category>
-              <category name="Loops" colour="#5CA65C">
-                <block type="controls_for">
-                  <field name="VAR" id="uJ7=PLESZ88d/=Oqt*zm" variabletype="">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <category name="Math" colour="#5C68A6">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="math_arithmetic">
-                  <field name="OP">ADD</field>
-                  <value name="A">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="B">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
-            </xml>
+        name: ''
         type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
@@ -275,6 +197,84 @@ problems:
                 </next>
               </block>
             </xml>
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN">
+                <block type="nnimgcustom"></block>
+                <block type="nn_layer_number"></block>
+                <block type="nn_layer_neuron_number"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <category name="NN Input">
+                <block type="nn_input_neuron_value"></block>
+                <block type="nn_picture_get_pixel"></block>
+              </category>
+              <category name="NN Couches">
+                <block type="nn_get_neuron_layer"></block>
+                <block type="nn_get_weight_layer"></block>
+                <block type="nn_matrix_prod"></block>
+                <block type="nn_get_matrix"></block>
+                <block type="nn_get_width"></block>
+                <block type="nn_get_height"></block>
+                <block type="nn_neuron_set_value_layer"></block>
+                <block type="nn_sigmoid"></block>
+              </category>
+              <category name="NN Output">
+                <block type="get_neuron_last_layer"></block>
+              </category>
+              <sep></sep>
+              <category name="Logic" colour="#5C81A6">
+                <block type="controls_if"></block>
+                <block type="logic_compare">
+                  <field name="OP">EQ</field>
+                </block>
+              </category>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="uJ7=PLESZ88d/=Oqt*zm" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
+        header: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

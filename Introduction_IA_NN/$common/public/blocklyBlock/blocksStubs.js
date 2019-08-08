@@ -1,7 +1,7 @@
 // STUB JS
 Blockly.JavaScript['custom_print'] = function(block) {
   var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
-  return `console.log(${value_value});\nalert(${value_value});\n`;
+  return `customPrint(${value_value});\n`;
 };
 
 Blockly.JavaScript['main'] = function(block) {

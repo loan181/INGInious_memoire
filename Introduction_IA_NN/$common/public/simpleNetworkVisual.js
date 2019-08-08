@@ -271,6 +271,10 @@ function addRunButton() {
 
 // External functions
 
+function customPrint(value) {
+    console.log(value);
+    alert(value);
+}
 
 function getGrid() {
     return grid;
@@ -498,7 +502,7 @@ Animation.conclusionText = function (conclusionText) {
 
 var initInterpreterApi = function(interpreter, scope) {
     let fnNames = [
-        "getGrid",
+        "getGrid", "customPrint",
         "handleInputLayer", "handleLayer", "conclude",
         "setNeuronValue", "getPixelValue", "getNeuronLayers",
         "getWeightLayers", "matrixProd", "sigmoid", "matrixLength", 'matrixGet', "setValueLayer", "getMatrix",
