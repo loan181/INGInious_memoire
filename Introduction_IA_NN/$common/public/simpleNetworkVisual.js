@@ -24,6 +24,7 @@ let layersMat = [
         [-4, 4]
     ]
 ];
+let bias = undefined;
 let nnNeurons = [];
 
 function create3x3InteractiveGrid(grid) {
@@ -299,8 +300,6 @@ function setNeuronValue(neuronInd, layerInd, value) {
     Animation.colorNeuron(layerInd, neuronInd);
 }
 
-
-
 function getPixelValue(pixel_i, picture) {
     return picture.flat()[pixel_i-1];
 }
@@ -324,10 +323,29 @@ function setValueLayer(layerInd, neuronInd, value) {
 
 
 function matrixDot (A, B) {
+    if (A[0][0] === undefined) {
+        A = [A]; // Convert to matrix if needed
+    }
+
+    // Try to find the good bias, we can't ask it as a parameter as it wasn't introduced
+    let chosenBias = null;
+    if (bias !== undefined) {
+        for (let i = 0; i < bias.length; i++) {
+            if (B[0].length === bias[i].length) {
+                chosenBias = bias[i];
+                break;
+            }
+        }
+    }
+
     let result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
     return result.map((row, i) => {
         return row.map((val, j) => {
-            return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
+            let defaultValue = 0;
+            // if (chosenBias != null) {
+            //     defaultValue = chosenBias[j];
+            // }
+            return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]), defaultValue)
         })
     })
 }
@@ -339,7 +357,7 @@ function sigmoid(x) {
 function getNeuronsValues(layers_ind) {
     let ret = [];
     for (let i = 0; i < nnNeurons[layers_ind].length; i++) {
-        ret.push(nnNeurons[layers_ind][i].data(neuronRaphaelJSValueName));
+        ret.push(getNeuronLayer(layers_ind, i));
     }
     return ret;
 }
@@ -355,6 +373,10 @@ function getNeuronLayer(layerInd, neuronInd) {
         value = item;
     }
     return value;
+}
+
+function getMatrix(mat, row, col) {
+    return mat[row-1][col-1];
 }
 
 function getNeuronOutputLayer(neuronInd) {
@@ -394,7 +416,7 @@ Classify.handleLayer = function(layerInd) {
     let layerNeuronsValue = matrixDot([previousLayerNeuronValues], currentLayersMat)[0];
     for (let i = 0; i < layerNeuronsValue.length; i++) {
         let correspondingNeuron = nnNeurons[layerInd][i];
-        let value = sigmoide(layerNeuronsValue[i]);
+        let value = sigmoid(layerNeuronsValue[i]);
         correspondingNeuron.data(neuronRaphaelJSValueName, value);
     }
 };
@@ -406,7 +428,11 @@ Classify.conclude = function() {
 };
 
 Classify.setNeuronValue = function(neuronInd, layerInd, value) {
-    nnNeurons[layerInd][neuronInd].data(neuronRaphaelJSValueName, value);
+    try {
+        nnNeurons[layerInd][neuronInd].data(neuronRaphaelJSValueName, value);
+    } catch (e) {
+        nnNeurons[layerInd][neuronInd] = value;
+    }
 };
 
 let Animation = {};
@@ -475,7 +501,7 @@ var initInterpreterApi = function(interpreter, scope) {
         "getGrid",
         "handleInputLayer", "handleLayer", "conclude",
         "setNeuronValue", "getPixelValue", "getNeuronLayers",
-        "getWeightLayers", "matrixProd", "sigmoid", "matrixLength", 'matrixGet', "setValueLayer",
+        "getWeightLayers", "matrixProd", "sigmoid", "matrixLength", 'matrixGet', "setValueLayer", "getMatrix",
         "getNeuronOutputLayer",
         "getLayersNumber", 'getNeuronNumberOfLayer'
     ];
@@ -557,30 +583,30 @@ Utilities.importProject = function(xml_text) {
     Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
 };
 
- Utilities.downloadProject = function() {
+Utilities.downloadProject = function() {
     Utilities.download(Utilities.exportProject(), "blocklyProject.xml", ".xml")
 };
 
- Utilities.loadProject = function() {
-     let input = document.createElement('input');
-     input.type = 'file';
+Utilities.loadProject = function() {
+    let input = document.createElement('input');
+    input.type = 'file';
 
-     input.onchange = e => {
+    input.onchange = e => {
 
-         // getting a hold of the file reference
-         let file = e.target.files[0];
+        // getting a hold of the file reference
+        let file = e.target.files[0];
 
-         // setting up the reader
-         let reader = new FileReader();
-         reader.readAsText(file,'UTF-8');
+        // setting up the reader
+        let reader = new FileReader();
+        reader.readAsText(file,'UTF-8');
 
-         // here we tell the reader what to do when it's done reading...
-         reader.onload = readerEvent => {
-             let content = readerEvent.target.result; // this is the content!
-             Utilities.importProject(content);
-         }
+        // here we tell the reader what to do when it's done reading...
+        reader.onload = readerEvent => {
+            let content = readerEvent.target.result; // this is the content!
+            Utilities.importProject(content);
+        }
 
-     };
+    };
 
-     input.click();
+    input.click();
 };

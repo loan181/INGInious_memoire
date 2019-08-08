@@ -1,7 +1,7 @@
 // STUB JS
 Blockly.JavaScript['custom_print'] = function(block) {
   var value_value = Blockly.JavaScript.valueToCode(block, 'value', Blockly.JavaScript.ORDER_ATOMIC);
-  return `alert(${value_value});\n`;
+  return `console.log(${value_value});\nalert(${value_value});\n`;
 };
 
 Blockly.JavaScript['main'] = function(block) {
@@ -153,10 +153,8 @@ Blockly.JavaScript['nn_get_matrix'] = function(block) {
   var value_mat = Blockly.JavaScript.valueToCode(block, 'mat', Blockly.JavaScript.ORDER_ATOMIC);
   var value_row = Blockly.JavaScript.valueToCode(block, 'row', Blockly.JavaScript.ORDER_ATOMIC);
   var value_column = Blockly.JavaScript.valueToCode(block, 'column', Blockly.JavaScript.ORDER_ATOMIC);
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  var code = `getMatrix(${value_mat}, ${value_row}, ${value_column})`;
+  return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 Blockly.JavaScript['nn_set_matrix'] = function(block) {

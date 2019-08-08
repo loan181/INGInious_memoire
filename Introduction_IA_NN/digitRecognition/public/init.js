@@ -12,7 +12,11 @@ for (let i = 0; i < networkSize.length; i++) {
 }
 
 // Override the weights matrix
-layersMat = [w12, w23];
+function transpose(a) {
+    return a[0].map((col, i) => a.map(row => row[i]));
+}
+layersMat = [transpose(w12), transpose(w23)];
+bias = [bias2, bias3]
 
 // Override the grid so it used the one drawn
 function getGrid() {
@@ -20,3 +24,4 @@ function getGrid() {
 }
 
 Animation.reset = function () {};
+Animation.colorNeuron = function() {};
