@@ -270,9 +270,61 @@ function addRunButton() {
 
 // External functions
 
-function matrixDot (A, B) {
-    var result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
 
+function getGrid() {
+    return grid;
+}
+
+function handleInputLayer(img) {
+    Classify.handleInputLayer(img);
+    Animation.layerColorNeuron(0);
+}
+
+function handleLayer(layer_ind) {
+    layer_ind = layer_ind-1;
+    Classify.handleLayer(layer_ind);
+    Animation.layerColorNeuron(layer_ind);
+}
+
+function conclude() {
+    let conclusion = Classify.conclude();
+    Animation.conclusionBar();
+    Animation.conclusionText(conclusion);
+    return conclusion;
+}
+
+function setNeuronValue(neuronInd, layerInd, value) {
+    neuronInd = neuronInd - 1;
+    Classify.setNeuronValue(neuronInd, layerInd, value);
+    Animation.colorNeuron(layerInd, neuronInd);
+}
+
+
+
+function getPixelValue(pixel_i, picture) {
+    return picture.flat()[pixel_i-1];
+}
+
+function getNeuronLayers(layerInd) {
+    return getNeuronsValues(layerInd-1);
+}
+
+function getWeightLayers(layerInd) {
+    return layersMat[layerInd-1];
+}
+
+function matrixProd(matNeuron, matWeight) {
+    return matrixDot([matNeuron], matWeight);
+}
+
+function setValueLayer(layerInd, neuronInd, value) {
+    Classify.setNeuronValue(neuronInd-1, layerInd-1, value);
+    Animation.colorNeuron(layerInd-1, neuronInd-1);
+}
+
+
+function matrixDot (A, B) {
+    let result = new Array(A.length).fill(0).map(row => new Array(B[0].length).fill(0));
     return result.map((row, i) => {
         return row.map((val, j) => {
             return A[i].reduce((sum, elm, k) => sum + (elm*B[k][j]) ,0)
@@ -280,13 +332,8 @@ function matrixDot (A, B) {
     })
 }
 
-function sigmoide(x) {
+function sigmoid(x) {
     return 1/(1+Math.exp(-x));
-}
-
-
-function getGrid() {
-    return grid;
 }
 
 function getNeuronsValues(layers_ind) {
@@ -321,6 +368,15 @@ function getLayersNumber() {
 function getNeuronNumberOfLayer(layer_i) {
     return nnNeurons[layer_i-1].length
 }
+
+function matrixLength(mat) {
+    return mat.flat().length;
+}
+
+function matrixGet(mat, i) {
+    return mat.flat()[i-1];
+}
+
 
 let Classify = {};
 Classify.handleInputLayer = function(img) {
@@ -415,128 +471,24 @@ Animation.conclusionText = function (conclusionText) {
 };
 
 var initInterpreterApi = function(interpreter, scope) {
-    var wrapper;
-    wrapper = function() {
-        return getGrid();
-    };
-    interpreter.setProperty(scope, 'getGrid',
-        interpreter.createNativeFunction(wrapper)
-    );
+    let fnNames = [
+        "getGrid",
+        "handleInputLayer", "handleLayer", "conclude",
+        "setNeuronValue", "getPixelValue", "getNeuronLayers",
+        "getWeightLayers", "matrixProd", "sigmoid", "matrixLength", 'matrixGet', "setValueLayer",
+        "getNeuronOutputLayer",
+        "getLayersNumber", 'getNeuronNumberOfLayer'
+    ];
+    for (let fnNameI in fnNames) {
+        let fnName = fnNames[fnNameI];
+        let correspondingFunction = this[fnName]; // find the read function into the code
 
-    wrapper = function(img) {
-        Classify.handleInputLayer(img);
-        Animation.layerColorNeuron(0);
-    };
-    interpreter.setProperty(scope, 'handleInputLayer',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(layer_ind) {
-        layer_ind = layer_ind-1;
-        Classify.handleLayer(layer_ind);
-        Animation.layerColorNeuron(layer_ind);
-    };
-    interpreter.setProperty(scope, 'handleLayer',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function() {
-        let conclusion = Classify.conclude();
-        Animation.conclusionBar();
-        Animation.conclusionText(conclusion);
-        return conclusion;
-    };
-    interpreter.setProperty(scope, 'conclude',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(neuronInd, layerInd, value) {
-        neuronInd = neuronInd-1;
-        Classify.setNeuronValue(neuronInd, layerInd, value);
-        Animation.colorNeuron(layerInd, neuronInd);
-    };
-    interpreter.setProperty(scope, 'setNeuronValue',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(pixel_i, picture) {
-        return picture.flat()[pixel_i-1];
-    };
-    interpreter.setProperty(scope, 'getPixelValue',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(layerInd) {
-        return getNeuronsValues(layerInd-1);
-    };
-    interpreter.setProperty(scope, 'getNeuronLayers',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(layerInd) {
-        return layersMat[layerInd-1];
-    };
-    interpreter.setProperty(scope, 'getWeightLayers',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(matNeuron, matWeight) {
-        return matrixDot([matNeuron], matWeight);
-    };
-    interpreter.setProperty(scope, 'matrixProd',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(layerInd, neuronInd, value) {
-        Classify.setNeuronValue(neuronInd-1, layerInd-1, value);
-        Animation.colorNeuron(layerInd-1, neuronInd-1);
-    };
-    interpreter.setProperty(scope, 'setValueLayer',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(x) {
-        return sigmoide(x);
-    };
-    interpreter.setProperty(scope, 'sigmoid',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-     wrapper = function(mat) {
-        return mat.flat().length;
-    };
-    interpreter.setProperty(scope, 'matrixLength',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(mat, i) {
-        return mat.flat()[i-1];
-    };
-    interpreter.setProperty(scope, 'matrixGet',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(neuronInd) {
-        return getNeuronOutputLayer(neuronInd);
-
-    };
-    interpreter.setProperty(scope, 'getNeuronOutputLayer',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function() {
-        return getLayersNumber();
-    };
-    interpreter.setProperty(scope, 'getLayersNumber',
-        interpreter.createNativeFunction(wrapper)
-    );
-
-    wrapper = function(layer_i) {
-        return getNeuronNumberOfLayer(layer_i);
-    };
-    interpreter.setProperty(scope, 'getNeuronNumberOfLayer',
-        interpreter.createNativeFunction(wrapper)
-    );
+        interpreter.setProperty(scope, fnName,
+            interpreter.createNativeFunction(function() {
+                return correspondingFunction.apply(null, arguments); // Call the function with same arguments
+            })
+        );
+    }
 
     Animation.reset();
 };
