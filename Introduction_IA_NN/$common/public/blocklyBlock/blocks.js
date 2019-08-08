@@ -142,7 +142,7 @@ Blockly.Blocks['nn_get_neuron_layer'] = {
   init: function() {
     this.appendValueInput("NAME")
         .setCheck("Number")
-        .appendField("Obtenir la valeur des neurones de la couche");
+        .appendField("obtenir la valeur des neurones de la couche");
     this.setOutput(true, null);
     this.setColour(230);
  this.setTooltip("");
@@ -154,7 +154,7 @@ Blockly.Blocks['nn_get_weight_layer'] = {
   init: function() {
     this.appendValueInput("NAME")
         .setCheck("Number")
-        .appendField("Obtenir la valeur des poids de la couche");
+        .appendField("obtenir la valeur des poids de la couche");
     this.setOutput(true, null);
     this.setColour(230);
  this.setTooltip("");
@@ -163,20 +163,22 @@ Blockly.Blocks['nn_get_weight_layer'] = {
 };
 
 Blockly.Blocks['nn_matrix_prod'] = {
-  init: function() {
-    this.appendValueInput("X")
-        .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("calculer le produit matriciel de");
-    this.appendValueInput("Y")
-        .setCheck("Number")
-        .setAlign(Blockly.ALIGN_RIGHT)
-        .appendField("avec");
-    this.setOutput(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("");
-  }
+    init: function() {
+        this.appendDummyInput()
+            .appendField("calculer le produit matriciel de");
+        this.appendValueInput("X")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("matrice des neurones");
+        this.appendValueInput("Y")
+            .setCheck("Number")
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("matrice des poids");
+        this.setOutput(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
 };
 
 Blockly.Blocks['nn_neuron_set_value_layer'] = {
