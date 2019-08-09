@@ -414,11 +414,10 @@ function createMatrix(initSize, ...allValues) {
      for (let i = 0; i < numberOfRows; i++) {
         let subL = [];
         for (let j = 0; j < numberOfCols; j++) {
-            subL.push(Number(allValues[i*initSize+j]))
+            subL.push(allValues[i*initSize+j])
         }
         res.push(subL);
     }
-     console.log(res);
      return res;
 }
 
@@ -437,7 +436,7 @@ function createMatrixDyn(linesN, colsN, val) {
 
 
 function setMatrix(mat, row, column, value) {
-    mat[row-1][col-1] = value;
+    mat[row-1][column-1] = value;
 }
 
 function getMatrix(mat, row, col) {
@@ -683,4 +682,9 @@ Utilities.loadProject = function() {
     };
 
     input.click();
+};
+
+Utilities.JavaScriptCode = function () {
+    Blockly.JavaScript.STATEMENT_PREFIX = "";
+    return Blockly.JavaScript.workspaceToCode();
 };

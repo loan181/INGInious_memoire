@@ -131,6 +131,58 @@ def getPixelValue(pixelI, img):
 def choose01():
     return round(random())
 
+# Matrix related
+def createMatrix(initSize, *allValues):
+    numberOfCols = initSize
+    numberOfRows = initSize
+
+    allValuesToMat = []
+    for i in range(initSize):
+        subL = []
+        for j in range(initSize):
+            subL.append(allValues[i*initSize + j])
+        allValuesToMat.append(subL)
+
+    allValuesToMatTransp = [[allValuesToMat[j][i] for j in range(len(allValuesToMat))] for i in range(len(allValuesToMat[0]))]
+
+    for i in range(initSize-1, 0, -1):
+        if allValuesToMat[i] == [0]*len(allValuesToMat[i]):
+            numberOfRows -= 1
+        else:
+            break
+
+    for i in range(initSize-1, 0, -1):
+        if allValuesToMatTransp[i] == [0]*len(allValuesToMatTransp[i]):
+            numberOfCols -= 1
+        else:
+            break
+
+    res = []
+    for i in range(numberOfRows):
+        subL = []
+        for j in range(numberOfCols):
+            subL.append(allValues[i * initSize + j])
+        res.append(subL)
+    return res
+
+def createMatrixDyn(linesN, colsN, val):
+    return [[val for _ in range(linesN)] for _ in range(colsN)]
+
+def setMatrix(mat, row, column, value):
+    mat[row-1][column-1] = value
+
+
+def getMatrix(mat, row, col):
+    return mat[row-1][col-1]
+
+
+def getMatWidth(mat):
+    return len(mat[0])
+
+
+def getMatHeight(mat):
+    return len(mat)
+
 
 
 # Added so it does not crash

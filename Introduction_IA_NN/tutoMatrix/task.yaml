@@ -46,7 +46,12 @@ problems:
         header: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="Matrice" colour="#5b6da5">
+              <category name="NN Debug">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+                <category name="Matrice" colour="#5b6da5">
                 <block type="nn_create_matrix">
                   <field name="NAME1">0</field>
                   <field name="NAME2">0</field>

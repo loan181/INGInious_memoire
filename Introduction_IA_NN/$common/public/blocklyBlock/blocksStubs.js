@@ -122,7 +122,7 @@ Blockly.JavaScript['nn_create_matrix'] = function(block) {
   for (let i = 1; i < 26; i++) {
     allValues += ", " + block.getFieldValue('NAME'+i);
   }
-  var code = `createMatrix(5 ${allValues})`;
+  var code = `createMatrix(5${allValues})`; // 5 indicates the number or rows and cols used
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
@@ -301,45 +301,20 @@ Blockly.Python['nn_res_ver'] = function(block) {
 };
 
 Blockly.Python['nn_create_matrix'] = function(block) {
-  var number_name1 = block.getFieldValue('NAME1');
-  var number_name2 = block.getFieldValue('NAME2');
-  var number_name3 = block.getFieldValue('NAME3');
-  var number_name4 = block.getFieldValue('NAME4');
-  var number_name5 = block.getFieldValue('NAME5');
-  var number_name6 = block.getFieldValue('NAME6');
-  var number_name7 = block.getFieldValue('NAME7');
-  var number_name8 = block.getFieldValue('NAME8');
-  var number_name9 = block.getFieldValue('NAME9');
-  var number_name10 = block.getFieldValue('NAME10');
-  var number_name11 = block.getFieldValue('NAME11');
-  var number_name12 = block.getFieldValue('NAME12');
-  var number_name13 = block.getFieldValue('NAME13');
-  var number_name14 = block.getFieldValue('NAME14');
-  var number_name15 = block.getFieldValue('NAME15');
-  var number_name16 = block.getFieldValue('NAME16');
-  var number_name17 = block.getFieldValue('NAME17');
-  var number_name18 = block.getFieldValue('NAME18');
-  var number_name19 = block.getFieldValue('NAME19');
-  var number_name20 = block.getFieldValue('NAME20');
-  var number_name21 = block.getFieldValue('NAME21');
-  var number_name22 = block.getFieldValue('NAME22');
-  var number_name23 = block.getFieldValue('NAME23');
-  var number_name24 = block.getFieldValue('NAME24');
-  var number_name25 = block.getFieldValue('NAME25');
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  let allValues = "";
+  for (let i = 1; i < 26; i++) {
+    allValues += ", " + block.getFieldValue('NAME'+i);
+  }
+  var code = `createMatrix(5${allValues})`; // 5 indicates the number or rows and cols used
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_get_matrix'] = function(block) {
   var value_mat = Blockly.Python.valueToCode(block, 'mat', Blockly.Python.ORDER_ATOMIC);
   var value_row = Blockly.Python.valueToCode(block, 'row', Blockly.Python.ORDER_ATOMIC);
   var value_column = Blockly.Python.valueToCode(block, 'column', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getMatrix(${value_mat}, ${value_row}, ${value_column})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_set_matrix'] = function(block) {
@@ -347,40 +322,32 @@ Blockly.Python['nn_set_matrix'] = function(block) {
   var value_row = Blockly.Python.valueToCode(block, 'row', Blockly.Python.ORDER_ATOMIC);
   var value_column = Blockly.Python.valueToCode(block, 'column', Blockly.Python.ORDER_ATOMIC);
   var value_value = Blockly.Python.valueToCode(block, 'value', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
-  return code;
+  return `setMatrix(${value_mat}, ${value_row}, ${value_column}, ${value_value})\n`;
 };
 
 Blockly.Python['nn_get_width'] = function(block) {
   var value_mat = Blockly.Python.valueToCode(block, 'mat', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getMatWidth(${value_mat})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_get_height'] = function(block) {
   var value_mat = Blockly.Python.valueToCode(block, 'mat', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getMatHeight(${value_mat})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_matrix_create2'] = function(block) {
   var value_lines_number = Blockly.Python.valueToCode(block, 'lines_number', Blockly.Python.ORDER_ATOMIC);
   var value_column_number = Blockly.Python.valueToCode(block, 'column_number', Blockly.Python.ORDER_ATOMIC);
   var value_value = Blockly.Python.valueToCode(block, 'value', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `createMatrixDyn(${value_lines_number}, ${value_column_number}, ${value_value})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_layer_number'] = function(block) {
   var code = 'getLayersNumber()';
-  return [code, Blockly.Python.ORDER_ATOLIC];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_layer_neuron_number'] = function(block) {
