@@ -273,6 +273,9 @@ function addRunButton() {
 
 function customPrint(value) {
     console.log(value);
+    // Better custom alert message
+    if (value[0][0] !== undefined) // If it is a matrix
+        value = value.join('\n');
     alert(value);
 }
 
