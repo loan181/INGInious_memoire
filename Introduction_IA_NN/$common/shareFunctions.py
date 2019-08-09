@@ -189,3 +189,21 @@ def getMatHeight(mat):
 def getGrid():
     return [[0]*3]*3 # dummy grid
 
+# Utilities for Inginious display
+def inginiousMatrixDisp(mat):
+    s = r"\\begin{pmatrix}"
+    firstLine = True
+    for line in mat:
+        if not firstLine:
+            s += r" \\\\\ "
+        firstLine = False
+        first = True
+        for val in line:
+            if not first:
+                s+= " & "
+            s += str(val)
+            first = False
+
+    s += r"\\end{pmatrix}"
+    return s
+

@@ -67,12 +67,24 @@ if __name__ == '__main__':
         )
     )
 
+
+
     for subL in l:
         matA, matB = subL
         actualResult = matrixMult(matA, matB)
         studentResult = calculer_le_produit_matriciel_de(matA, matB)
         if studentResult != actualResult:
-            print("Le résultat attendu est {}, ton résultat est {}".format(actualResult, studentResult))
+            print(
+                "Le résultat du produit matriciel de {} avec {} attendu est {}, ton résultat est {}".format(matA,
+                                                                                                            matB,
+                                                                                                            actualResult,
+                                                                                                            studentResult))
+            print() # Leave a blank line to
+            print(r"$$ {} \\times {} = {} \\neq {} $$".format(
+                inginiousMatrixDisp(matA),
+                inginiousMatrixDisp(matB),
+                inginiousMatrixDisp(actualResult),
+                inginiousMatrixDisp(studentResult)))
             exit()
 
     print("True")
