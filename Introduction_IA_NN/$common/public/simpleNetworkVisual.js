@@ -379,8 +379,77 @@ function getNeuronLayer(layerInd, neuronInd) {
     return value;
 }
 
+function createMatrix(initSize, ...allValues) {
+    let numberOfCols = initSize;
+    let numberOfRows = initSize;
+
+    let allValuesToMat = [];
+    for (let i = 0; i < initSize; i++) {
+        let subL = [];
+        for (let j = 0; j < initSize; j++) {
+            subL.push(Number(allValues[i*initSize+j]))
+        }
+        allValuesToMat.push(subL);
+    }
+    let allValuesToMatTransp = allValuesToMat[0].map((col, i) => allValuesToMat.map(row => row[i]));
+
+    for (let i = initSize-1; i >= 0; i--) {
+        if (allValuesToMat[i].every(item => item === 0)) {
+            numberOfRows--;
+        }
+        else {
+            break;
+        }
+    }
+    for (let i = initSize-1; i >= 0; i--) {
+        if (allValuesToMatTransp[i].every(item => item === 0)) {
+            numberOfCols--;
+        }
+        else {
+            break;
+        }
+    }
+
+    let res = [];
+     for (let i = 0; i < numberOfRows; i++) {
+        let subL = [];
+        for (let j = 0; j < numberOfCols; j++) {
+            subL.push(Number(allValues[i*initSize+j]))
+        }
+        res.push(subL);
+    }
+     console.log(res);
+     return res;
+}
+
+function createMatrixDyn(linesN, colsN, val) {
+    let res = [];
+    for (let i = 0; i < linesN; i++) {
+        let subL = [];
+        for (let j = 0; j < colsN; j++) {
+            subL.push(val);
+        }
+        res.push(subL);
+    }
+    return res;
+}
+
+
+
+function setMatrix(mat, row, column, value) {
+    mat[row-1][col-1] = value;
+}
+
 function getMatrix(mat, row, col) {
     return mat[row-1][col-1];
+}
+
+function getMatWidth(mat) {
+    return mat[0].length;
+}
+
+function getMatHeight(mat) {
+    return mat.length;
 }
 
 function getNeuronOutputLayer(neuronInd) {
@@ -505,6 +574,7 @@ var initInterpreterApi = function(interpreter, scope) {
         "getGrid", "customPrint",
         "handleInputLayer", "handleLayer", "conclude",
         "setNeuronValue", "getPixelValue", "getNeuronLayers",
+        'createMatrix', "setMatrix", "createMatrixDyn", "getMatWidth", "getMatHeight",
         "getWeightLayers", "matrixProd", "sigmoid", "matrixLength", 'matrixGet', "setValueLayer", "getMatrix",
         "getNeuronOutputLayer",
         "getLayersNumber", 'getNeuronNumberOfLayer'

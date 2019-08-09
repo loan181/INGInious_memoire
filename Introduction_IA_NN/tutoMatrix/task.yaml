@@ -15,14 +15,35 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: Utilisation des matrices
 network_grading: false
 order: 6
 problems:
     blocklyRes:
+        options:
+            zoom:
+                startScale: 1.0
+                scaleSpeed: 1.2
+                minScale: 0.3
+                maxScale: 3.0
+                controls: true
+                wheel: false
+            grid:
+                snap: true
+                spacing: 20
+                colour: '#ccc'
+                length: 3
+            toolboxPosition: start
+            speed: '60'
+            oneBasedIndex: true
+            scrollbars: true
+            css: true
+            media: /plugins/blockly/static/blockly/media/
+            maxBlocks: Infinity
+        header: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="Matrice" colour="#5b6da5">
@@ -144,31 +165,6 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
-        options:
-            css: true
-            grid:
-                colour: '#ccc'
-                spacing: 20
-                length: 3
-                snap: true
-            toolboxPosition: start
-            zoom:
-                minScale: 0.3
-                controls: true
-                startScale: 1.0
-                maxScale: 3.0
-                scaleSpeed: 1.2
-                wheel: false
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
-            speed: '60'
-            oneBasedIndex: true
-            scrollbars: true
-        header: ''
-        name: ''
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -327,9 +323,14 @@ problems:
                 </next>
               </block>
             </xml>
-        type: blockly
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        - init.js
+        name: ''
         files:
         - ../$common/simpleNetworkVisual.js
+        type: blockly
 stored_submissions: 0
 submission_limit:
     amount: -1
