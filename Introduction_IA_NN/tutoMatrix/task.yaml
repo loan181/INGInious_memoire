@@ -24,26 +24,35 @@ order: 6
 problems:
     blocklyRes:
         options:
+            media: /plugins/blockly/static/blockly/media/
             zoom:
-                startScale: 1.0
-                scaleSpeed: 1.2
-                minScale: 0.3
                 maxScale: 3.0
+                minScale: 0.3
+                scaleSpeed: 1.2
                 controls: true
+                startScale: 1.0
                 wheel: false
             grid:
-                snap: true
-                spacing: 20
-                colour: '#ccc'
                 length: 3
+                spacing: 20
+                snap: true
+                colour: '#ccc'
+            visual:
+                position: left
             toolboxPosition: start
-            speed: '60'
-            oneBasedIndex: true
+            maxBlocks: Infinity
             scrollbars: true
             css: true
-            media: /plugins/blockly/static/blockly/media/
-            maxBlocks: Infinity
+            speed: '60'
+            oneBasedIndex: true
         header: ''
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        - init.js
+        files:
+        - ../$common/simpleNetworkVisual.js
+        name: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN Debug">
@@ -328,13 +337,6 @@ problems:
                 </next>
               </block>
             </xml>
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        - init.js
-        name: ''
-        files:
-        - ../$common/simpleNetworkVisual.js
         type: blockly
 stored_submissions: 0
 submission_limit:
