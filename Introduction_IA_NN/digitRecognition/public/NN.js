@@ -186,7 +186,7 @@ function getCanvaPictureToArray() {
     // translate to center of mass
     copyCtx.translate(trans.transX, trans.transY);
 
-    if (document.getElementById('scaleStrokeWidth').checked == true) {
+    if (true/*document.getElementById('scaleStrokeWidth').checked == true*/) {
         // redraw the image with a scaled lineWidth first.
         // not this is a bit buggy; the bounding box we computed above (which contributed to "scaling") is not valid anymore because
         // the line width has changed. This is mostly a problem for extreme cases (very small digits) where the rescaled digit will
@@ -211,7 +211,7 @@ function getCanvaPictureToArray() {
     let ret = processPicture(copyCtx).flat();
 
     // for visualization/debugging: paint the input to the neural net.
-    if (document.getElementById('preprocessing').checked === true) {
+    if (document.getElementById('preprocessingYes').checked === true) {
         canvasDrawCtx.clearRect(0, 0, canvasDraw.width, canvasDraw.height);
         canvasDrawCtx.drawImage(copyCtx.canvas, 0, 0);
         for (var y = 0; y < 28; y++) {
