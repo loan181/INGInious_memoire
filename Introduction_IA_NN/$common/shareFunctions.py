@@ -183,7 +183,9 @@ def getMatWidth(mat):
 def getMatHeight(mat):
     return len(mat)
 
-
+def getLayersNumber():
+    global globalNN
+    return len(globalNN.nnValues)
 
 # Added so it does not crash
 def getGrid():
