@@ -12,9 +12,18 @@ function createCanva() {
     // Add the checkbox
     let cbs = document.createElement("div");
     cbs.innerHTML = `
-        <input type="checkbox" class="form-check-input" id="preprocessing" name="preprocessing ">
-        <label class="form-check-label form-label-lg" for="preprocessing">Afficher l'image transformée</label>
-        <div style="display: none;"><input type="checkbox" id="scaleStrokeWidth" checked="true"><span style="margin-left:5px;">Scale Stroke Width</span></div>
+        <label>Afficher l'image transformée</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="preprocessingYes" value="option1">
+          <label class="form-check-label" for="preprocessingYes">Oui</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="preprocessingNo" value="option2" checked>
+          <label class="form-check-label" for="preprocessingNo">Non</label>
+        </div>
+<!--        <input type="radio" class="form-check-input" id="preprocessing" name="preprocessing ">-->
+<!--        <label class="form-check-label form-label-lg" for="preprocessing">Afficher l'image transformée</label>-->
+<!--        <div style="display: none;"><input type="checkbox" id="scaleStrokeWidth" checked="true"><span style="margin-left:5px;">Scale Stroke Width</span></div>-->
     `;
     canvaDiv.append(cbs);
 
