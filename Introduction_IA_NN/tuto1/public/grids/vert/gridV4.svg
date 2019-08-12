@@ -1,0 +1,22 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <desc>Created with Raphaël 2.2.0</desc>
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect id="svg_1" stroke="#aaaaaa" fill="#0" height="40" width="40" y="0" x="0"/>
+  <rect id="svg_4" stroke="#aaaaaa" fill="#fff" height="40" width="40" y="0" x="40"/>
+  <rect id="svg_7" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="0" x="80"/>
+
+  <rect id="svg_2" stroke="#aaaaaa" fill="#0" height="40" width="40" y="40" x="0"/>
+  <rect id="svg_5" stroke="#aaaaaa" fill="#fff" height="40" width="40" y="40" x="40"/>
+  <rect id="svg_8" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="40" x="80"/>
+
+  <rect id="svg_3" stroke="#aaaaaa" fill="#0" height="40" width="40" y="80" x="0"/>
+  <rect id="svg_6" stroke="#aaaaaa" fill="#fff" height="40" width="40" y="80" x="40"/>
+  <rect id="svg_9" stroke="#aaaaaa" fill="#ffffff" height="40" width="40" y="80" x="80"/>
+ </g>
+</svg>

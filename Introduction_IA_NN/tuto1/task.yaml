@@ -24,6 +24,73 @@ context: |-
     \\begin{pmatrix}-5 & 5 \\\\ 7 & -7 \\\\ -4 & 4 \\end{pmatrix}
     $$
 
+    Pour obtenir ses valeurs j'ai entrainé le réseau à l'aide de 21 grilles/images. Certaines de ces grilles apparaissent plusieurs fois, c'est pour insister auprès du réseau pour qu'il puisse les reconnaitre correctement.
+    Après l'entrainement, le réseau prédit mal seulement 3 grilles/images parmi les 21 initialement fournies.
+    Les valeurs indiqué plus haut ont également étaient multipliés par 2 arrondies afin que tu es nombre plus facile à manipuler.
+
+    Note qu'une ligne verticale étant l'opposé d'une ligne horizontale, les grilles utilisées sont des symmétries centrales l'une de l'autre.
+    Les 21 grilles utiliséees pour chaque ligens sont les suivantes :
+
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | Quantitée  | Grille pour entrainer à reconnaitre une ligne verticale  |  Grille pour entrainer à reconnaitre une ligne horizontale  |
+    +============+==========================================================+=============================================================+
+    | 5          | |gridV1|                                                 | |gridH1|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV2|                                                 | |gridH2|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV3|                                                 | |gridH3|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 3          | |gridV4|                                                 | |gridH4|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 3          | |gridV5|                                                 | |gridH5|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV6|                                                 | |gridH6|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV7|                                                 | |gridH7|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV8|                                                 | |gridH8|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV9|                                                 | |gridH9|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV10|                                                | |gridH10|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV11|                                                | |gridH11|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV12|                                                | |gridH12|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV13|                                                | |gridH13|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+
+    .. |gridV1| image:: tuto1/grids/vert/gridV1.svg
+    .. |gridV2| image:: tuto1/grids/vert/gridV2.svg
+    .. |gridV3| image:: tuto1/grids/vert/gridV3.svg
+    .. |gridV4| image:: tuto1/grids/vert/gridV4.svg
+    .. |gridV5| image:: tuto1/grids/vert/gridV5.svg
+    .. |gridV6| image:: tuto1/grids/vert/gridV6.svg
+    .. |gridV7| image:: tuto1/grids/vert/gridV7.svg
+    .. |gridV8| image:: tuto1/grids/vert/gridV8.svg
+    .. |gridV9| image:: tuto1/grids/vert/gridV9.svg
+    .. |gridV10| image:: tuto1/grids/vert/gridV10.svg
+    .. |gridV11| image:: tuto1/grids/vert/gridV11.svg
+    .. |gridV12| image:: tuto1/grids/vert/gridV12.svg
+    .. |gridV13| image:: tuto1/grids/vert/gridV13.svg
+
+    .. |gridH1| image:: tuto1/grids/hor/gridV1.svg
+    .. |gridH2| image:: tuto1/grids/hor/gridV2.svg
+    .. |gridH3| image:: tuto1/grids/hor/gridV3.svg
+    .. |gridH4| image:: tuto1/grids/hor/gridV4.svg
+    .. |gridH5| image:: tuto1/grids/hor/gridV5.svg
+    .. |gridH6| image:: tuto1/grids/hor/gridV6.svg
+    .. |gridH7| image:: tuto1/grids/hor/gridV7.svg
+    .. |gridH8| image:: tuto1/grids/hor/gridV8.svg
+    .. |gridH9| image:: tuto1/grids/hor/gridV9.svg
+    .. |gridH10| image:: tuto1/grids/hor/gridV10.svg
+    .. |gridH11| image:: tuto1/grids/hor/gridV11.svg
+    .. |gridH12| image:: tuto1/grids/hor/gridV12.svg
+    .. |gridH13| image:: tuto1/grids/hor/gridV13.svg
+
+
+
     --------
     Blockly
     --------
@@ -62,32 +129,37 @@ network_grading: false
 order: 1
 problems:
     tuto1:
+        options:
+            toolboxPosition: start
+            maxBlocks: Infinity
+            scrollbars: true
+            zoom:
+                controls: true
+                minScale: 0.3
+                startScale: 1.0
+                maxScale: 3.0
+                scaleSpeed: 1.2
+                wheel: false
+            visual:
+                position: left
+            css: true
+            grid:
+                spacing: 20
+                colour: '#ccc'
+                snap: true
+                length: 3
+            media: /plugins/blockly/static/blockly/media/
+            speed: '60'
+            oneBasedIndex: true
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        name: ''
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - ../$common/defaultInit.js
-        options:
-            maxBlocks: Infinity
-            grid:
-                snap: true
-                spacing: 20
-                length: 3
-                colour: '#ccc'
-            zoom:
-                maxScale: 3.0
-                minScale: 0.3
-                scaleSpeed: 1.2
-                startScale: 1.0
-                controls: true
-                wheel: false
-            visual:
-                position: left
-            oneBasedIndex: true
-            toolboxPosition: start
-            css: true
-            speed: '60'
-            scrollbars: true
-            media: /plugins/blockly/static/blockly/media/
+        header: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN" colour="#a5935b">
@@ -112,11 +184,7 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
         type: blockly
-        name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -198,7 +266,6 @@ problems:
                 </next>
               </block>
             </xml>
-        header: ''
 stored_submissions: 0
 submission_limit:
     amount: -1
