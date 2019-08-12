@@ -1,8 +1,8 @@
 accessible: true
-name: Introduction_IA_NN
+name: Introduction à l’intelligence artificielle - Réseau neuronal
 description: ''
 admins:
-- ''
+- Loan
 tutors: []
 groups_student_choice: false
 use_classrooms: true
