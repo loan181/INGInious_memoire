@@ -20,7 +20,7 @@ limits:
     time: '30'
 name: 3. Gérer les autres couches
 network_grading: false
-order: 7
+order: 9
 problems:
     blockly:
         options:

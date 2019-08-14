@@ -31,7 +31,7 @@ limits:
     memory: '100'
 name: Préparation gestion des autres couches 1
 network_grading: false
-order: 5
+order: 7
 problems:
     blocklyRes:
         options:

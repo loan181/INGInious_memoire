@@ -20,7 +20,7 @@ limits:
     memory: '100'
 name: Utilisation des matrices
 network_grading: false
-order: 6
+order: 8
 problems:
     blocklyRes:
         options:

@@ -26,7 +26,7 @@ limits:
     time: '30'
 name: 4. Tirer une conclusion (générique)
 network_grading: false
-order: 9
+order: 11
 problems:
     blocklyRes:
         toolbox: |-

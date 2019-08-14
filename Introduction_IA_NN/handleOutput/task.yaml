@@ -23,7 +23,7 @@ limits:
     memory: '100'
 name: 4. Tirer une conclusion
 network_grading: false
-order: 8
+order: 10
 problems:
     blocklyRes:
         header: ''
