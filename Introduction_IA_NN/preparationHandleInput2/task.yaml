@@ -30,7 +30,7 @@ limits:
     memory: '100'
 name: Preparation gestion de la couche d'entrée 2
 network_grading: false
-order: 5
+order: 6
 problems:
     blockly:
         options:

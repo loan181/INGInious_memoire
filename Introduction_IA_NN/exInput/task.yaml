@@ -1,0 +1,46 @@
+accessible: true
+author: Loan
+categories: []
+context: |-
+    | En entrée nous avons une image de 3x3 pixels, notre but va être d'utiliser cette image pour donner les valeurs de nos 9 neurones de la couche d'entrée.
+    | L'image est en noir et blanc, la valeur du neurone associé vaudra **1** si le pixel correspondant est noir et **0** s'il est blanc.
+    | Tu peux regarder le schéma du réseau si tu as un doute sur le lien entre les coordonnées des pixels et son neurone associé.
+    | Par exemple le pixel en x = 2 et y = 0 correspond au neurone n°3 de la couche d'entrée.
+    |
+    | **Objectif**
+    | Quelle est la valeur de chaque neurone d'entrée pour les grille suivante ?
+    | Chaque ``X`` correspond à la valeur d'un neurone d'entrée, remplace par ``0`` ou par ``1``.
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: Valeur des neurones de la première couche
+network_grading: false
+problems:
+    corr:
+        type: code
+        name: ''
+        language: python
+        default: '[0, 1, 1, 0, 0, 1, X, X, X]'
+        header: |-
+            .. image:: exInput/grid1.svg
+               :align: center
+    corr2:
+        default: '[X, X, X, X, X, X, X, X, X]'
+        header: |-
+            .. image:: exInput/grid2.svg
+               :align: center
+        name: ''
+        language: python
+        type: code
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
+order: 4

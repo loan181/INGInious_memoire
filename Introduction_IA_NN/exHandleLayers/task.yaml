@@ -1,0 +1,65 @@
+accessible: true
+author: Loan
+categories: []
+context: |-
+    | Le calcul de la valeur d'un neurone de la couche (en dehors de la première) est plus délicat.
+    | Pour cela tu vas devoir appliquer un *produit matriciel* entre la valeur de tous les neurones de la couche précédente avec la valeur des poids associés aux neurones que tu souhaites calculer.
+    |
+    | On va commencer doucement en calculant la valeur des neurones de la seconde couche. Il nous faut donc la matrice de poids ainsi que la valeur des neurones de la couche précédente (donc celle d'entrée).
+    |
+    | On va imaginer en entrée avoir l'image
+
+    .. image :: introNetwork/grids/hor/gridV1.svg
+
+    | Qui correspond aux valeurs de la couches d'entrées suivantes : ``[0, 0, 0, 1, 1, 1, 0, 0, 0]`` (ou ``[[0, 0, 0, 1, 1, 1, 0, 0, 0]]`` pour que ça soit une matrice)
+    | La matrice des poids est donné et est :
+
+    $$
+    \\text{Entrée - Cachée}
+    \\begin{pmatrix}6 & 6 & 0 \\\\ -4 & 8 & -1 \\\\ 6 & 7 & 9 \\\\ 8 & -4 & -3 \\\\ -5 & -5 & -1 \\\\ 8 & -4 & 7 \\\\ 6 & 4 & 1 \\\\ -4 & 9 & -1 \\\\ 7 & 7 & 8 \\end{pmatrix}
+    $$
+
+    |
+    | **Objectif**
+    | Calcul les valeurs des neurones de la couche cachée à l'aide des deux matrices données.
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: Exercices gestion des couches
+network_grading: false
+order: 9
+problems:
+    res:
+        name: ''
+        header: ''
+        language: python
+        default: '[[11, X, X]]'
+        type: code
+    res2:
+        type: code
+        language: python
+        header: |
+            | *(Nécessite la réponse de la Question 1)*
+            |
+            | Note : \\( 13 \\times 7 = 91 \\)
+            |
+            | Maintenant qu'on a les valeurs de la couche cachée, on peut calculer celles de la couche suivante (donc celle de sortie).
+            | La matrice des poids de cette couche est cette fois :
+
+            $$
+            \\text{Cachée - Sortie}
+            \\begin{pmatrix}-5 & 5 \\\\ 7 & -7 \\\\ -4 & 4 \\end{pmatrix}
+            $$
+        default: '[[X, X]]'
+        name: ''
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

@@ -1,0 +1,117 @@
+accessible: true
+author: ''
+categories: []
+context: |+
+    --------------
+    Réseau utilisé
+    --------------
+
+    | Tout au long des exercices qui vont suivre, on va utiliser le même réseau neuronal.
+    | Ce réseau a été spécialement entrainé pour reconnaitre une ligne verticale d'une ligne horizontale dans une image en noir et blanc de 3x3 pixels.
+    | Celui ci est composé de 3 couches au total.
+    | - La couche d'entrée comporte 9 neurones, correspondant au 9 pixels de l'image/grille donné en entrées
+    | - La couche cachée (il n'y en a qu'une seule dans ce réseau), comporte 3 neurones
+    | - La couche de sortie comporte 2 neurones, le premier détermine la conclusion **vertical** et le second **horizontal**
+
+    .. figure:: introNetwork/schema.svg
+       :width: 1000 px
+       :align: center
+
+       Les couleurs dans la grille de gauche sont juste pour que tu comprennes mieux la composition de la première couche. Chaque pixel sera toujours soit blanc, soit noir.
+
+    --------------
+    Entrainement
+    --------------
+    | Ce réseau à déjà été entrainé au préalable par *apprentissage supervisé*, la valeur des matrices des poids sont les suivantes :
+
+    $$
+    \\text{Entrée - Cachée}
+    \\begin{pmatrix}6 & 6 & 0 \\\\ -4 & 8 & -1 \\\\ 6 & 7 & 9 \\\\ 8 & -4 & -3 \\\\ -5 & -5 & -1 \\\\ 8 & -4 & 7 \\\\ 6 & 4 & 1 \\\\ -4 & 9 & -1 \\\\ 7 & 7 & 8 \\end{pmatrix}
+    \\quad
+    \\text{Cachée - Sortie}
+    \\begin{pmatrix}-5 & 5 \\\\ 7 & -7 \\\\ -4 & 4 \\end{pmatrix}
+    $$
+
+    Pour obtenir ses valeurs j'ai entrainé le réseau à l'aide de 21 grilles/images. Certaines de ces grilles apparaissent plusieurs fois, c'est pour insister auprès du réseau pour qu'il puisse les reconnaitre correctement.
+    Après l'entrainement, le réseau prédit mal seulement 3 grilles/images parmi les 21 initialement fournies.
+    Les valeurs indiqué plus haut ont également étaient multipliés par 2 arrondies afin que tu es nombre plus facile à manipuler.
+
+    Note qu'une ligne verticale étant l'opposé d'une ligne horizontale, les grilles utilisées sont des symmétries centrales l'une de l'autre.
+    Les 21 grilles utiliséees pour chaque ligens sont les suivantes :
+
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | Quantitée  | Grille pour entrainer à reconnaitre une ligne verticale  |  Grille pour entrainer à reconnaitre une ligne horizontale  |
+    +============+==========================================================+=============================================================+
+    | 5          | |gridV1|                                                 | |gridH1|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV2|                                                 | |gridH2|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV3|                                                 | |gridH3|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 3          | |gridV4|                                                 | |gridH4|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 3          | |gridV5|                                                 | |gridH5|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV6|                                                 | |gridH6|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV7|                                                 | |gridH7|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV8|                                                 | |gridH8|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV9|                                                 | |gridH9|                                                    |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV10|                                                | |gridH10|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV11|                                                | |gridH11|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV12|                                                | |gridH12|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    | 1          | |gridV13|                                                | |gridH13|                                                   |
+    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+
+    .. |gridV1| image:: introNetwork/grids/vert/gridV1.svg
+    .. |gridV2| image:: introNetwork/grids/vert/gridV2.svg
+    .. |gridV3| image:: introNetwork/grids/vert/gridV3.svg
+    .. |gridV4| image:: introNetwork/grids/vert/gridV4.svg
+    .. |gridV5| image:: introNetwork/grids/vert/gridV5.svg
+    .. |gridV6| image:: introNetwork/grids/vert/gridV6.svg
+    .. |gridV7| image:: introNetwork/grids/vert/gridV7.svg
+    .. |gridV8| image:: introNetwork/grids/vert/gridV8.svg
+    .. |gridV9| image:: introNetwork/grids/vert/gridV9.svg
+    .. |gridV10| image:: introNetwork/grids/vert/gridV10.svg
+    .. |gridV11| image:: introNetwork/grids/vert/gridV11.svg
+    .. |gridV12| image:: introNetwork/grids/vert/gridV12.svg
+    .. |gridV13| image:: introNetwork/grids/vert/gridV13.svg
+
+    .. |gridH1| image:: introNetwork/grids/hor/gridV1.svg
+    .. |gridH2| image:: introNetwork/grids/hor/gridV2.svg
+    .. |gridH3| image:: introNetwork/grids/hor/gridV3.svg
+    .. |gridH4| image:: introNetwork/grids/hor/gridV4.svg
+    .. |gridH5| image:: introNetwork/grids/hor/gridV5.svg
+    .. |gridH6| image:: introNetwork/grids/hor/gridV6.svg
+    .. |gridH7| image:: introNetwork/grids/hor/gridV7.svg
+    .. |gridH8| image:: introNetwork/grids/hor/gridV8.svg
+    .. |gridH9| image:: introNetwork/grids/hor/gridV9.svg
+    .. |gridH10| image:: introNetwork/grids/hor/gridV10.svg
+    .. |gridH11| image:: introNetwork/grids/hor/gridV11.svg
+    .. |gridH12| image:: introNetwork/grids/hor/gridV12.svg
+    .. |gridH13| image:: introNetwork/grids/hor/gridV13.svg
+
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    memory: '100'
+    time: '30'
+    output: '2'
+name: Introduction du réseau
+network_grading: false
+order: 2
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0
