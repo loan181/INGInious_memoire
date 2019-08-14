@@ -1,0 +1,81 @@
+accessible: true
+author: Loan
+categories: []
+context: |-
+    | Une fois les valeurs des neurones de la dernière couche connues, on peut en tirer des conclusions.
+    | Dans notre cas, les poids que je t'ai donnés ont été choisis de manière à pouvoir différencier une ligne verticale d'une ligne horizontale.
+    | J'ai également choisi que le premier neurone de la couche de sortie représente une ligne verticale, et l'autre la ligne horizontale. Ainsi, plus la valeur du premier neurone de la couche de sortie est grande, plus le réseau pense que c'est une ligne verticale et inversement pour l'autre neurone. Autrement dit, il te suffit de prendre le **maximum** des deux pour obtenir la conclusion du réseau.
+    |
+    | **Objectif**
+    | Détermine la conclusion du réseau pour les entrés suivantes. La valeurs des neurones de sorties ont déjà été caclulé et te sont données
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: Exercice conclusion du réseau
+network_grading: false
+problems:
+    q1:
+        name: ''
+        choices:
+        -   text: Ligne verticale
+        -   valid: true
+            text: Ligne horizontale
+        header: |-
+            .. image:: exConclusion/grid1.svg
+
+            Valeur des neurones de sorties : (-158, 158)
+        limit: 0
+        type: multiple_choice
+    q2:
+        type: multiple_choice
+        choices:
+        -   valid: true
+            text: Ligne verticale
+        -   text: Ligne horizontale
+        name: ''
+        header: |-
+            .. image:: exConclusion/grid2.svg
+
+            Valeur des neurones de sorties : (56, -56)
+        limit: 0
+    q3:
+        choices:
+        -   text: Ligne verticale
+        -   text: Ligne horizontale
+            valid: true
+        name: ''
+        type: multiple_choice
+        limit: 0
+        header: |-
+            .. image:: exConclusion/grid3.svg
+
+            Valeur des neurones de sorties : (-176, 176)
+    q4:
+        choices:
+        -   text: Ligne verticale
+            feedback: Assez surprennament le réseau ne reconnait pas correctement
+                cette ligne comme étant verticale. Notre réseau n'est pas parfait
+                !
+        -   text: Ligne horizontale
+            valid: true
+            feedback: |-
+                Ca peut paraitre bizarre, mais oui, le réseau détecte cette image comme une ligne horizontale et non une verticale !
+                La raison est que je ne l'ai pas entrainé suffisament à reconnaitre ce type de ligne verticale, du coup les poids ne sont pas paramétrés pour cela.
+        name: ''
+        limit: 0
+        header: |-
+            .. image:: exConclusion/grid4.svg
+
+            Valeur des neurones de sorties : (-131, 131)
+        type: multiple_choice
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

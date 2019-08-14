@@ -39,7 +39,7 @@ limits:
     time: '30'
 name: 1. Introduction du code Blockly
 network_grading: false
-order: 3
+order: 2
 problems:
     tuto1:
         options:
