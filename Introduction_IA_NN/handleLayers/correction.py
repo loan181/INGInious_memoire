@@ -28,30 +28,38 @@ if __name__ == '__main__':
         pass
 
     # Testing now
-    vPicture = [[0, 1, 0],
-                [0, 1, 0],
-                [0, 1, 0]]
-    vertical = NeuralNetwork()
-    vertical.handleInputLayer(vPicture)
-    vertical.handleLayer(2)
-    vertical.handleLayer(3)
-    expectedNNValues = vertical.nnValues
+    vPicture = {"name": "verticale", "grid" :
+        [[0, 1, 0],
+         [0, 1, 0],
+         [0, 1, 0]]
+    }
+    hPicture = {"name": "verticale", "grid" :
+        [[0, 0, 0],
+         [1, 1, 1],
+         [0, 0, 0]]
+    }
+    for picture in (vPicture, hPicture):
+        nn = NeuralNetwork()
+        nn.handleInputLayer(picture["grid"])
+        nn.handleLayer(2)
+        nn.handleLayer(3)
+        expectedNNValues = nn.nnValues
 
 
-    globalNN.reset()
-    globalNN.handleInputLayer(vPicture)
-    try:
-        calculer_la_valeur_des_neurones_de_la_nouche_n_C2_B0(2)
-        calculer_la_valeur_des_neurones_de_la_nouche_n_C2_B0(3)
-    except:
-        print("An error happenned : " + str(e))
-        exit()
-    studentNNValues = globalNN.nnValues
+        globalNN.reset()
+        globalNN.handleInputLayer(picture["grid"])
+        try:
+            calculer_la_valeur_des_neurones_de_la_nouche_n_C2_B0(2)
+            calculer_la_valeur_des_neurones_de_la_nouche_n_C2_B0(3)
+        except:
+            print("An error happenned : " + str(e))
+            exit()
+        studentNNValues = globalNN.nnValues
 
-    if studentNNValues != expectedNNValues:
-        for i in range(1, 3):
-            if studentNNValues[i] != expectedNNValues[i]:
-                print("Pour l'image d'une ligne verticale la couche {} n'est pas correcte. Les valeurs attendues sont {} et les tiennes sont {}".format(i+1, expectedNNValues[i], studentNNValues[i]))
-                exit()
+        if studentNNValues != expectedNNValues:
+            for i in range(1, 3):
+                if studentNNValues[i] != expectedNNValues[i]:
+                    print("Pour l'image d'une ligne {} la couche {} n'est pas correcte. Les valeurs attendues sont {} et les tiennes sont {}".format(picture["name"], i+1, expectedNNValues[i], studentNNValues[i]))
+                    exit()
 
     print("True")
