@@ -22,29 +22,39 @@ name: '[BLOCKLY] Gérer les autres couches'
 network_grading: false
 order: 11
 problems:
-    blockly:
+    blocklyRes:
         options:
-            speed: '60'
+            zoom:
+                maxScale: 3.0
+                controls: true
+                startScale: 1.0
+                scaleSpeed: 1.2
+                minScale: 0.3
+                wheel: false
             grid:
+                colour: '#ccc'
+                snap: true
                 length: 3
                 spacing: 20
-                snap: true
-                colour: '#ccc'
-            zoom:
-                scaleSpeed: 1.2
-                controls: true
-                minScale: 0.3
-                startScale: 1.0
-                maxScale: 3.0
-                wheel: false
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
+            toolboxPosition: start
+            css: true
             oneBasedIndex: true
+            speed: '60'
+            scrollbars: true
+            maxBlocks: Infinity
             visual:
                 position: left
-            scrollbars: true
-            css: true
-            toolboxPosition: start
+            media: /plugins/blockly/static/blockly/media/
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
+        type: blockly
+        name: ''
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -129,6 +139,15 @@ problems:
                                     <field name="NUM">1</field>
                                   </shadow>
                                 </value>
+                                <value name="TO">
+                                  <block type="nn_get_width" id="Nbec[}r;dK/{Y_.:*73x">
+                                    <value name="mat">
+                                      <block type="variables_get" id="@].M:m1Z]N[SQ,VY8|CG">
+                                        <field name="VAR" id="%j5Ewe_YBC(kHt1%N0/P" variabletype="">produit matriciel</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
                                 <value name="BY">
                                   <shadow type="math_number" id="o2iB^E(PVd6a_jP58Yi6">
                                     <field name="NUM">1</field>
@@ -150,7 +169,7 @@ problems:
                   </block>
                 </statement>
               </block>
-              <block type="main" id="Zt~=MbR:qTPA0yvi*D2(" x="37" y="363">
+              <block type="main" id="Zt~=MbR:qTPA0yvi*D2(" x="38" y="388">
                 <next>
                   <block type="procedures_callnoreturn" id="fxOw$^u`+4NpHqMd#jB.">
                     <mutation name="calculer la valeur des neurones de la nouche n°">
@@ -177,24 +196,16 @@ problems:
                 </next>
               </block>
             </xml>
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        type: blockly
-        header: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN Couche">
                 <block type="nn_get_neuron_layer"></block>
                 <block type="nn_get_weight_layer"></block>
                 <block type="nn_matrix_prod"></block>
-                <block type="nn_mat_len"></block>
-                <block type="nn_mat_get"></block>
+                <block type="nn_get_width"></block>
+                <block type="nn_get_height"></block>
                 <block type="nn_neuron_set_value_layer"></block>
+                <block type="nn_get_matrix"></block>
                 <block type="nn_sigmoid"></block>
               </category>
               <category name="NN Debug">
@@ -243,7 +254,6 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
-        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

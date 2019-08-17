@@ -44,9 +44,9 @@ class NeuralNetwork:
         previousLayerInd = layerInd - 1
         currentLayersMat = self.layersMat[previousLayerInd]
         previousLayerNeuronValues = self.nnValues[previousLayerInd]
-        layerNeuronsValue = self.matmult([previousLayerNeuronValues], currentLayersMat)[0]
+        layerNeuronsValue = matmult([previousLayerNeuronValues], currentLayersMat)[0]
         for i in range(len(layerNeuronsValue)):
-            self.setNeuronValue(layerInd, i, self.sigmoide(layerNeuronsValue[i]))
+            self.setNeuronValue(layerInd, i, sigmoid(layerNeuronsValue[i]))
 
     def setNeuronValue(self, layerInd, neuronInd, value):
         try:
@@ -76,17 +76,15 @@ class NeuralNetwork:
                 indMax = i
         return indMax
 
-    def matmult(self, a, b):
-        zip_b = list(zip(*b))
-        return [[sum(ele_a * ele_b for ele_a, ele_b in zip(row_a, col_b))
-                 for col_b in zip_b] for row_a in a]
 
-    def sigmoide(self, x):
-        return 1 / (1 + exp(-x))
 
     def __len__(self):
         return len(self.nnValues)
 
+def matmult(a, b):
+    zip_b = list(zip(*b))
+    return [[sum(ele_a * ele_b for ele_a, ele_b in zip(row_a, col_b))
+             for col_b in zip_b] for row_a in a]
 
 globalNN = NeuralNetwork()
 
@@ -112,6 +110,9 @@ def handleLayer(layerInd):
     global globalNN
     globalNN.handleLayer(layerInd)
 
+
+def sigmoid(x):
+    return 1 / (1 + exp(-x))
 
 def conclude():
     global globalNN
@@ -186,6 +187,18 @@ def getMatHeight(mat):
 def getLayersNumber():
     global globalNN
     return len(globalNN.nnValues)
+
+def getNeuronLayers(layerI):
+    global globalNN
+    return [globalNN.nnValues[layerI-1]]
+
+def getWeightLayers(layerI):
+    global globalNN
+    return globalNN.layersMat[layerI-1]
+
+def matrixProd(matNeuron, matWeight):
+    return matmult(matNeuron, matWeight)
+
 
 # Added so it does not crash
 def getGrid():

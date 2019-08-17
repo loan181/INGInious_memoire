@@ -229,27 +229,21 @@ Blockly.Python['grid_special'] = function(block) {
 
 Blockly.Python['nn_get_neuron_layer'] = function(block) {
   var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getNeuronLayers(${value_name})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_get_weight_layer'] = function(block) {
   var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `getWeightLayers(${value_name})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_matrix_prod'] = function(block) {
   var value_x = Blockly.Python.valueToCode(block, 'X', Blockly.Python.ORDER_ATOMIC);
   var value_y = Blockly.Python.valueToCode(block, 'Y', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `matrixProd(${value_x}, ${value_y})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_neuron_set_value_layer'] = function(block) {
@@ -261,10 +255,8 @@ Blockly.Python['nn_neuron_set_value_layer'] = function(block) {
 
 Blockly.Python['nn_sigmoid'] = function(block) {
   var value_x = Blockly.Python.valueToCode(block, 'x', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `sigmoid(${value_x})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_mat_len'] = function(block) {
@@ -272,16 +264,14 @@ Blockly.Python['nn_mat_len'] = function(block) {
   // TODO: Assemble Python into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['nn_mat_get'] = function(block) {
   var value_mat = Blockly.Python.valueToCode(block, 'mat', Blockly.Python.ORDER_ATOMIC);
   var value_elem_i = Blockly.Python.valueToCode(block, 'elem_i', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.Python.ORDER_NONE];
+  var code = `matrixGet(${value_mat}, ${value_elem_i})`;
+  return [code, Blockly.Python.ORDER_ATOMIC];
 };
 
 Blockly.Python['get_neuron_last_layer'] = function(block) {
