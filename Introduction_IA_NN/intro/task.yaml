@@ -59,11 +59,12 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     memory: '100'
     time: '30'
-    output: '2'
-name: Introduction
+name: 0. [QCM] Introduction
 network_grading: false
+order: 0
 problems:
     qcm_nn:
         choices:
@@ -81,11 +82,11 @@ problems:
             feedback: Ces 3 étapes concernent la classification d'un réseau de neurone
                 (et non les étapes d'une méthode de classification et d'apprentissage
                 supervisé)
+        limit: 0
+        name: ''
         type: multiple_choice
         header: Combien d'étape il y a-t-il dans une **méthode de classification et
             d'apprentissage supervisé** ?
-        limit: 0
-        name: ''
     qcm_nn1:
         choices:
         -   feedback: il s'agit de l'apprentissage supervisé
@@ -93,17 +94,17 @@ problems:
                 objets
         -   valid: true
             text: A permettre de pouvoir reconnaitre certaines choses
-        -   text: Permet à partir d'une entrée ``X`` déduire que c'est bien un ``X``
-            valid: true
-        -   feedback: la classification s'étend à bien plus que juste reconnaitre
+        -   valid: true
+            text: Permet à partir d'une entrée ``X`` déduire que c'est bien un ``X``
+        -   text: Distinguer une ligne verticale d'une ligne horizontale
+            feedback: la classification s'étend à bien plus que juste reconnaitre
                 2 types de lignes. Mais cette réponse est bien un cas particulier
                 de classification
-            text: Distinguer une ligne verticale d'une ligne horizontale
         header: En quoi consiste la classification ?
         type: multiple_choice
-        multiple: true
-        name: ''
         limit: 0
+        name: ''
+        multiple: true
     qcm_nn2:
         choices:
         -   valid: true
@@ -111,31 +112,30 @@ problems:
                 1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
                 2. Calculer la valeur des neurones des autres couches une par une
                 3. Tirer une conclusion de la couche de sortie
-        -   text: |-
+        -   feedback: La 2ème étape déclenchera une erreur vu que la valeur de cette
+                couche n'ont pas était initialisée
+            text: |-
                 1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
                 2. Tirer une conclusion de la couche de sortie
                 3. Calculer la valeur des neurones des autres couches une par une
-            feedback: La 2ème étape déclenchera une erreur vu que la valeur de cette
-                couche n'ont pas était initialisée
-        -   text: |-
+        -   feedback: La couche d'entrée ne nous donne aucune information sur le résultat
+                prédit, seulement sur l'entrée
+            text: |-
                 1. Calculer la valeur des neurones de la couche d'entrée à partir d'une entrée ``X``
                 2. Tirer une conclusion de la couche d'entrée
-            feedback: La couche d'entrée ne nous donne aucune information sur le résultat
-                prédit, seulement sur l'entrée
-        -   text: |-
+        -   feedback: Ce sont les étapes de l'apprentissage supervisé (donc l'entrainement
+                du modèle) et non les étapes de la classification
+            text: |-
                 1. On mets tout les poids à 0 et on fixe ce que chaque neurone de la couche de sortie est censé classifier
                 2. On n'utilise en entrée des éléments qu'on souhaite pouvoir être classifié dont on connait aussi le résultat de la classification
                 3. A chaque nouvelle entrée, on mets à jour les poids de manière qu'ils améliore la précision du réseau (une entrée ``X`` est correctement prédite en ``X``)
-            feedback: Ce sont les étapes de l'apprentissage supervisé (donc l'entrainement
-                du modèle) et non les étapes de la classification
+        limit: 0
         header: Quel est l'ordre correct des étapes pour la **classification d'un
             réseau neuronal** ?
         type: multiple_choice
         name: ''
-        limit: 0
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 weight: 1.0
-order: 0

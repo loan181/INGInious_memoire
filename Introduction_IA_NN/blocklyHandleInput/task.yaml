@@ -22,86 +22,45 @@ groups: false
 input_random: '0'
 limits:
     output: '2'
-    time: '30'
     memory: '100'
-name: 2. Blockly gérer l'entrée
+    time: '30'
+name: '[BLOCKLY] gérer l''entrée'
 network_grading: false
 order: 6
 problems:
     blocklyRes:
         options:
-            grid:
-                colour: '#ccc'
-                length: 3
-                spacing: 20
-                snap: true
-            media: /plugins/blockly/static/blockly/media/
             zoom:
                 maxScale: 3.0
                 controls: true
-                scaleSpeed: 1.2
                 startScale: 1.0
+                scaleSpeed: 1.2
                 minScale: 0.3
                 wheel: false
-            oneBasedIndex: true
+            grid:
+                colour: '#ccc'
+                snap: true
+                length: 3
+                spacing: 20
             toolboxPosition: start
-            speed: '60'
             css: true
+            oneBasedIndex: true
+            speed: '60'
+            scrollbars: true
+            maxBlocks: Infinity
             visual:
                 position: left
-            maxBlocks: Infinity
-            scrollbars: true
+            media: /plugins/blockly/static/blockly/media/
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
+        type: blockly
         name: ''
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - init.js
-        header: ''
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Input" colour="#5ba5a5">
-                <block type="nn_input_neuron_value"></block>
-                <block type="nn_picture_get_pixel"></block>
-              </category>
-              <sep></sep>
-              <category name="NN Image" colour="#a55b93">
-                <block type="nnimgcustom"></block>
-              </category>
-              <category name="NN Debug" colour="#80a55b">
-                <block type="custom_print"></block>
-                <block type="nn_random_01"></block>
-              </category>
-              <sep></sep>
-              <category name="Loops" colour="#5CA65C">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="controls_for">
-                  <field name="VAR" id="6Cka|E[{^U!_OlXHvvZt" variabletype="">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
-            </xml>
-        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -159,6 +118,47 @@ problems:
                   </block>
                   </next>
                 </block>
+            </xml>
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Input" colour="#5ba5a5">
+                <block type="nn_input_neuron_value"></block>
+                <block type="nn_picture_get_pixel"></block>
+              </category>
+              <sep></sep>
+              <category name="NN Image" colour="#a55b93">
+                <block type="nnimgcustom"></block>
+              </category>
+              <category name="NN Debug" colour="#80a55b">
+                <block type="custom_print"></block>
+                <block type="nn_random_01"></block>
+              </category>
+              <sep></sep>
+              <category name="Loops" colour="#5CA65C">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="controls_for">
+                  <field name="VAR" id="6Cka|E[{^U!_OlXHvvZt" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
 stored_submissions: 0
 submission_limit:

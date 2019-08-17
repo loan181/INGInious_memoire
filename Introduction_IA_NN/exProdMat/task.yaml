@@ -41,58 +41,58 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     memory: '100'
     time: '30'
-    output: '2'
-name: Exercices produits matriciels
+name: 3. [EXO] Exercices produits matriciels
 network_grading: false
+order: 7
 problems:
     prodMat0:
-        name: ''
-        type: code
         language: python
+        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}3
+            & 4\\\\-2 & -3\\end{pmatrix}\\]
         default: |-
             [[3, 4],
              [8, X]]
-        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}3
-            & 4\\\\-2 & -3\\end{pmatrix}\\]
-    prodMat1:
-        language: python
         type: code
         name: ''
+    prodMat1:
         default: |-
             [[X, X],
              [X, X]]
+        language: python
         header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}2
             & -1\\\\0 & 1\\end{pmatrix}\\]
+        type: code
+        name: ''
     prodMat2:
+        name: ''
+        type: code
+        language: python
         header: \\[A=\\begin{pmatrix}1 & 2\\\\3 & 4\\end{pmatrix} \\quad B=\\begin{pmatrix}2
             & -1\\\\0 & 1\\end{pmatrix}\\]
-        type: code
         default: ''
-        name: ''
-        language: python
     prodMat3:
         type: code
+        name: ''
+        default: '[[X]]'
         header: \\[A=\\begin{pmatrix}1 & 2 & 3 & 4\\end{pmatrix} \\quad B=\\begin{pmatrix}1
             \\\\ 0\\\\-1 \\\\ 2\\end{pmatrix}\\]
         language: ''
-        default: '[[X]]'
-        name: ''
     prodMat4:
-        header: \\[A=\\begin{pmatrix}1 & 2 \\\\ 3 & 4 \\\\ 1 & 2 \\\\ 3 & 4\\end{pmatrix}
-            \\quad B=\\begin{pmatrix}1 & 0 & -1 \\\\ 2 & -1 & 0\\end{pmatrix}\\]
-        type: code
-        name: ''
         language: python
         default: |-
             [[X, X, X],
              [X, X, X],
              [X, X, X],
              [X, X, X]]
+        name: ''
+        header: \\[A=\\begin{pmatrix}1 & 2 \\\\ 3 & 4 \\\\ 1 & 2 \\\\ 3 & 4\\end{pmatrix}
+            \\quad B=\\begin{pmatrix}1 & 0 & -1 \\\\ 2 & -1 & 0\\end{pmatrix}\\]
+        type: code
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 weight: 1.0
-order: 7

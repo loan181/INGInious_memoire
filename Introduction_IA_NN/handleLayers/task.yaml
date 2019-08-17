@@ -9,7 +9,7 @@ context: |-
     |
     | **Objectif**
     | Dans le code que je t'ai mis ci-bas le 1. est déjà effectué, il te reste à compléter la partie 2.
-environment: mcq
+environment: default
 evaluate: best
 file: ''
 groups: false
@@ -18,99 +18,33 @@ limits:
     output: '2'
     memory: '100'
     time: '30'
-name: 3. Gérer les autres couches
+name: '[BLOCKLY] Gérer les autres couches'
 network_grading: false
 order: 11
 problems:
     blockly:
         options:
-            visual:
-                position: left
+            speed: '60'
             grid:
-                spacing: 20
                 length: 3
-                colour: '#ccc'
+                spacing: 20
                 snap: true
+                colour: '#ccc'
             zoom:
-                maxScale: 3.0
-                controls: true
                 scaleSpeed: 1.2
+                controls: true
                 minScale: 0.3
                 startScale: 1.0
+                maxScale: 3.0
                 wheel: false
+            maxBlocks: Infinity
+            media: /plugins/blockly/static/blockly/media/
             oneBasedIndex: true
+            visual:
+                position: left
             scrollbars: true
             css: true
-            media: /plugins/blockly/static/blockly/media/
-            speed: '60'
-            maxBlocks: Infinity
             toolboxPosition: start
-        name: ''
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        type: blockly
-        files:
-        - ../$common/raphael.min.js
-        - ../$common/simpleNetworkVisual.js
-        - init.js
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Couche">
-                <block type="nn_get_neuron_layer"></block>
-                <block type="nn_get_weight_layer"></block>
-                <block type="nn_matrix_prod"></block>
-                <block type="nn_mat_len"></block>
-                <block type="nn_mat_get"></block>
-                <block type="nn_neuron_set_value_layer"></block>
-                <block type="nn_sigmoid"></block>
-              </category>
-              <category name="NN Debug">
-                <block type="custom_print"></block>
-              </category>
-              <sep></sep>
-              <category name="Loops" colour="#5CA65C">
-                <block type="controls_for">
-                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <category name="Math" colour="#5C68A6">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="math_arithmetic">
-                  <field name="OP">ADD</field>
-                  <value name="A">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="B">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
-            </xml>
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -243,7 +177,73 @@ problems:
                 </next>
               </block>
             </xml>
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        files:
+        - ../$common/raphael.min.js
+        - ../$common/simpleNetworkVisual.js
+        - init.js
+        type: blockly
         header: ''
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Couche">
+                <block type="nn_get_neuron_layer"></block>
+                <block type="nn_get_weight_layer"></block>
+                <block type="nn_matrix_prod"></block>
+                <block type="nn_mat_len"></block>
+                <block type="nn_mat_get"></block>
+                <block type="nn_neuron_set_value_layer"></block>
+                <block type="nn_sigmoid"></block>
+              </category>
+              <category name="NN Debug">
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
+        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

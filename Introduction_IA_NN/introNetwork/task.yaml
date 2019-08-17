@@ -103,9 +103,9 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     memory: '100'
     time: '30'
-    output: '2'
 name: Introduction du réseau
 network_grading: false
 order: 1

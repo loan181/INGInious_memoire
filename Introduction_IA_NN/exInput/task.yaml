@@ -16,31 +16,31 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    output: '2'
     memory: '100'
     time: '30'
-    output: '2'
-name: Valeur des neurones de la première couche
+name: 1. [EXO] Valeur des neurones de la première couche
 network_grading: false
+order: 3
 problems:
     corr:
         type: code
-        name: ''
-        language: python
-        default: '[0, 1, 1, 0, 0, 1, X, X, X]'
         header: |-
             .. image:: exInput/grid1.svg
                :align: center
+        default: '[0, 1, 1, 0, 0, 1, X, X, X]'
+        name: ''
+        language: python
     corr2:
-        default: '[X, X, X, X, X, X, X, X, X]'
+        language: python
+        type: code
         header: |-
             .. image:: exInput/grid2.svg
                :align: center
         name: ''
-        language: python
-        type: code
+        default: '[X, X, X, X, X, X, X, X, X]'
 stored_submissions: 0
 submission_limit:
     amount: -1
     period: -1
 weight: 1.0
-order: 3

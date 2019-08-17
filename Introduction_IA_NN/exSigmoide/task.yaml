@@ -1,0 +1,70 @@
+accessible: true
+author: Loan
+categories: []
+context: |
+    | Jusqu'à présent, les valeurs des neurones sont assez arbitraires, leurs valeurs dans l'aboslue ne signifient rien de particulier et elles n'ont pas de signification particulière.
+    | Par exemple : est-ce qu'une valeur de 56 est grande ? ça dépend, si les autres valeurs sont 3 et 5 alors oui, mais si elles sont de 1996 et 2019 alors non.
+    | Pour cela on va utiliser une fonction d'activation, l'idée étant de restreindre les données sur un certain domaine (par exemple entre 0 et 1).
+    |
+    | Il existe diverses fonctions d'activation que l'on peut utiliser, la plus utilisée est la **sigmoïde**.
+    | Son équation est la suivante : \\(f(x) = \\frac{1}{1+e^{-x}}\\) . Son graphique est le suivant
+
+    .. image :: https://cdn-images-1.medium.com/max/1600/0*5euYS7InCmDP08ir.
+
+    | Cette fonction comporte de nombreux avantages, mais ici ce qui va nous intéresser c'est qu'elle permet de transformer nos valeurs pour les mettre entre 0 et 1.
+    | En l'appliquant successivement sur tous les neurones calculés tu verras qu'à la fin on aura les probabilités liées à chaque conclusion au lieu d'avoir une valeur arbitraire.
+    | Par exemple en l'appliquant sur l'exemple de l'exercice précédent, qui avait comme valeur de neurones de sorties (56, -56), on obtient maintenant (92%, 8%) qui signifie que le réseau pense à 92% que c'est une ligne verticale.
+    |
+    | Ci-bas une mini-calculatrice qui calculera pour toi la sigmoïde du nombre indiqué dans la barre
+
+    .. raw:: html
+
+        <input type="number" value="0" class="sigmoidX form-control" step="0.1">
+        <button type="button" class="btn btn-secondary" onclick="let val = 1/(1+Math.exp(-$('.sigmoidX').val()));$('.sigmoidRes').text(Number(val.toFixed(8)));">Calculer</button>
+        Résultat : <b><span class="sigmoidRes"></span></b>
+
+
+    |
+    | **Objectif**
+    | Pour les exercices qui vont suivre, on va s'interesser à l'utilité de la fonction d'activation pour l'image
+
+    .. image:: introNetwork/grids/hor/gridV13.svg
+environment: default
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    memory: '100'
+    time: '30'
+name: '[EXO] Introduction d''une fonction d''activation (sigmoïde)'
+network_grading: false
+problems:
+    exo1:
+        name: Couche cachée
+        default: '[0.99999998, X, X]'
+        header: |
+            | La valeur des neurones de la couche cachée pour cette image est : ``[18, -6, 11]``.
+            | Applique la fonction sigmoide sur chacune de ces valeurs.
+        type: code_single_line
+    exo2:
+        default: '[X, X]'
+        name: Couche de sortie
+        header: |
+            | Maintenant qu'on à les valeurs de la couche cachée, on peut calculer la valeurs des neurones de sortie (à l'aide d'un produit matriciel avec la matrice de poids).
+            | Je t'épargne cette étape de calcul, les résultats sont ``[-8.98262476, 8.98262476]``.
+            | De la même manière, applique la fonction sigmoide sur chacune de ces valeurs.
+        type: code_single_line
+    exo3:
+        name: Conclusion
+        type: code_single_line
+        default: '0.000'
+        header: |
+            | Les 2 valeurs que tu as obtenu dans l'exercice précédent correspondent au **probabilité** de chacune des conlusions.
+            | Déduis en le **pourcentage** de conclusion du réseau (arrondi 3 chiffres après la virgule), que la ligne est *horizontale* ?
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 1.0

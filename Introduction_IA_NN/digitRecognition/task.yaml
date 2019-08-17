@@ -21,40 +21,37 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    memory: '100'
     output: '2'
+    memory: '100'
     time: '30'
-name: BONUS Reconnaissance de chiffre
+name: '[BONUS] Reconnaissance de chiffre'
 network_grading: false
-order: 14
+order: 15
 problems:
     blocklyRes:
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
         options:
-            grid:
-                spacing: 20
-                length: 3
-                snap: true
-                colour: '#ccc'
-            speed: '60'
             zoom:
-                startScale: 1.0
-                minScale: 0.3
-                scaleSpeed: 1.2
                 maxScale: 3.0
+                minScale: 0.3
                 controls: true
+                startScale: 1.0
+                scaleSpeed: 1.2
                 wheel: false
+            grid:
+                colour: '#ccc'
+                snap: true
+                length: 3
+                spacing: 20
             toolboxPosition: start
+            css: true
+            oneBasedIndex: true
+            speed: '60'
+            scrollbars: true
+            maxBlocks: Infinity
             visual:
                 position: left
-            oneBasedIndex: true
-            scrollbars: true
-            css: true
-            maxBlocks: Infinity
             media: /plugins/blockly/static/blockly/media/
-        header: ''
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
@@ -62,7 +59,11 @@ problems:
         - NNDatas.js
         - NN.js
         - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
         type: blockly
+        name: ''
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -197,7 +198,6 @@ problems:
                 </next>
               </block>
             </xml>
-        name: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN">
