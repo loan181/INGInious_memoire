@@ -24,11 +24,12 @@ class NeuralNetwork:
     bias = None
 
     def __init__(self, sizes=(9, 3, 2)):
-        self.nnValues = []
-        self.reset(sizes)
+        self.size = sizes
+        self.reset()
 
-    def reset(self, sizes=(9, 3, 2)):
-        for neuronNumber in sizes:
+    def reset(self):
+        self.nnValues = []
+        for neuronNumber in self.size:
             self.nnValues.append([None] * neuronNumber)
 
     def handleInputLayer(self, img):
@@ -95,6 +96,7 @@ def setNeuronValue(neuronN, layerN, value):
     global globalNN
     # print("    ", neuronN, layerN, value)
     globalNN.setNeuronValue(layerN-1, neuronN-1, value)
+    print("    ",globalNN.nnValues[layerN-1])
 
 def getNeuronValue(neuronN, layerN):
     global globalNN
@@ -123,6 +125,7 @@ def conclude():
 
 def getLayerNeuronNumber(layerN):
     global globalNN
+    #print("    ", layerN,  len(globalNN.nnValues[layerN-1]))
     return len(globalNN.nnValues[layerN-1])
 
 def getPixelValue(pixelI, img):

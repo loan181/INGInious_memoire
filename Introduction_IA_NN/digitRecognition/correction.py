@@ -27,17 +27,17 @@ def calculer_la_valeur_des_neurones_de_la_couche_n_C2_B0(couche_c):
 def tirer_une_conclusion_de_la_couche_sortie():
     raise NameError('La fonction "tirer une conclusion de la couche sortie" n\'a pas était définie par l\'utilisateur')
 
+NNSize = (28 * 28, 200, 10)
+globalNN.size = NNSize
+globalNN.reset()
 try:
 @   @blocklyRes@@
 except:
     pass
 
-def main():
-    global globalNN
 
-    NNSize = (28 * 28, 200, 10)
+if __name__ == '__main__':
     corectionNN = NeuralNetwork(NNSize)
-    globalNN.reset(NNSize)
     NNs = (globalNN, corectionNN)
     for NN in NNs:
         NN.layersMat[0] = nn.w12
@@ -132,6 +132,3 @@ def main():
         exit()
 
     print("True")
-
-if __name__ == '__main__':
-    main()
