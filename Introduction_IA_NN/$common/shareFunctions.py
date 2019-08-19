@@ -21,16 +21,15 @@ class NeuralNetwork:
                 [-4, 4]
             ]
         ]
+    bias = None
 
     def __init__(self, sizes=(9, 3, 2)):
         self.nnValues = []
+        self.reset(sizes)
+
+    def reset(self, sizes=(9, 3, 2)):
         for neuronNumber in sizes:
             self.nnValues.append([None] * neuronNumber)
-
-    def reset(self):
-        for i in range(len(self.nnValues)):
-            for j in range(len(self.nnValues[i])):
-                self.nnValues[i][j] = None
 
     def handleInputLayer(self, img):
         inc = 0
@@ -46,7 +45,10 @@ class NeuralNetwork:
         previousLayerNeuronValues = self.nnValues[previousLayerInd]
         layerNeuronsValue = matmult([previousLayerNeuronValues], currentLayersMat)[0]
         for i in range(len(layerNeuronsValue)):
-            self.setNeuronValue(layerInd, i, sigmoid(layerNeuronsValue[i]))
+            biasValue = 0
+            if self.bias is not None:
+                biasValue = self.bias[previousLayerInd][i]
+            self.setNeuronValue(layerInd, i, sigmoid(biasValue+layerNeuronsValue[i]))
 
     def setNeuronValue(self, layerInd, neuronInd, value):
         try:
@@ -91,6 +93,7 @@ globalNN = NeuralNetwork()
 
 def setNeuronValue(neuronN, layerN, value):
     global globalNN
+    # print("    ", neuronN, layerN, value)
     globalNN.setNeuronValue(layerN-1, neuronN-1, value)
 
 def getNeuronValue(neuronN, layerN):
