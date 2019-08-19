@@ -94,9 +94,7 @@ globalNN = NeuralNetwork()
 
 def setNeuronValue(neuronN, layerN, value):
     global globalNN
-    # print("    ", neuronN, layerN, value)
     globalNN.setNeuronValue(layerN-1, neuronN-1, value)
-    print("    ",globalNN.nnValues[layerN-1])
 
 def getNeuronValue(neuronN, layerN):
     global globalNN
@@ -125,7 +123,6 @@ def conclude():
 
 def getLayerNeuronNumber(layerN):
     global globalNN
-    #print("    ", layerN,  len(globalNN.nnValues[layerN-1]))
     return len(globalNN.nnValues[layerN-1])
 
 def getPixelValue(pixelI, img):

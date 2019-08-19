@@ -11,9 +11,6 @@ from shareFunctions import *
 from testPictures import NNImg
 import layersWeightsValue as nn
 
-globalNN = NeuralNetwork((28*28, 200, 10))
-#TODO : update weights values and be careful with bias !
-
 
 def classifier(image):
     raise NameError('La fonction "classifier" n\'a pas était définie par l\'utilisateur')
