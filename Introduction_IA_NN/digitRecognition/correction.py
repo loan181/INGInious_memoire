@@ -99,6 +99,7 @@ if __name__ == '__main__':
 
         # Check for step 2
         if step1OK:
+            corectionNN.bias = None # Too dificult too apply bias on student answer, so we disable it here
             corectionNN.handleLayer(2)
             corectionNN.handleLayer(3)
             corectionL23 = corectionNN.nnValues[1:2]
@@ -113,18 +114,24 @@ if __name__ == '__main__':
             if not step2OK:
                 step2ResDisp = "MAUVAIS"
             print(" " * 4 + "  2) Gestion des autres couches :", step2ResDisp)
+            if not step2OK:
+                print(" " * 8, "Attendu", corectionL23)
+                print(" " * 8, "Trouvé ", studentL23)
 
             # Check for step 3
             if step2OK:
                 correctionConclusion = corectionNN.concludeIndex()
                 studentConclusion = tirer_une_conclusion_de_la_couche_sortie()
 
-                step3OK = corectionL23 == studentL23
+                step3OK = correctionConclusion == studentConclusion
 
                 step3ResDisp = "OK"
                 if not step3OK:
                     step3ResDisp = "MAUVAIS"
                 print(" " * 4 + "  3) Conclusion :", step3ResDisp)
+                if not step3OK:
+                    print(" " * 8, "Attendu", correctionConclusion)
+                    print(" " * 8, "Trouvé ", studentConclusion)
 
         exit()
 

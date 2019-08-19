@@ -94,7 +94,7 @@ globalNN = NeuralNetwork()
 
 def setNeuronValue(neuronN, layerN, value):
     global globalNN
-    globalNN.setNeuronValue(layerN-1, neuronN-1, value)
+    globalNN.setNeuronValue(layerN - 1, neuronN - 1, value)
 
 def getNeuronValue(neuronN, layerN):
     global globalNN
