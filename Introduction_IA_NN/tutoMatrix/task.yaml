@@ -1,59 +1,182 @@
 accessible: true
 author: ''
 categories: []
-context: |
-    | Si tu as fais les exercices préparatoires plus difficile tu as sans doute un bon souvenir des **produits matriciels**, c'est justement le sujet de cet exercice ! Si tu ne t'en souviens plus très bien, tu peux consulter la page d'introduction au produit matriciel lien_.
-    | En effet, l'utilisation d'un produit matriciel est nécessaire pour calculer les valeurs des neurones des couches (excepté celle d'entrée)
+context: |-
+    | Les calcules de *produits matriciels* peuvent être un peu long et fastidieu, heuresement cela ne dérange pas notre ordinateur de le faire pour nous !
     |
+    | La partie de gauche te montre la dernière matrice qui à été créé ou modifiée afin que tu es une meilleur visualisation de ce qu'il se passe.
     | **Objectif**
     | Implémente cette fonction qui renverra le produit matriciel des deux matrices données en entrée.
-
-    .. _lien: https://loan181.github.io/algo/NN/produitMatriciel
+    | ( Cet exercice est assez difficile n'hésite pas à prendre ton temps )
 environment: default
 evaluate: best
 file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: '[BLOCKLY] Produit matriciel'
 network_grading: false
 order: 8
 problems:
     blocklyRes:
+        header: ''
         options:
             zoom:
-                maxScale: 3.0
-                controls: true
                 startScale: 1.0
                 scaleSpeed: 1.2
+                maxScale: 3.0
+                controls: true
                 minScale: 0.3
                 wheel: false
-            grid:
-                colour: '#ccc'
-                snap: true
-                length: 3
-                spacing: 20
-            toolboxPosition: start
-            css: true
-            oneBasedIndex: true
-            speed: '60'
             scrollbars: true
-            maxBlocks: Infinity
+            grid:
+                snap: true
+                spacing: 20
+                colour: '#ccc'
+                length: 3
+            oneBasedIndex: true
             visual:
                 position: left
+            toolboxPosition: start
+            maxBlocks: Infinity
+            speed: '60'
             media: /plugins/blockly/static/blockly/media/
-        header: ''
-        type: blockly
-        files:
-        - ../$common/simpleNetworkVisual.js
-        name: ''
+            css: true
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Debug">
+                <block type="main"></block>
+                <block type="custom_print"></block>
+              </category>
+              <sep></sep>
+                <category name="Matrice" colour="#5b6da5">
+                <block type="nn_create_matrix">
+                  <field name="NAME1">0</field>
+                  <field name="NAME2">0</field>
+                  <field name="NAME3">0</field>
+                  <field name="NAME4">0</field>
+                  <field name="NAME5">0</field>
+                  <field name="NAME6">0</field>
+                  <field name="NAME7">0</field>
+                  <field name="NAME8">0</field>
+                  <field name="NAME9">0</field>
+                  <field name="NAME10">0</field>
+                  <field name="NAME11">0</field>
+                  <field name="NAME12">0</field>
+                  <field name="NAME13">0</field>
+                  <field name="NAME14">0</field>
+                  <field name="NAME15">0</field>
+                  <field name="NAME16">0</field>
+                  <field name="NAME17">0</field>
+                  <field name="NAME18">0</field>
+                  <field name="NAME19">0</field>
+                  <field name="NAME20">0</field>
+                  <field name="NAME21">0</field>
+                  <field name="NAME22">0</field>
+                  <field name="NAME23">0</field>
+                  <field name="NAME24">0</field>
+                  <field name="NAME25">0</field>
+                </block>
+                <block type="nn_matrix_create2">
+                  <value name="lines_number">
+                    <shadow type="math_number">
+                      <field name="NUM">5</field>
+                    </shadow>
+                  </value>
+                  <value name="column_number">
+                    <shadow type="math_number">
+                      <field name="NUM">5</field>
+                    </shadow>
+                  </value>
+                  <value name="value">
+                    <shadow type="math_number">
+                      <field name="NUM">0</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_get_matrix">
+                  <value name="row">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="column">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_set_matrix">
+                  <value name="row">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="column">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="value">
+                    <shadow type="math_number">
+                      <field name="NUM">0</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="nn_get_width"></block>
+                <block type="nn_get_height"></block>
+              </category>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="O*9.Kx;?u)%LABxoR.;`" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
+            </xml>
         blocks_files:
         - ../$common/blocklyBlock/blocks.js
         - ../$common/blocklyBlock/blocksStubs.js
         - init.js
+        name: ''
+        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -212,132 +335,8 @@ problems:
                 </next>
               </block>
             </xml>
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Debug">
-                <block type="main"></block>
-                <block type="custom_print"></block>
-              </category>
-              <sep></sep>
-                <category name="Matrice" colour="#5b6da5">
-                <block type="nn_create_matrix">
-                  <field name="NAME1">0</field>
-                  <field name="NAME2">0</field>
-                  <field name="NAME3">0</field>
-                  <field name="NAME4">0</field>
-                  <field name="NAME5">0</field>
-                  <field name="NAME6">0</field>
-                  <field name="NAME7">0</field>
-                  <field name="NAME8">0</field>
-                  <field name="NAME9">0</field>
-                  <field name="NAME10">0</field>
-                  <field name="NAME11">0</field>
-                  <field name="NAME12">0</field>
-                  <field name="NAME13">0</field>
-                  <field name="NAME14">0</field>
-                  <field name="NAME15">0</field>
-                  <field name="NAME16">0</field>
-                  <field name="NAME17">0</field>
-                  <field name="NAME18">0</field>
-                  <field name="NAME19">0</field>
-                  <field name="NAME20">0</field>
-                  <field name="NAME21">0</field>
-                  <field name="NAME22">0</field>
-                  <field name="NAME23">0</field>
-                  <field name="NAME24">0</field>
-                  <field name="NAME25">0</field>
-                </block>
-                <block type="nn_matrix_create2">
-                  <value name="lines_number">
-                    <shadow type="math_number">
-                      <field name="NUM">5</field>
-                    </shadow>
-                  </value>
-                  <value name="column_number">
-                    <shadow type="math_number">
-                      <field name="NUM">5</field>
-                    </shadow>
-                  </value>
-                  <value name="value">
-                    <shadow type="math_number">
-                      <field name="NUM">0</field>
-                    </shadow>
-                  </value>
-                </block>
-                <block type="nn_get_matrix">
-                  <value name="row">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="column">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-                <block type="nn_set_matrix">
-                  <value name="row">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="column">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="value">
-                    <shadow type="math_number">
-                      <field name="NUM">0</field>
-                    </shadow>
-                  </value>
-                </block>
-                <block type="nn_get_width"></block>
-                <block type="nn_get_height"></block>
-              </category>
-              <category name="Loops" colour="#5CA65C">
-                <block type="controls_for">
-                  <field name="VAR" id="O*9.Kx;?u)%LABxoR.;`" variabletype="">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <category name="Math" colour="#5C68A6">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="math_arithmetic">
-                  <field name="OP">ADD</field>
-                  <value name="A">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="B">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
-              <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
-            </xml>
+        files:
+        - ../$common/simpleNetworkVisual.js
 stored_submissions: 0
 submission_limit:
     amount: -1

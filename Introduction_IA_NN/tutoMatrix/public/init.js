@@ -2,12 +2,12 @@ addAnimationSpeedWidget();
 addRunButton();
 $("#blocklySvgZone").hide();
 
-function addMatrixVisu() {
+function addMatrixVisu(name, matId) {
     let div = document.createElement("div");
     div.align = "center";
 
     let text = document.createElement("h6");
-    text.innerText = "dernière matrice modifiée";
+    text.innerText = name;
     div.appendChild(text);
 
     // Your CSS as text
@@ -46,15 +46,19 @@ function addMatrixVisu() {
     let table = document.createElement("table");
     table.className = "matrix";
     table.innerHTML = "?";
-    table.id = "tableMatrix";
+    table.id = matId;
 
     div.appendChild(table);
     visu.appendChild(div);
 }
-addMatrixVisu();
+// addMatrixVisu("dernière matrice modifiée", "tableMatrix");
 
-function setMatrixValues(mat) {
-    let matrixTable = document.getElementById("tableMatrix");
+addMatrixVisu("mat1", "mat1Table");
+addMatrixVisu("mat2", "mat2Table");
+addMatrixVisu("res", "resTable");
+
+function setMatrixValues(mat, matId="tableMatrix") {
+    let matrixTable = document.getElementById(matId);
     var tableBody = document.createElement('tbody');
 
     mat.forEach(function(rowData) {
@@ -74,23 +78,39 @@ function setMatrixValues(mat) {
 
 Animation.reset = function () {};
 
+let numberOfCreatedMatrix = 0;
 // Override some matrix functions in order to add animation
 let old = createMatrixDyn;
 createMatrixDyn = function(linesN, colsN, val) {
     let oldValue = old.apply(old, arguments);
-    setMatrixValues(oldValue);
+    let target = "resTable";
+    if (numberOfCreatedMatrix === 0) {
+        target = "mat1Table";
+    } else if (numberOfCreatedMatrix === 1) {
+        target = "mat2Table";
+    }
+    numberOfCreatedMatrix++;
+    setMatrixValues(oldValue, target);
     return oldValue
 };
 
 let old2 = createMatrix;
 createMatrix = function(linesN, colsN, val) {
     let oldValue = old2.apply(old2, arguments);
-    setMatrixValues(oldValue);
+    let target = "resTable";
+    if (numberOfCreatedMatrix === 0) {
+        target = "mat1Table";
+    } else if (numberOfCreatedMatrix === 1) {
+        target = "mat2Table";
+    }
+    numberOfCreatedMatrix++;
+    setMatrixValues(oldValue, target);
     return oldValue
 };
 
 let old3 = setMatrix;
 setMatrix = function (mat, row, column, value) {
     old3.apply(old3, arguments);
-    setMatrixValues(mat)
+    setMatrixValues(mat,"resTable");
 };
+

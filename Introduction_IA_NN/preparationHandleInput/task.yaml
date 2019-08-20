@@ -2,7 +2,7 @@ accessible: true
 author: Loan
 categories: []
 context: |
-    | Dans cette première préparation pour configurer la valeur des neurones de la couche d'entrée. Pour cela nous allons utiliser le bloc ``donner au neuronne d'entrée n°X la valeur Y``.
+    | Afin de préparer la valeur des neurones de la couche d'entrée avec blockly, nous allons utiliser le bloc ``donner au neuronne d'entrée n°X la valeur Y``.
 
     .. image:: $common/img/blocks/setNeuronValue.svg
 
@@ -20,44 +20,71 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: '[BLOCKLY] Préparation gestion de la couche d''entrée'
 network_grading: false
 order: 4
 problems:
     blocklyCode:
         options:
-            speed: '60'
+            zoom:
+                maxScale: 3.0
+                controls: true
+                scaleSpeed: 1.2
+                minScale: 0.3
+                startScale: 1.0
+                wheel: false
             visual:
                 position: left
-            grid:
-                spacing: 20
-                snap: true
-                length: 3
-                colour: '#ccc'
+            speed: '60'
             media: /plugins/blockly/static/blockly/media/
-            zoom:
-                startScale: 1.0
-                minScale: 0.3
-                controls: true
-                maxScale: 3.0
-                scaleSpeed: 1.2
-                wheel: false
-            css: true
-            toolboxPosition: start
             maxBlocks: '10'
+            grid:
+                length: 3
+                spacing: 20
+                colour: '#ccc'
+                snap: true
+            css: true
             scrollbars: true
+            toolboxPosition: start
             oneBasedIndex: true
-        type: blockly
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
+        name: ''
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Input">
+                <block type="nn_input_neuron_value">
+                  <value name="neuron_i">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="neuron_value">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <category name="NN Debug">
+                <block type="main"></block>
+              </category>
+              <sep></sep>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </category>
+            </xml>
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables></variables>
@@ -92,34 +119,7 @@ problems:
                 </next>
               </block>
             </xml>
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Input">
-                <block type="nn_input_neuron_value">
-                  <value name="neuron_i">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="neuron_value">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <category name="NN Debug">
-                <block type="main"></block>
-              </category>
-              <sep></sep>
-              <category name="Math" colour="#5C68A6">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-              </category>
-            </xml>
-        name: ''
-        header: ''
+        type: blockly
 stored_submissions: 0
 submission_limit:
     amount: -1
