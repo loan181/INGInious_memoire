@@ -29,7 +29,7 @@ limits:
     time: '30'
 name: '[BLOCKLY] Preparation gestion de la couche d''entrée ANNULE'
 network_grading: false
-order: 5
+order: 6
 problems:
     blockly:
         options:

@@ -8,7 +8,7 @@ context: |-
     |
     | **Objectif**
     | Détermine la conclusion du réseau pour les entrés suivantes. La valeurs des neurones de sorties ont déjà été caclulé et te sont données
-environment: default
+environment: mcq
 evaluate: best
 file: ''
 groups: false
@@ -19,62 +19,62 @@ limits:
     memory: '100'
 name: 4. [EXO] Conclusion du réseau
 network_grading: false
-order: 12
+order: 14
 problems:
     q1:
-        limit: 0
+        header: |-
+            .. image:: exConclusion/grid1.svg
+
+            Valeur des neurones de sorties : (-158, 158)
         choices:
         -   text: Ligne verticale
         -   valid: true
             text: Ligne horizontale
         name: ''
         type: multiple_choice
-        header: |-
-            .. image:: exConclusion/grid1.svg
-
-            Valeur des neurones de sorties : (-158, 158)
+        limit: 0
     q2:
-        type: multiple_choice
+        name: ''
+        limit: 0
         choices:
-        -   text: Ligne verticale
-            valid: true
+        -   valid: true
+            text: Ligne verticale
         -   text: Ligne horizontale
         header: |-
             .. image:: exConclusion/grid2.svg
 
             Valeur des neurones de sorties : (56, -56)
-        limit: 0
-        name: ''
+        type: multiple_choice
     q3:
         choices:
         -   text: Ligne verticale
-        -   valid: true
-            text: Ligne horizontale
+        -   text: Ligne horizontale
+            valid: true
         limit: 0
+        type: multiple_choice
         name: ''
         header: |-
             .. image:: exConclusion/grid3.svg
 
             Valeur des neurones de sorties : (-176, 176)
-        type: multiple_choice
     q4:
-        limit: 0
+        choices:
+        -   feedback: Assez surprennament le réseau ne reconnait pas correctement
+                cette ligne comme étant verticale. Notre réseau n'est pas parfait
+                !
+            text: Ligne verticale
+        -   text: Ligne horizontale
+            feedback: |-
+                Ca peut paraitre bizarre, mais oui, le réseau détecte cette image comme une ligne horizontale et non une verticale !
+                La raison est que je ne l'ai pas entrainé suffisament à reconnaitre ce type de ligne verticale, du coup les poids ne sont pas paramétrés pour cela.
+            valid: true
         header: |-
             .. image:: exConclusion/grid4.svg
 
             Valeur des neurones de sorties : (-131, 131)
-        choices:
-        -   text: Ligne verticale
-            feedback: Assez surprennament le réseau ne reconnait pas correctement
-                cette ligne comme étant verticale. Notre réseau n'est pas parfait
-                !
-        -   feedback: |-
-                Ca peut paraitre bizarre, mais oui, le réseau détecte cette image comme une ligne horizontale et non une verticale !
-                La raison est que je ne l'ai pas entrainé suffisament à reconnaitre ce type de ligne verticale, du coup les poids ne sont pas paramétrés pour cela.
-            valid: true
-            text: Ligne horizontale
-        type: multiple_choice
         name: ''
+        type: multiple_choice
+        limit: 0
 stored_submissions: 0
 submission_limit:
     amount: -1

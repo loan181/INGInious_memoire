@@ -1,0 +1,27 @@
+accessible: true
+author: ''
+categories: []
+context: |-
+    .. raw:: html
+
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://onedrive.live.com/embed?cid=5C202737302AA136&resid=5C202737302AA136%21527420&authkey=AJa39x1ge_9VxpM&em=2" width="402" height="327" frameborder="0" scrolling="no"></iframe>
+        </div>
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    time: '30'
+    memory: '100'
+name: 3. [ SLIDE ] Produit Matriciel
+network_grading: false
+order: 8
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 0.0

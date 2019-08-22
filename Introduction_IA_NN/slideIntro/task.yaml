@@ -1,0 +1,28 @@
+accessible: true
+author: Loan
+categories: []
+context: |-
+    .. raw:: html
+
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://onedrive.live.com/embed?cid=5C202737302AA136&resid=5C202737302AA136%21525084&authkey=ADR5R_zJSaobcHI&em=2" width="402" height="327" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <input type="checkbox" style="display: none;" checked>
+environment: mcq
+evaluate: best
+file: ''
+groups: false
+input_random: '0'
+limits:
+    output: '2'
+    time: '30'
+    memory: '100'
+name: 0. [ SLIDE ] Intro
+network_grading: false
+order: 0
+problems: {}
+stored_submissions: 0
+submission_limit:
+    amount: -1
+    period: -1
+weight: 0.0

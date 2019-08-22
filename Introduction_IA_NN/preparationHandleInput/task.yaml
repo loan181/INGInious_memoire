@@ -25,7 +25,7 @@ limits:
     memory: '100'
 name: '[BLOCKLY] Préparation gestion de la couche d''entrée'
 network_grading: false
-order: 4
+order: 5
 problems:
     blocklyCode:
         options:

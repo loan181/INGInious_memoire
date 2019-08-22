@@ -2,7 +2,7 @@ accessible: true
 author: ''
 categories: []
 context: |
-    | Maintenant que nous avons correctement configuré la première couche, il nous reste à configurer les suivantes.
+    | Voyons comment mettre ça en pratique dans Blockly.
     | Pour cela on va utiliser un nouveau bloc ``donner la valeur(X, N, C)`` ou :
     |
     | - ``X``, ``N`` et ``C`` sont tout les 3 des nombres entiers
@@ -26,46 +26,96 @@ file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: '[BLOCKLY] Préparation gestion des autres couches'
 network_grading: false
-order: 10
+order: 12
 problems:
     blocklyRes:
+        header: ''
         options:
             zoom:
-                maxScale: 3.0
-                controls: true
                 startScale: 1.0
                 scaleSpeed: 1.2
+                maxScale: 3.0
+                controls: true
                 minScale: 0.3
                 wheel: false
+            scrollbars: true
             grid:
-                colour: '#ccc'
                 snap: true
+                colour: '#ccc'
                 length: 3
                 spacing: 20
-            toolboxPosition: start
-            css: true
-            oneBasedIndex: true
-            speed: '60'
-            scrollbars: true
-            maxBlocks: '17'
             visual:
                 position: left
+            oneBasedIndex: true
+            toolboxPosition: start
+            maxBlocks: '17'
+            speed: '60'
             media: /plugins/blockly/static/blockly/media/
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        header: ''
-        type: blockly
-        name: ''
+            css: true
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
         - init.js
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        toolbox: |-
+            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
+              <category name="NN Couche">
+                <block type="nn_neuron_set_value_layer"></block>
+              </category>
+              <sep></sep>
+              <category name="Loops" colour="#5CA65C">
+                <block type="controls_for">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                  <value name="FROM">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="TO">
+                    <shadow type="math_number">
+                      <field name="NUM">10</field>
+                    </shadow>
+                  </value>
+                  <value name="BY">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+                <block type="variables_get">
+                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
+                </block>
+              </category>
+              <category name="Math" colour="#5C68A6">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+                <block type="math_arithmetic">
+                  <field name="OP">ADD</field>
+                  <value name="A">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                  <value name="B">
+                    <shadow type="math_number">
+                      <field name="NUM">1</field>
+                    </shadow>
+                  </value>
+                </block>
+              </category>
+              <sep></sep>
+              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
+            </xml>
+        name: ''
+        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -131,56 +181,6 @@ problems:
                       </block>
                     </next>
                 </block>
-            </xml>
-        toolbox: |-
-            <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
-              <category name="NN Couche">
-                <block type="nn_neuron_set_value_layer"></block>
-              </category>
-              <sep></sep>
-              <category name="Loops" colour="#5CA65C">
-                <block type="controls_for">
-                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
-                  <value name="FROM">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="TO">
-                    <shadow type="math_number">
-                      <field name="NUM">10</field>
-                    </shadow>
-                  </value>
-                  <value name="BY">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-                <block type="variables_get">
-                  <field name="VAR" id="SB]G`;;#O|oX*nG%tTYj" variabletype="">i</field>
-                </block>
-              </category>
-              <category name="Math" colour="#5C68A6">
-                <block type="math_number">
-                  <field name="NUM">0</field>
-                </block>
-                <block type="math_arithmetic">
-                  <field name="OP">ADD</field>
-                  <value name="A">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                  <value name="B">
-                    <shadow type="math_number">
-                      <field name="NUM">1</field>
-                    </shadow>
-                  </value>
-                </block>
-              </category>
-              <sep></sep>
-              <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
             </xml>
 stored_submissions: 0
 submission_limit:

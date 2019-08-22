@@ -23,7 +23,7 @@ limits:
     time: '30'
 name: '[BLOCKLY] Tirer une conclusion'
 network_grading: false
-order: 13
+order: 15
 problems:
     blocklyRes:
         options:

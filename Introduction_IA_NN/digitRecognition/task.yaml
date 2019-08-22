@@ -1,56 +1,48 @@
 accessible: true
 author: Loan
 categories: []
-context: |4
-     | Le réseau que nous utilisions jusqu'à présent permet de distinguer une ligne verticale d'une ligne horizontale dans une image en noir et blanc de taille 3 x 3.
-     | Ici on va utiliser un réseau de neurone différent, celui-çi sera capable de reconnaitre les dix chiffres arabes à partir d'une image en nuance de gris de 28 x 28.
-     | Comme le réseau précédent, il ne possède qu'une seule couche cachée, cependant le nombre de neurones est bien plus élevé ! La première couche est composée de 784 neurones (28 x 28), la couche cachée de 200 neurones et la couche de sortie de 10 neurones (les 10 chiffres qu'il peut reconnaitre).
+context: |-
+    |
+    | Le réseau que nous utilisions jusqu'à présent permet de distinguer une ligne verticale d'une ligne horizontale dans une image en noir et blanc de taille 3 x 3.
+    | Ici on va utiliser un réseau de neurone différent, celui-ci sera capable de reconnaître les dix chiffres arabes à partir d'une image en nuance de gris de 28 x 28.
+    |
+
+    ************************
+    Présentation du réseau
+    ************************
+    | Comme le réseau précédent, il ne possède qu'une seule couche cachée, cependant le nombre de neurones est bien plus élevé ! La première couche est composée de 784 neurones (28 x 28), la couche cachée de 200 neurones et la couche de sortie de 10 neurones (les 10 chiffres qu'il peut reconnaître).
 
     Si tu veux en savoir plus sur la confection de ce réseau : `source
-    <http://myselph.de/neuralNet.html>`_.
+    <http://myselph.de/neuralNet.html>`_. Garde bien à l'esprit qu'il à été entraîné de la même manière que le mien, mais pour classifier des choses différentes. Ainsi les valeurs dans les matrices des poids ne sont pas les mêmes que celles vu avant.
 
-     | **Utilisation**
-     | Dessine dans le cadre de gauche le chiffre de ton choix.
-     | Tu peux utiliser le bouton "Reconnaitre" pour utiliser une implémentation du réseau de neurone qui t'es cachée, ça te permettra de comparer le résultat de ton code par rapport à l'implémentation réelle.
-     |
-     | **Objectif**
-     | TODO
+    ***********
+    Utilisation
+    ***********
+    | Dessine dans le cadre de gauche le chiffre de ton choix.
+    | Tu peux utiliser le bouton "Reconnaître" pour utiliser une implémentation du réseau de neurone qui t'es cachée, ça te permettra de comparer le résultat de ton code par rapport à l'implémentation réelle.
+    |
+
+    ********
+    Objectif
+    ********
+    | **Implémente les 3 fonctions de la classification de ce réseau.**
+    | N'hésite pas à regarder tes solutions aux exercices précédents pour t'en servir comme modèle. Reste vigilant que le nombre de neurones de chaque couche est différent des exercices précédents !
+    |
+    | *Notes* : fais attention **aux noms de tes variables**, particulièrement celle des boucles ! Si tu modifie une variable qui est encore utilisée tu risque d'avoir des comportements inattendus. Donc je te conseil de donner un nom de variable différent pour chaque variable de boucle (``i``)
 environment: default
 evaluate: best
 file: ''
 groups: false
 input_random: '0'
 limits:
-    memory: '200'
-    output: '2'
     time: '30'
+    output: '2'
+    memory: '200'
 name: '[BONUS] Reconnaissance de chiffre'
 network_grading: false
-order: 16
+order: 18
 problems:
     blocklyRes:
-        options:
-            oneBasedIndex: true
-            visual:
-                position: left
-            scrollbars: true
-            css: true
-            grid:
-                spacing: 20
-                length: 3
-                snap: true
-                colour: '#ccc'
-            zoom:
-                startScale: 1.0
-                maxScale: 3.0
-                controls: true
-                minScale: 0.3
-                scaleSpeed: 1.2
-                wheel: false
-            maxBlocks: Infinity
-            media: /plugins/blockly/static/blockly/media/
-            toolboxPosition: start
-            speed: '60'
         files:
         - ../$common/raphael.min.js
         - ../$common/simpleNetworkVisual.js
@@ -58,10 +50,29 @@ problems:
         - NNDatas.js
         - NN.js
         - init.js
-        name: ''
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
+        header: ''
+        options:
+            zoom:
+                startScale: 1.0
+                scaleSpeed: 1.2
+                maxScale: 3.0
+                controls: true
+                minScale: 0.3
+                wheel: false
+            scrollbars: true
+            toolboxPosition: start
+            grid:
+                length: 3
+                snap: true
+                colour: '#ccc'
+                spacing: 20
+            visual:
+                position: left
+            oneBasedIndex: true
+            maxBlocks: Infinity
+            speed: '60'
+            media: /plugins/blockly/static/blockly/media/
+            css: true
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN">
@@ -139,6 +150,11 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        name: ''
+        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -273,8 +289,6 @@ problems:
                 </next>
               </block>
             </xml>
-        header: ''
-        type: blockly
 stored_submissions: 0
 submission_limit:
     amount: -1

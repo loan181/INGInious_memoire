@@ -1,5 +1,5 @@
 accessible: true
-author: ''
+author: Loan
 categories: []
 context: |+
     --------------
@@ -97,19 +97,44 @@ context: |+
     .. |gridH12| image:: introNetwork/grids/hor/gridV12.svg
     .. |gridH13| image:: introNetwork/grids/hor/gridV13.svg
 
-environment: default
+environment: mcq
 evaluate: best
 file: ''
 groups: false
 input_random: '0'
 limits:
+    time: '30'
     output: '2'
     memory: '100'
-    time: '30'
 name: Introduction du réseau
 network_grading: false
-order: 1
-problems: {}
+order: 2
+problems:
+    questions:
+        choices:
+        -   feedback: Un réseau neuronal peut avoir autant de couche cachée qu'il
+                le souhaite avec le nombre de neurones de son choix. Ici j'ai choisi
+                que 3 neurones pour te simplifier les calculs
+            text: Un réseau neuronal ne peut avoir qu'une seule couche cachée
+        -   valid: true
+            text: Les valeurs dans les matrices des poids sont le résultat de l'entrainement
+                de notre réseau à partir d'images dont on connaissait à l'avance leur
+                résultat
+        -   text: Les valeurs des neurones de la couche d'entrée sont déterminés par
+                l'entrée qu'on donne au réseau
+            valid: true
+        -   valid: true
+            text: La valeur des neurones dans la couche de sortie sont les probabilité
+                pour chaque conclusion
+        -   text: Les valeurs de la couche cachée premettent de savoir directement
+                si la ligne est horizontale ou verticale
+            feedback: Pas vraiment, cette couche permet de faire l'intermédiaire entre
+                celle d'entrée et celle de sortie.
+        multiple: true
+        type: multiple_choice
+        name: ''
+        header: Coche la/les affimation(s) vraies
+        limit: 0
 stored_submissions: 0
 submission_limit:
     amount: -1

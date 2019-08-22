@@ -41,56 +41,56 @@ file: ''
 groups: false
 input_random: '0'
 limits:
-    output: '2'
     memory: '100'
+    output: '2'
     time: '30'
-name: 3. [EXO] Exercices produits matriciels
+name: '[EXO] Exercices produits matriciels'
 network_grading: false
-order: 7
+order: 9
 problems:
     prodMat0:
-        language: python
-        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}3
-            & 4\\\\-2 & -3\\end{pmatrix}\\]
         default: |-
             [[3, 4],
              [8, X]]
-        type: code
         name: ''
+        language: python
+        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}3
+            & 4\\\\-2 & -3\\end{pmatrix}\\]
+        type: code
     prodMat1:
+        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}2
+            & -1\\\\0 & 1\\end{pmatrix}\\]
+        name: ''
+        type: code
+        language: python
         default: |-
             [[X, X],
              [X, X]]
-        language: python
-        header: \\[A=\\begin{pmatrix}1 & 0\\\\2 & -1\\end{pmatrix} \\quad B=\\begin{pmatrix}2
-            & -1\\\\0 & 1\\end{pmatrix}\\]
-        type: code
-        name: ''
     prodMat2:
-        name: ''
         type: code
-        language: python
         header: \\[A=\\begin{pmatrix}1 & 2\\\\3 & 4\\end{pmatrix} \\quad B=\\begin{pmatrix}2
             & -1\\\\0 & 1\\end{pmatrix}\\]
         default: ''
-    prodMat3:
-        type: code
+        language: python
         name: ''
-        default: '[[X]]'
+    prodMat3:
         header: \\[A=\\begin{pmatrix}1 & 2 & 3 & 4\\end{pmatrix} \\quad B=\\begin{pmatrix}1
             \\\\ 0\\\\-1 \\\\ 2\\end{pmatrix}\\]
+        type: code
+        default: '[[X]]'
         language: ''
+        name: ''
     prodMat4:
-        language: python
+        header: \\[A=\\begin{pmatrix}1 & 2 \\\\ 3 & 4 \\\\ 1 & 2 \\\\ 3 & 4\\end{pmatrix}
+            \\quad B=\\begin{pmatrix}1 & 0 & -1 \\\\ 2 & -1 & 0\\end{pmatrix}\\]
         default: |-
             [[X, X, X],
              [X, X, X],
              [X, X, X],
              [X, X, X]]
-        name: ''
-        header: \\[A=\\begin{pmatrix}1 & 2 \\\\ 3 & 4 \\\\ 1 & 2 \\\\ 3 & 4\\end{pmatrix}
-            \\quad B=\\begin{pmatrix}1 & 0 & -1 \\\\ 2 & -1 & 0\\end{pmatrix}\\]
+        language: python
         type: code
+        name: ''
 stored_submissions: 0
 submission_limit:
     amount: -1

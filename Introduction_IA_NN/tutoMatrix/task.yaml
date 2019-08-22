@@ -4,7 +4,9 @@ categories: []
 context: |-
     | Les calcules de *produits matriciels* peuvent être un peu long et fastidieu, heuresement cela ne dérange pas notre ordinateur de le faire pour nous !
     |
-    | La partie de gauche te montre la dernière matrice qui à été créé ou modifiée afin que tu es une meilleur visualisation de ce qu'il se passe.
+    | La partie de gauche te montre les différentes matrices ainsi que leur valeur. Tu peux suivre leur évolution pendant l'execution pas à pas.
+    | *Note* : cette partie n'est pas implémenté de manière parfaite, les valeurs montrés ne seront pas forcément les vraies valeurs des matrices. A moins que tu respecte ces conventions : La première matrice créé sera considéré comme ``mat1``, la deuxieme comme ``mat2`` et la troisième comme ``res``. Toute modifications sur une matrice modifiera l'affichage de ``res``.
+    |
     | **Objectif**
     | Implémente cette fonction qui renverra le produit matriciel des deux matrices données en entrée.
     | ( Cet exercice est assez difficile n'hésite pas à prendre ton temps )
@@ -19,7 +21,7 @@ limits:
     memory: '100'
 name: '[BLOCKLY] Produit matriciel'
 network_grading: false
-order: 8
+order: 10
 problems:
     blocklyRes:
         header: ''

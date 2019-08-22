@@ -26,7 +26,7 @@ limits:
     time: '30'
 name: '[BLOCKLY] Tirer une conclusion (générique)'
 network_grading: false
-order: 14
+order: 16
 problems:
     blocklyRes:
         options:

@@ -21,7 +21,7 @@ limits:
     time: '30'
 name: 1. [EXO] Valeur des neurones de la première couche
 network_grading: false
-order: 3
+order: 4
 problems:
     corr:
         type: code
