@@ -37,65 +37,62 @@ context: |+
     Les valeurs indiqué plus haut ont également étaient multipliés par 2 arrondies afin que tu es nombre plus facile à manipuler.
 
     Note qu'une ligne verticale étant l'opposé d'une ligne horizontale, les grilles utilisées sont des symmétries centrales l'une de l'autre.
-    Les 21 grilles utiliséees pour chaque ligens sont les suivantes :
+    Les 21 grilles utiliséees pour chaque lignes sont les suivantes :
 
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | Quantitée  | Grille pour entrainer à reconnaitre une ligne verticale  |  Grille pour entrainer à reconnaitre une ligne horizontale  |
-    +============+==========================================================+=============================================================+
-    | 5          | |gridV1|                                                 | |gridH1|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV2|                                                 | |gridH2|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV3|                                                 | |gridH3|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 3          | |gridV4|                                                 | |gridH4|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 3          | |gridV5|                                                 | |gridH5|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV6|                                                 | |gridH6|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV7|                                                 | |gridH7|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV8|                                                 | |gridH8|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV9|                                                 | |gridH9|                                                    |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV10|                                                | |gridH10|                                                   |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV11|                                                | |gridH11|                                                   |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV12|                                                | |gridH12|                                                   |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
-    | 1          | |gridV13|                                                | |gridH13|                                                   |
-    +------------+----------------------------------------------------------+-------------------------------------------------------------+
+    .. raw:: html
 
-    .. |gridV1| image:: introNetwork/grids/vert/gridV1.svg
-    .. |gridV2| image:: introNetwork/grids/vert/gridV2.svg
-    .. |gridV3| image:: introNetwork/grids/vert/gridV3.svg
-    .. |gridV4| image:: introNetwork/grids/vert/gridV4.svg
-    .. |gridV5| image:: introNetwork/grids/vert/gridV5.svg
-    .. |gridV6| image:: introNetwork/grids/vert/gridV6.svg
-    .. |gridV7| image:: introNetwork/grids/vert/gridV7.svg
-    .. |gridV8| image:: introNetwork/grids/vert/gridV8.svg
-    .. |gridV9| image:: introNetwork/grids/vert/gridV9.svg
-    .. |gridV10| image:: introNetwork/grids/vert/gridV10.svg
-    .. |gridV11| image:: introNetwork/grids/vert/gridV11.svg
-    .. |gridV12| image:: introNetwork/grids/vert/gridV12.svg
-    .. |gridV13| image:: introNetwork/grids/vert/gridV13.svg
-
-    .. |gridH1| image:: introNetwork/grids/hor/gridV1.svg
-    .. |gridH2| image:: introNetwork/grids/hor/gridV2.svg
-    .. |gridH3| image:: introNetwork/grids/hor/gridV3.svg
-    .. |gridH4| image:: introNetwork/grids/hor/gridV4.svg
-    .. |gridH5| image:: introNetwork/grids/hor/gridV5.svg
-    .. |gridH6| image:: introNetwork/grids/hor/gridV6.svg
-    .. |gridH7| image:: introNetwork/grids/hor/gridV7.svg
-    .. |gridH8| image:: introNetwork/grids/hor/gridV8.svg
-    .. |gridH9| image:: introNetwork/grids/hor/gridV9.svg
-    .. |gridH10| image:: introNetwork/grids/hor/gridV10.svg
-    .. |gridH11| image:: introNetwork/grids/hor/gridV11.svg
-    .. |gridH12| image:: introNetwork/grids/hor/gridV12.svg
-    .. |gridH13| image:: introNetwork/grids/hor/gridV13.svg
+        <table class="table table-hover table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Nombre</th>
+              <td style="text-align: center;">5</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">3</td>
+              <td style="text-align: center;">3</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+              <td style="text-align: center;">1</td>
+            </tr>
+            <tr>
+              <th scope="row">Verticale</th>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV1.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV2.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV3.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV4.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV5.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV6.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV7.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV8.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV9.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV10.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV11.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV12.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/vert/gridV13.svg"></img></td>
+            </tr>
+            <tr>
+              <th scope="row">Horizontale</th>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV1.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV2.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV3.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV4.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV5.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV6.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV7.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV8.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV9.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV10.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV11.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV12.svg"></img></td>
+              <td><img class="img-fluid" src="introNetwork/grids/hor/gridV13.svg"></img></td>
+            </tr>
+          </tbody>
+        </table>
 
 environment: mcq
 evaluate: best
