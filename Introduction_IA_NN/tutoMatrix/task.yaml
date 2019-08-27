@@ -24,29 +24,33 @@ network_grading: false
 order: 10
 problems:
     blocklyRes:
-        header: ''
         options:
             zoom:
                 startScale: 1.0
-                scaleSpeed: 1.2
-                maxScale: 3.0
                 controls: true
+                scaleSpeed: 1.2
                 minScale: 0.3
+                maxScale: 3.0
                 wheel: false
-            scrollbars: true
-            grid:
-                snap: true
-                spacing: 20
-                colour: '#ccc'
-                length: 3
-            oneBasedIndex: true
+            css: true
             visual:
                 position: left
-            toolboxPosition: start
             maxBlocks: Infinity
+            grid:
+                colour: '#ccc'
+                spacing: 20
+                snap: true
+                length: 3
             speed: '60'
             media: /plugins/blockly/static/blockly/media/
-            css: true
+            scrollbars: true
+            toolboxPosition: start
+            oneBasedIndex: true
+        blocks_files:
+        - ../$common/blocklyBlock/blocks.js
+        - ../$common/blocklyBlock/blocksStubs.js
+        - init.js
+        name: ''
         toolbox: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none;">
               <category name="NN Debug">
@@ -173,12 +177,6 @@ problems:
               <category name="Variables" colour="#A65C81" custom="VARIABLE"></category>
               <category name="Functions" colour="#9A5CA6" custom="PROCEDURE"></category>
             </xml>
-        blocks_files:
-        - ../$common/blocklyBlock/blocks.js
-        - ../$common/blocklyBlock/blocksStubs.js
-        - init.js
-        name: ''
-        type: blockly
         workspace: |-
             <xml xmlns="http://www.w3.org/1999/xhtml" id="workspaceBlocks" style="display:none">
               <variables>
@@ -189,7 +187,7 @@ problems:
                 <variable type="" id="X]h2~8ow.B;y=nEiCQpA">B</variable>
                 <variable type="" id="L/$0D[h=Nq1?X|2iB/8]">produit mat</variable>
               </variables>
-              <block type="procedures_defreturn" id="U{wp8Q1epu~Cd;3(ZM3I" x="13" y="113">
+              <block type="procedures_defreturn" id="U{wp8Q1epu~Cd;3(ZM3I" x="13" y="13">
                 <mutation>
                   <arg name="mat1" varid="VFR4R*Yx#S#}3ByI[?V1"></arg>
                   <arg name="mat2" varid="it_L3?ZEY(k:{={#{~Qh"></arg>
@@ -202,19 +200,19 @@ problems:
                     <value name="VALUE">
                       <block type="nn_matrix_create2" id="YjvL)f,$a4^:?_mWoMlD">
                         <value name="lines_number">
-                          <block type="nn_get_height" id="Cl{=AYwU3^h35*E^GS8I">
+                          <block type="nn_get_width" id="m#A?*TTs1{R`{$^KtTZ7">
                             <value name="mat">
-                              <block type="variables_get" id="/uW`}v40mc2[,L/(ay+K">
-                                <field name="VAR" id="VFR4R*Yx#S#}3ByI[?V1" variabletype="">mat1</field>
+                              <block type="variables_get" id="?pZlR#Sy@wznKv4fi)_.">
+                                <field name="VAR" id="it_L3?ZEY(k:{={#{~Qh" variabletype="">mat2</field>
                               </block>
                             </value>
                           </block>
                         </value>
                         <value name="column_number">
-                          <block type="nn_get_width" id="m#A?*TTs1{R`{$^KtTZ7">
+                          <block type="nn_get_height" id="Cl{=AYwU3^h35*E^GS8I">
                             <value name="mat">
-                              <block type="variables_get" id="?pZlR#Sy@wznKv4fi)_.">
-                                <field name="VAR" id="it_L3?ZEY(k:{={#{~Qh" variabletype="">mat2</field>
+                              <block type="variables_get" id="/uW`}v40mc2[,L/(ay+K">
+                                <field name="VAR" id="VFR4R*Yx#S#}3ByI[?V1" variabletype="">mat1</field>
                               </block>
                             </value>
                           </block>
@@ -234,7 +232,7 @@ problems:
                   </block>
                 </value>
               </block>
-              <block type="main" id="xBzzt`bdlX4K69lEFMr=" x="13" y="362">
+              <block type="main" id="xBzzt`bdlX4K69lEFMr=" x="13" y="413">
                 <next>
                   <block type="variables_set" id="`=n(!RC,jmj-1I#w2*V1">
                     <field name="VAR" id="Y^}Xj^L[=X_-3SB$QUaL" variabletype="">A</field>
@@ -337,6 +335,8 @@ problems:
                 </next>
               </block>
             </xml>
+        header: ''
+        type: blockly
         files:
         - ../$common/simpleNetworkVisual.js
 stored_submissions: 0
