@@ -72,7 +72,11 @@ if __name__ == '__main__':
     for subL in l:
         matA, matB = subL
         actualResult = matrixMult(matA, matB)
-        studentResult = calculer_le_produit_matriciel_de(matA, matB)
+        try:
+            studentResult = calculer_le_produit_matriciel_de(matA, matB)
+        except IndexError as e:
+            print(str(e))
+            exit()
         if studentResult != actualResult:
             print(
                 "Le résultat du produit matriciel de {} avec {} attendu est {}, ton résultat est {}".format(matA,

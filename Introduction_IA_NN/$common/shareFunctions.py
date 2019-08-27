@@ -173,11 +173,21 @@ def createMatrixDyn(linesN, colsN, val):
     return [[val for _ in range(linesN)] for _ in range(colsN)]
 
 def setMatrix(mat, row, column, value):
-    mat[row-1][column-1] = value
+    try:
+        mat[row-1][column-1] = value
+    except IndexError:
+        raise IndexError("L'élement à la colonne {} rangée {} est inaccesible dans une matrice de taille {} x {}".format(
+            column, row, len(mat[0]), len(mat)
+        ))
 
 
 def getMatrix(mat, row, col):
-    return mat[row-1][col-1]
+    try:
+        return mat[row - 1][col - 1]
+    except IndexError:
+        raise IndexError("L'élement à la colonne {} rangée {} est inaccesible dans une matrice de taille {} x {}".format(
+            col, row, len(mat[0]), len(mat)
+        ))
 
 
 def getMatWidth(mat):
